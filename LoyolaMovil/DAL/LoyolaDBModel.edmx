@@ -1,0 +1,1079 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoyolaMovilBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAnio">
+          <Key>
+            <PropertyRef Name="idAnio" />
+          </Key>
+          <Property Name="idAnio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anio" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAreas">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreArea" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="horaInicio" Type="datetime" Nullable="false" />
+          <Property Name="horaFinal" Type="datetime" Nullable="false" />
+          <Property Name="idColaborador" Type="int" Nullable="false" />
+          <Property Name="idAula" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAreas_Servicios">
+          <Key>
+            <PropertyRef Name="idServicios" />
+          </Key>
+          <Property Name="idServicios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviciosNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreArea" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idArea" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAula">
+          <Key>
+            <PropertyRef Name="idAula" />
+          </Key>
+          <Property Name="idAula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreAula" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="idTipoAula" Type="int" Nullable="false" />
+          <Property Name="idEdificio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCitas">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idColaborador" Type="int" Nullable="false" />
+          <Property Name="idHorario" Type="int" Nullable="false" />
+          <Property Name="idSemanas" Type="int" Nullable="false" />
+          <Property Name="idDias" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblColaboradores">
+          <Key>
+            <PropertyRef Name="idColaborador" />
+          </Key>
+          <Property Name="idColaborador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreColaborador" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="telefonoColaborador" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="correoColaborador" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="horarioInicio" Type="datetime" Nullable="false" />
+          <Property Name="horaFin" Type="datetime" Nullable="false" />
+          <Property Name="contraseniaColaborador" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDías">
+          <Key>
+            <PropertyRef Name="idDias" />
+          </Key>
+          <Property Name="idDias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dia" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEdificio">
+          <Key>
+            <PropertyRef Name="idEdificio" />
+          </Key>
+          <Property Name="idEdificio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEdificio" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEventos">
+          <Key>
+            <PropertyRef Name="idEvento" />
+          </Key>
+          <Property Name="idEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEvento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcionEvento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaEvento" Type="date" Nullable="false" />
+          <Property Name="horaInicio" Type="datetime" Nullable="false" />
+          <Property Name="horaFinal" Type="datetime" Nullable="false" />
+          <Property Name="idAula" Type="int" Nullable="false" />
+          <Property Name="idColaborador" Type="int" Nullable="false" />
+          <Property Name="idNivel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHorarios">
+          <Key>
+            <PropertyRef Name="idHorarios" />
+          </Key>
+          <Property Name="idHorarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="horaInicio" Type="datetime" Nullable="false" />
+          <Property Name="horaFinal" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNivel">
+          <Key>
+            <PropertyRef Name="idNivel" />
+          </Key>
+          <Property Name="idNivel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nivelNombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblNoticias">
+          <Key>
+            <PropertyRef Name="idNoticias" />
+          </Key>
+          <Property Name="idNoticias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noticiasTitulo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="noticiasTexto" Type="ntext" Nullable="false" />
+          <Property Name="idNivel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSemanas">
+          <Key>
+            <PropertyRef Name="idSemana" />
+          </Key>
+          <Property Name="idSemana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="semana" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaInicial" Type="date" Nullable="false" />
+          <Property Name="fechaFinal" Type="date" Nullable="false" />
+          <Property Name="idAnioSemana" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblServicios">
+          <Key>
+            <PropertyRef Name="idservicios" />
+          </Key>
+          <Property Name="idservicios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviciosNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idArea" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTipoAula">
+          <Key>
+            <PropertyRef Name="idTipoAula" />
+          </Key>
+          <Property Name="idTipoAula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoAula" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidosUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correoUsuarios" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contraseniaUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idNivel" Type="int" Nullable="false" />
+          <Property Name="permitirCatalogo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblAreas_Servicios_tblAreas">
+          <End Role="tblAreas" Type="Self.tblAreas" Multiplicity="1" />
+          <End Role="tblAreas_Servicios" Type="Self.tblAreas_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAreas">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblAreas_Servicios">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAreas_tblAula">
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="1" />
+          <End Role="tblAreas" Type="Self.tblAreas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAula">
+              <PropertyRef Name="idAula" />
+            </Principal>
+            <Dependent Role="tblAreas">
+              <PropertyRef Name="idAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAreas_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradores" Multiplicity="1" />
+          <End Role="tblAreas" Type="Self.tblAreas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblAreas">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAula_tblEdificio">
+          <End Role="tblEdificio" Type="Self.tblEdificio" Multiplicity="1" />
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEdificio">
+              <PropertyRef Name="idEdificio" />
+            </Principal>
+            <Dependent Role="tblAula">
+              <PropertyRef Name="idEdificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAula_tblTipoAula1">
+          <End Role="tblTipoAula" Type="Self.tblTipoAula" Multiplicity="1" />
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoAula">
+              <PropertyRef Name="idTipoAula" />
+            </Principal>
+            <Dependent Role="tblAula">
+              <PropertyRef Name="idTipoAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradores" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblDías">
+          <End Role="tblDías" Type="Self.tblDías" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDías">
+              <PropertyRef Name="idDias" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idDias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblHorarios">
+          <End Role="tblHorarios" Type="Self.tblHorarios" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHorarios">
+              <PropertyRef Name="idHorarios" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblSemanas">
+          <End Role="tblSemanas" Type="Self.tblSemanas" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSemanas">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idSemanas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblAula">
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAula">
+              <PropertyRef Name="idAula" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradores" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNoticias_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblNoticias" Type="Self.tblNoticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblNoticias">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSemanas_tblAnio">
+          <End Role="tblAnio" Type="Self.tblAnio" Multiplicity="1" />
+          <End Role="tblSemanas" Type="Self.tblSemanas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnio">
+              <PropertyRef Name="idAnio" />
+            </Principal>
+            <Dependent Role="tblSemanas">
+              <PropertyRef Name="idAnioSemana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblServicios_tblAreas">
+          <End Role="tblAreas" Type="Self.tblAreas" Multiplicity="1" />
+          <End Role="tblServicios" Type="Self.tblServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAreas">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblServicios">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuario_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoyolaMovilBDModelStoreContainer">
+          <EntitySet Name="tblAnio" EntityType="Self.tblAnio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAreas" EntityType="Self.tblAreas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAreas_Servicios" EntityType="Self.tblAreas_Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAula" EntityType="Self.tblAula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCitas" EntityType="Self.tblCitas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblColaboradores" EntityType="Self.tblColaboradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDías" EntityType="Self.tblDías" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEdificio" EntityType="Self.tblEdificio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventos" EntityType="Self.tblEventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHorarios" EntityType="Self.tblHorarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNivel" EntityType="Self.tblNivel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNoticias" EntityType="Self.tblNoticias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSemanas" EntityType="Self.tblSemanas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblServicios" EntityType="Self.tblServicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipoAula" EntityType="Self.tblTipoAula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAreas_Servicios_tblAreas" Association="Self.FK_tblAreas_Servicios_tblAreas">
+            <End Role="tblAreas" EntitySet="tblAreas" />
+            <End Role="tblAreas_Servicios" EntitySet="tblAreas_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAreas_tblAula" Association="Self.FK_tblAreas_tblAula">
+            <End Role="tblAula" EntitySet="tblAula" />
+            <End Role="tblAreas" EntitySet="tblAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAreas_tblColaboradores" Association="Self.FK_tblAreas_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblAreas" EntitySet="tblAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAula_tblEdificio" Association="Self.FK_tblAula_tblEdificio">
+            <End Role="tblEdificio" EntitySet="tblEdificio" />
+            <End Role="tblAula" EntitySet="tblAula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAula_tblTipoAula1" Association="Self.FK_tblAula_tblTipoAula1">
+            <End Role="tblTipoAula" EntitySet="tblTipoAula" />
+            <End Role="tblAula" EntitySet="tblAula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblColaboradores" Association="Self.FK_tblCitas_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblDías" Association="Self.FK_tblCitas_tblDías">
+            <End Role="tblDías" EntitySet="tblDías" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblHorarios" Association="Self.FK_tblCitas_tblHorarios">
+            <End Role="tblHorarios" EntitySet="tblHorarios" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblSemanas" Association="Self.FK_tblCitas_tblSemanas">
+            <End Role="tblSemanas" EntitySet="tblSemanas" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblAula" Association="Self.FK_tblEventos_tblAula">
+            <End Role="tblAula" EntitySet="tblAula" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblColaboradores" Association="Self.FK_tblEventos_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblNivel" Association="Self.FK_tblEventos_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivel" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNoticias_tblNivel" Association="Self.FK_tblNoticias_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivel" />
+            <End Role="tblNoticias" EntitySet="tblNoticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSemanas_tblAnio" Association="Self.FK_tblSemanas_tblAnio">
+            <End Role="tblAnio" EntitySet="tblAnio" />
+            <End Role="tblSemanas" EntitySet="tblSemanas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblServicios_tblAreas" Association="Self.FK_tblServicios_tblAreas">
+            <End Role="tblAreas" EntitySet="tblAreas" />
+            <End Role="tblServicios" EntitySet="tblServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuario_tblNivel" Association="Self.FK_tblUsuario_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivel" />
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoyolaMovilBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAnio">
+          <Key>
+            <PropertyRef Name="idAnio" />
+          </Key>
+          <Property Name="idAnio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblSemanas" Relationship="Self.FK_tblSemanas_tblAnio" FromRole="tblAnio" ToRole="tblSemanas" />
+        </EntityType>
+        <EntityType Name="tblArea">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreArea" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="horaFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idColaborador" Type="Int32" Nullable="false" />
+          <Property Name="idAula" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAreas_Servicios" Relationship="Self.FK_tblAreas_Servicios_tblAreas" FromRole="tblAreas" ToRole="tblAreas_Servicios" />
+          <NavigationProperty Name="tblAula" Relationship="Self.FK_tblAreas_tblAula" FromRole="tblAreas" ToRole="tblAula" />
+          <NavigationProperty Name="tblColaboradore" Relationship="Self.FK_tblAreas_tblColaboradores" FromRole="tblAreas" ToRole="tblColaboradores" />
+          <NavigationProperty Name="tblServicios" Relationship="Self.FK_tblServicios_tblAreas" FromRole="tblAreas" ToRole="tblServicios" />
+        </EntityType>
+        <EntityType Name="tblAreas_Servicios">
+          <Key>
+            <PropertyRef Name="idServicios" />
+          </Key>
+          <Property Name="idServicios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviciosNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idArea" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK_tblAreas_Servicios_tblAreas" FromRole="tblAreas_Servicios" ToRole="tblAreas" />
+        </EntityType>
+        <EntityType Name="tblAula">
+          <Key>
+            <PropertyRef Name="idAula" />
+          </Key>
+          <Property Name="idAula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreAula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idTipoAula" Type="Int32" Nullable="false" />
+          <Property Name="idEdificio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAreas" Relationship="Self.FK_tblAreas_tblAula" FromRole="tblAula" ToRole="tblAreas" />
+          <NavigationProperty Name="tblEdificio" Relationship="Self.FK_tblAula_tblEdificio" FromRole="tblAula" ToRole="tblEdificio" />
+          <NavigationProperty Name="tblTipoAula" Relationship="Self.FK_tblAula_tblTipoAula1" FromRole="tblAula" ToRole="tblTipoAula" />
+          <NavigationProperty Name="tblEventos" Relationship="Self.FK_tblEventos_tblAula" FromRole="tblAula" ToRole="tblEventos" />
+        </EntityType>
+        <EntityType Name="tblCita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idColaborador" Type="Int32" Nullable="false" />
+          <Property Name="idHorario" Type="Int32" Nullable="false" />
+          <Property Name="idSemanas" Type="Int32" Nullable="false" />
+          <Property Name="idDias" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblColaboradore" Relationship="Self.FK_tblCitas_tblColaboradores" FromRole="tblCitas" ToRole="tblColaboradores" />
+          <NavigationProperty Name="tblDías" Relationship="Self.FK_tblCitas_tblDías" FromRole="tblCitas" ToRole="tblDías" />
+          <NavigationProperty Name="tblHorario" Relationship="Self.FK_tblCitas_tblHorarios" FromRole="tblCitas" ToRole="tblHorarios" />
+          <NavigationProperty Name="tblSemana" Relationship="Self.FK_tblCitas_tblSemanas" FromRole="tblCitas" ToRole="tblSemanas" />
+        </EntityType>
+        <EntityType Name="tblColaboradore">
+          <Key>
+            <PropertyRef Name="idColaborador" />
+          </Key>
+          <Property Name="idColaborador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreColaborador" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonoColaborador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correoColaborador" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="horarioInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="horaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="contraseniaColaborador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAreas" Relationship="Self.FK_tblAreas_tblColaboradores" FromRole="tblColaboradores" ToRole="tblAreas" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_tblCitas_tblColaboradores" FromRole="tblColaboradores" ToRole="tblCitas" />
+          <NavigationProperty Name="tblEventos" Relationship="Self.FK_tblEventos_tblColaboradores" FromRole="tblColaboradores" ToRole="tblEventos" />
+        </EntityType>
+        <EntityType Name="tblDías">
+          <Key>
+            <PropertyRef Name="idDias" />
+          </Key>
+          <Property Name="idDias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_tblCitas_tblDías" FromRole="tblDías" ToRole="tblCitas" />
+        </EntityType>
+        <EntityType Name="tblEdificio">
+          <Key>
+            <PropertyRef Name="idEdificio" />
+          </Key>
+          <Property Name="idEdificio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEdificio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAulas" Relationship="Self.FK_tblAula_tblEdificio" FromRole="tblEdificio" ToRole="tblAula" />
+        </EntityType>
+        <EntityType Name="tblEvento">
+          <Key>
+            <PropertyRef Name="idEvento" />
+          </Key>
+          <Property Name="idEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEvento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcionEvento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaEvento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="horaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="horaFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idAula" Type="Int32" Nullable="false" />
+          <Property Name="idColaborador" Type="Int32" Nullable="false" />
+          <Property Name="idNivel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAula" Relationship="Self.FK_tblEventos_tblAula" FromRole="tblEventos" ToRole="tblAula" />
+          <NavigationProperty Name="tblColaboradore" Relationship="Self.FK_tblEventos_tblColaboradores" FromRole="tblEventos" ToRole="tblColaboradores" />
+          <NavigationProperty Name="tblNivel" Relationship="Self.FK_tblEventos_tblNivel" FromRole="tblEventos" ToRole="tblNivel" />
+        </EntityType>
+        <EntityType Name="tblHorario">
+          <Key>
+            <PropertyRef Name="idHorarios" />
+          </Key>
+          <Property Name="idHorarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="horaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="horaFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_tblCitas_tblHorarios" FromRole="tblHorarios" ToRole="tblCitas" />
+        </EntityType>
+        <EntityType Name="tblNivel">
+          <Key>
+            <PropertyRef Name="idNivel" />
+          </Key>
+          <Property Name="idNivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nivelNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEventos" Relationship="Self.FK_tblEventos_tblNivel" FromRole="tblNivel" ToRole="tblEventos" />
+          <NavigationProperty Name="tblNoticias" Relationship="Self.FK_tblNoticias_tblNivel" FromRole="tblNivel" ToRole="tblNoticias" />
+          <NavigationProperty Name="tblUsuarios" Relationship="Self.FK_tblUsuario_tblNivel" FromRole="tblNivel" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblNoticia">
+          <Key>
+            <PropertyRef Name="idNoticias" />
+          </Key>
+          <Property Name="idNoticias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noticiasTitulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noticiasTexto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idNivel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblNivel" Relationship="Self.FK_tblNoticias_tblNivel" FromRole="tblNoticias" ToRole="tblNivel" />
+        </EntityType>
+        <EntityType Name="tblSemana">
+          <Key>
+            <PropertyRef Name="idSemana" />
+          </Key>
+          <Property Name="idSemana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="semana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaInicial" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idAnioSemana" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAnio" Relationship="Self.FK_tblSemanas_tblAnio" FromRole="tblSemanas" ToRole="tblAnio" />
+          <NavigationProperty Name="tblCitas" Relationship="Self.FK_tblCitas_tblSemanas" FromRole="tblSemanas" ToRole="tblCitas" />
+        </EntityType>
+        <EntityType Name="tblServicio">
+          <Key>
+            <PropertyRef Name="idservicios" />
+          </Key>
+          <Property Name="idservicios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviciosNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idArea" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblArea" Relationship="Self.FK_tblServicios_tblAreas" FromRole="tblServicios" ToRole="tblAreas" />
+        </EntityType>
+        <EntityType Name="tblTipoAula">
+          <Key>
+            <PropertyRef Name="idTipoAula" />
+          </Key>
+          <Property Name="idTipoAula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoAula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAulas" Relationship="Self.FK_tblAula_tblTipoAula1" FromRole="tblTipoAula" ToRole="tblAula" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidosUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correoUsuarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseniaUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idNivel" Type="Int32" Nullable="false" />
+          <Property Name="permitirCatalogo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblNivel" Relationship="Self.FK_tblUsuario_tblNivel" FromRole="tblUsuario" ToRole="tblNivel" />
+        </EntityType>
+        <Association Name="FK_tblSemanas_tblAnio">
+          <End Role="tblAnio" Type="Self.tblAnio" Multiplicity="1" />
+          <End Role="tblSemanas" Type="Self.tblSemana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnio">
+              <PropertyRef Name="idAnio" />
+            </Principal>
+            <Dependent Role="tblSemanas">
+              <PropertyRef Name="idAnioSemana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAreas_Servicios_tblAreas">
+          <End Role="tblAreas" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblAreas_Servicios" Type="Self.tblAreas_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAreas">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblAreas_Servicios">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAreas_tblAula">
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="1" />
+          <End Role="tblAreas" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAula">
+              <PropertyRef Name="idAula" />
+            </Principal>
+            <Dependent Role="tblAreas">
+              <PropertyRef Name="idAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAreas_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradore" Multiplicity="1" />
+          <End Role="tblAreas" Type="Self.tblArea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblAreas">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblServicios_tblAreas">
+          <End Role="tblAreas" Type="Self.tblArea" Multiplicity="1" />
+          <End Role="tblServicios" Type="Self.tblServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAreas">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblServicios">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAula_tblEdificio">
+          <End Role="tblEdificio" Type="Self.tblEdificio" Multiplicity="1" />
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEdificio">
+              <PropertyRef Name="idEdificio" />
+            </Principal>
+            <Dependent Role="tblAula">
+              <PropertyRef Name="idEdificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAula_tblTipoAula1">
+          <End Role="tblTipoAula" Type="Self.tblTipoAula" Multiplicity="1" />
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoAula">
+              <PropertyRef Name="idTipoAula" />
+            </Principal>
+            <Dependent Role="tblAula">
+              <PropertyRef Name="idTipoAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblAula">
+          <End Role="tblAula" Type="Self.tblAula" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAula">
+              <PropertyRef Name="idAula" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradore" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblDías">
+          <End Role="tblDías" Type="Self.tblDías" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDías">
+              <PropertyRef Name="idDias" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idDias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblHorarios">
+          <End Role="tblHorarios" Type="Self.tblHorario" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHorarios">
+              <PropertyRef Name="idHorarios" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCitas_tblSemanas">
+          <End Role="tblSemanas" Type="Self.tblSemana" Multiplicity="1" />
+          <End Role="tblCitas" Type="Self.tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSemanas">
+              <PropertyRef Name="idSemana" />
+            </Principal>
+            <Dependent Role="tblCitas">
+              <PropertyRef Name="idSemanas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblColaboradores">
+          <End Role="tblColaboradores" Type="Self.tblColaboradore" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblColaboradores">
+              <PropertyRef Name="idColaborador" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventos_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblEventos" Type="Self.tblEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblEventos">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNoticias_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblNoticias" Type="Self.tblNoticia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblNoticias">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuario_tblNivel">
+          <End Role="tblNivel" Type="Self.tblNivel" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblNivel">
+              <PropertyRef Name="idNivel" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="idNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoyolaMovilBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAnios" EntityType="Self.tblAnio" />
+          <EntitySet Name="tblAreas" EntityType="Self.tblArea" />
+          <EntitySet Name="tblAreas_Servicios" EntityType="Self.tblAreas_Servicios" />
+          <EntitySet Name="tblAulas" EntityType="Self.tblAula" />
+          <EntitySet Name="tblCitas" EntityType="Self.tblCita" />
+          <EntitySet Name="tblColaboradores" EntityType="Self.tblColaboradore" />
+          <EntitySet Name="tblDías" EntityType="Self.tblDías" />
+          <EntitySet Name="tblEdificios" EntityType="Self.tblEdificio" />
+          <EntitySet Name="tblEventos" EntityType="Self.tblEvento" />
+          <EntitySet Name="tblHorarios" EntityType="Self.tblHorario" />
+          <EntitySet Name="tblNivels" EntityType="Self.tblNivel" />
+          <EntitySet Name="tblNoticias" EntityType="Self.tblNoticia" />
+          <EntitySet Name="tblSemanas" EntityType="Self.tblSemana" />
+          <EntitySet Name="tblServicios" EntityType="Self.tblServicio" />
+          <EntitySet Name="tblTipoAulas" EntityType="Self.tblTipoAula" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="FK_tblSemanas_tblAnio" Association="Self.FK_tblSemanas_tblAnio">
+            <End Role="tblAnio" EntitySet="tblAnios" />
+            <End Role="tblSemanas" EntitySet="tblSemanas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAreas_Servicios_tblAreas" Association="Self.FK_tblAreas_Servicios_tblAreas">
+            <End Role="tblAreas" EntitySet="tblAreas" />
+            <End Role="tblAreas_Servicios" EntitySet="tblAreas_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAreas_tblAula" Association="Self.FK_tblAreas_tblAula">
+            <End Role="tblAula" EntitySet="tblAulas" />
+            <End Role="tblAreas" EntitySet="tblAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAreas_tblColaboradores" Association="Self.FK_tblAreas_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblAreas" EntitySet="tblAreas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblServicios_tblAreas" Association="Self.FK_tblServicios_tblAreas">
+            <End Role="tblAreas" EntitySet="tblAreas" />
+            <End Role="tblServicios" EntitySet="tblServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAula_tblEdificio" Association="Self.FK_tblAula_tblEdificio">
+            <End Role="tblEdificio" EntitySet="tblEdificios" />
+            <End Role="tblAula" EntitySet="tblAulas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAula_tblTipoAula1" Association="Self.FK_tblAula_tblTipoAula1">
+            <End Role="tblTipoAula" EntitySet="tblTipoAulas" />
+            <End Role="tblAula" EntitySet="tblAulas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblAula" Association="Self.FK_tblEventos_tblAula">
+            <End Role="tblAula" EntitySet="tblAulas" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblColaboradores" Association="Self.FK_tblCitas_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblDías" Association="Self.FK_tblCitas_tblDías">
+            <End Role="tblDías" EntitySet="tblDías" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblHorarios" Association="Self.FK_tblCitas_tblHorarios">
+            <End Role="tblHorarios" EntitySet="tblHorarios" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCitas_tblSemanas" Association="Self.FK_tblCitas_tblSemanas">
+            <End Role="tblSemanas" EntitySet="tblSemanas" />
+            <End Role="tblCitas" EntitySet="tblCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblColaboradores" Association="Self.FK_tblEventos_tblColaboradores">
+            <End Role="tblColaboradores" EntitySet="tblColaboradores" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventos_tblNivel" Association="Self.FK_tblEventos_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivels" />
+            <End Role="tblEventos" EntitySet="tblEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNoticias_tblNivel" Association="Self.FK_tblNoticias_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivels" />
+            <End Role="tblNoticias" EntitySet="tblNoticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuario_tblNivel" Association="Self.FK_tblUsuario_tblNivel">
+            <End Role="tblNivel" EntitySet="tblNivels" />
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoyolaMovilBDModelStoreContainer" CdmEntityContainer="LoyolaMovilBDEntities">
+          <EntitySetMapping Name="tblAnios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblAnio">
+              <MappingFragment StoreEntitySet="tblAnio">
+                <ScalarProperty Name="idAnio" ColumnName="idAnio" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAreas">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblArea">
+              <MappingFragment StoreEntitySet="tblAreas">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="nombreArea" ColumnName="nombreArea" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+                <ScalarProperty Name="horaFinal" ColumnName="horaFinal" />
+                <ScalarProperty Name="idColaborador" ColumnName="idColaborador" />
+                <ScalarProperty Name="idAula" ColumnName="idAula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAreas_Servicios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblAreas_Servicios">
+              <MappingFragment StoreEntitySet="tblAreas_Servicios">
+                <ScalarProperty Name="idServicios" ColumnName="idServicios" />
+                <ScalarProperty Name="serviciosNombre" ColumnName="serviciosNombre" />
+                <ScalarProperty Name="nombreArea" ColumnName="nombreArea" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAulas">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblAula">
+              <MappingFragment StoreEntitySet="tblAula">
+                <ScalarProperty Name="idAula" ColumnName="idAula" />
+                <ScalarProperty Name="nombreAula" ColumnName="nombreAula" />
+                <ScalarProperty Name="idTipoAula" ColumnName="idTipoAula" />
+                <ScalarProperty Name="idEdificio" ColumnName="idEdificio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCitas">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblCita">
+              <MappingFragment StoreEntitySet="tblCitas">
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="idColaborador" ColumnName="idColaborador" />
+                <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+                <ScalarProperty Name="idSemanas" ColumnName="idSemanas" />
+                <ScalarProperty Name="idDias" ColumnName="idDias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblColaboradores">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblColaboradore">
+              <MappingFragment StoreEntitySet="tblColaboradores">
+                <ScalarProperty Name="idColaborador" ColumnName="idColaborador" />
+                <ScalarProperty Name="nombreColaborador" ColumnName="nombreColaborador" />
+                <ScalarProperty Name="telefonoColaborador" ColumnName="telefonoColaborador" />
+                <ScalarProperty Name="correoColaborador" ColumnName="correoColaborador" />
+                <ScalarProperty Name="horarioInicio" ColumnName="horarioInicio" />
+                <ScalarProperty Name="horaFin" ColumnName="horaFin" />
+                <ScalarProperty Name="contraseniaColaborador" ColumnName="contraseniaColaborador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDías">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblDías">
+              <MappingFragment StoreEntitySet="tblDías">
+                <ScalarProperty Name="idDias" ColumnName="idDias" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEdificios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblEdificio">
+              <MappingFragment StoreEntitySet="tblEdificio">
+                <ScalarProperty Name="idEdificio" ColumnName="idEdificio" />
+                <ScalarProperty Name="nombreEdificio" ColumnName="nombreEdificio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventos">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblEvento">
+              <MappingFragment StoreEntitySet="tblEventos">
+                <ScalarProperty Name="idEvento" ColumnName="idEvento" />
+                <ScalarProperty Name="nombreEvento" ColumnName="nombreEvento" />
+                <ScalarProperty Name="descripcionEvento" ColumnName="descripcionEvento" />
+                <ScalarProperty Name="fechaEvento" ColumnName="fechaEvento" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+                <ScalarProperty Name="horaFinal" ColumnName="horaFinal" />
+                <ScalarProperty Name="idAula" ColumnName="idAula" />
+                <ScalarProperty Name="idColaborador" ColumnName="idColaborador" />
+                <ScalarProperty Name="idNivel" ColumnName="idNivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHorarios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblHorario">
+              <MappingFragment StoreEntitySet="tblHorarios">
+                <ScalarProperty Name="idHorarios" ColumnName="idHorarios" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+                <ScalarProperty Name="horaFinal" ColumnName="horaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNivels">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblNivel">
+              <MappingFragment StoreEntitySet="tblNivel">
+                <ScalarProperty Name="idNivel" ColumnName="idNivel" />
+                <ScalarProperty Name="nivelNombre" ColumnName="nivelNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNoticias">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblNoticia">
+              <MappingFragment StoreEntitySet="tblNoticias">
+                <ScalarProperty Name="idNoticias" ColumnName="idNoticias" />
+                <ScalarProperty Name="noticiasTitulo" ColumnName="noticiasTitulo" />
+                <ScalarProperty Name="noticiasTexto" ColumnName="noticiasTexto" />
+                <ScalarProperty Name="idNivel" ColumnName="idNivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSemanas">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblSemana">
+              <MappingFragment StoreEntitySet="tblSemanas">
+                <ScalarProperty Name="idSemana" ColumnName="idSemana" />
+                <ScalarProperty Name="semana" ColumnName="semana" />
+                <ScalarProperty Name="fechaInicial" ColumnName="fechaInicial" />
+                <ScalarProperty Name="fechaFinal" ColumnName="fechaFinal" />
+                <ScalarProperty Name="idAnioSemana" ColumnName="idAnioSemana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblServicios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblServicio">
+              <MappingFragment StoreEntitySet="tblServicios">
+                <ScalarProperty Name="idservicios" ColumnName="idservicios" />
+                <ScalarProperty Name="serviciosNombre" ColumnName="serviciosNombre" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoAulas">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblTipoAula">
+              <MappingFragment StoreEntitySet="tblTipoAula">
+                <ScalarProperty Name="idTipoAula" ColumnName="idTipoAula" />
+                <ScalarProperty Name="tipoAula" ColumnName="tipoAula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="apellidosUsuario" ColumnName="apellidosUsuario" />
+                <ScalarProperty Name="correoUsuarios" ColumnName="correoUsuarios" />
+                <ScalarProperty Name="contraseniaUsuario" ColumnName="contraseniaUsuario" />
+                <ScalarProperty Name="idNivel" ColumnName="idNivel" />
+                <ScalarProperty Name="permitirCatalogo" ColumnName="permitirCatalogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
