@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,12 @@ namespace DAL
     {
         TEntity Create(TEntity toCreate);
 
-        TEntity Retrieve();
-
-        bool Delete(TEntity toDelete);
+        TEntity Retrieve(Expression<Func<TEntity, bool>> criteria);
 
         bool Update(TEntity toUpdate);
 
+        bool Delete(TEntity toDelete);
+
+        List<TEntity> Filter(Expression<Func<TEntity, bool>> criteria);
     }
 }
