@@ -25,7 +25,6 @@ namespace Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblAnio> tblAnios { get; set; }
         public virtual DbSet<tblArea> tblAreas { get; set; }
         public virtual DbSet<tblAreas_Servicios> tblAreas_Servicios { get; set; }
         public virtual DbSet<tblAula> tblAulas { get; set; }
@@ -41,5 +40,6 @@ namespace Entities
         public virtual DbSet<tblServicio> tblServicios { get; set; }
         public virtual DbSet<tblTipoAula> tblTipoAulas { get; set; }
         public virtual DbSet<tblUsuario> tblUsuarios { get; set; }
+        public virtual DbSet<tblAnio> tblAnios { get; set; }
     }
 }

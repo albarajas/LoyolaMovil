@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LoyolaMovilBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LoyolaMovilBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAnio">
           <Key>
             <PropertyRef Name="idAnio" />
           </Key>
           <Property Name="idAnio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="anio" Type="date" Nullable="false" />
+          <Property Name="anio" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblAreas">
           <Key>
@@ -426,19 +426,10 @@
             <End Role="tblUsuario" EntitySet="tblUsuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LoyolaMovilBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tblAnio">
-          <Key>
-            <PropertyRef Name="idAnio" />
-          </Key>
-          <Property Name="idAnio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="anio" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="tblSemanas" Relationship="Self.FK_tblSemanas_tblAnio" FromRole="tblAnio" ToRole="tblSemanas" />
-        </EntityType>
         <EntityType Name="tblArea">
           <Key>
             <PropertyRef Name="idArea" />
@@ -577,8 +568,8 @@
           <Property Name="fechaInicial" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fechaFinal" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="idAnioSemana" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblAnio" Relationship="Self.FK_tblSemanas_tblAnio" FromRole="tblSemanas" ToRole="tblAnio" />
           <NavigationProperty Name="tblCitas" Relationship="Self.FK_tblCitas_tblSemanas" FromRole="tblSemanas" ToRole="tblCitas" />
+          <NavigationProperty Name="tblAnio" Relationship="LoyolaMovilBDModel.FK_tblSemanas_tblAnio" FromRole="tblSemana" ToRole="tblAnio" />
         </EntityType>
         <EntityType Name="tblServicio">
           <Key>
@@ -610,18 +601,6 @@
           <Property Name="permitirCatalogo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblNivel" Relationship="Self.FK_tblUsuario_tblNivel" FromRole="tblUsuario" ToRole="tblNivel" />
         </EntityType>
-        <Association Name="FK_tblSemanas_tblAnio">
-          <End Role="tblAnio" Type="Self.tblAnio" Multiplicity="1" />
-          <End Role="tblSemanas" Type="Self.tblSemana" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblAnio">
-              <PropertyRef Name="idAnio" />
-            </Principal>
-            <Dependent Role="tblSemanas">
-              <PropertyRef Name="idAnioSemana" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblAreas_Servicios_tblAreas">
           <End Role="tblAreas" Type="Self.tblArea" Multiplicity="1" />
           <End Role="tblAreas_Servicios" Type="Self.tblAreas_Servicios" Multiplicity="*" />
@@ -803,7 +782,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LoyolaMovilBDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblAnios" EntityType="Self.tblAnio" />
           <EntitySet Name="tblAreas" EntityType="Self.tblArea" />
           <EntitySet Name="tblAreas_Servicios" EntityType="Self.tblAreas_Servicios" />
           <EntitySet Name="tblAulas" EntityType="Self.tblAula" />
@@ -819,10 +797,6 @@
           <EntitySet Name="tblServicios" EntityType="Self.tblServicio" />
           <EntitySet Name="tblTipoAulas" EntityType="Self.tblTipoAula" />
           <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
-          <AssociationSet Name="FK_tblSemanas_tblAnio" Association="Self.FK_tblSemanas_tblAnio">
-            <End Role="tblAnio" EntitySet="tblAnios" />
-            <End Role="tblSemanas" EntitySet="tblSemanas" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblAreas_Servicios_tblAreas" Association="Self.FK_tblAreas_Servicios_tblAreas">
             <End Role="tblAreas" EntitySet="tblAreas" />
             <End Role="tblAreas_Servicios" EntitySet="tblAreas_Servicios" />
@@ -883,21 +857,38 @@
             <End Role="tblNivel" EntitySet="tblNivels" />
             <End Role="tblUsuario" EntitySet="tblUsuarios" />
           </AssociationSet>
+          <EntitySet Name="tblAnios" EntityType="LoyolaMovilBDModel.tblAnio" />
+          <AssociationSet Name="FK_tblSemanas_tblAnio" Association="LoyolaMovilBDModel.FK_tblSemanas_tblAnio">
+            <End Role="tblAnio" EntitySet="tblAnios" />
+            <End Role="tblSemana" EntitySet="tblSemanas" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tblAnio">
+          <Key>
+            <PropertyRef Name="idAnio" />
+          </Key>
+          <Property Name="idAnio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblSemanas" Relationship="LoyolaMovilBDModel.FK_tblSemanas_tblAnio" FromRole="tblAnio" ToRole="tblSemana" />
+        </EntityType>
+        <Association Name="FK_tblSemanas_tblAnio">
+          <End Type="LoyolaMovilBDModel.tblAnio" Role="tblAnio" Multiplicity="1" />
+          <End Type="LoyolaMovilBDModel.tblSemana" Role="tblSemana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnio">
+              <PropertyRef Name="idAnio" />
+            </Principal>
+            <Dependent Role="tblSemana">
+              <PropertyRef Name="idAnioSemana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LoyolaMovilBDModelStoreContainer" CdmEntityContainer="LoyolaMovilBDEntities">
-          <EntitySetMapping Name="tblAnios">
-            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblAnio">
-              <MappingFragment StoreEntitySet="tblAnio">
-                <ScalarProperty Name="idAnio" ColumnName="idAnio" />
-                <ScalarProperty Name="anio" ColumnName="anio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblAreas">
             <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblArea">
               <MappingFragment StoreEntitySet="tblAreas">
@@ -1050,6 +1041,14 @@
                 <ScalarProperty Name="contraseniaUsuario" ColumnName="contraseniaUsuario" />
                 <ScalarProperty Name="idNivel" ColumnName="idNivel" />
                 <ScalarProperty Name="permitirCatalogo" ColumnName="permitirCatalogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnios">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblAnio">
+              <MappingFragment StoreEntitySet="tblAnio">
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="idAnio" ColumnName="idAnio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

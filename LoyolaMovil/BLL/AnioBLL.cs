@@ -30,7 +30,7 @@ namespace BLL
         }
 
 
-        public tblAnio RetrieveByAnioTexto(DateTime anio)
+        public tblAnio RetrieveByAnioTexto(int anio)
         {
             tblAnio Result = null;
             using (var r = new Repository<tblAnio>())

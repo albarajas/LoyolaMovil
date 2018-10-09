@@ -21,7 +21,7 @@ namespace Entities
         }
     
         public int idAnio { get; set; }
-        public System.DateTime anio { get; set; }
+        public int anio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSemana> tblSemanas { get; set; }
