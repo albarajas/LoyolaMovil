@@ -109,5 +109,18 @@ namespace DAL
             }
             return Result;
         }
+
+        public List<TEntity> RetrieveAll()
+        {
+            List<TEntity> Result = null;
+            try
+            {
+                Result = EntitySet.ToList();
+            }catch
+            {
+
+            }
+            return Result;
+        }
     }
 }
