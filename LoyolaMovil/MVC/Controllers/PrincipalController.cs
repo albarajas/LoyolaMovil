@@ -6,12 +6,8 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class HomeController : Controller
+    public class PrincipalController : Controller
     {
-        public ActionResult Bienvenida()
-        {
-            return View();
-        }
         
     }
 }

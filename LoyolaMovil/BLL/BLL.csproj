@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AnioBLL.cs" />
     <Compile Include="AreasBLL.cs" />
+    <Compile Include="ColaboradorBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
