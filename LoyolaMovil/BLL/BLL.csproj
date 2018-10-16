@@ -42,8 +42,15 @@
   <ItemGroup>
     <Compile Include="AnioBLL.cs" />
     <Compile Include="AreasBLL.cs" />
+    <Compile Include="AulaBLL.cs" />
+    <Compile Include="CitasBLL.cs" />
     <Compile Include="ColaboradorBLL.cs" />
+    <Compile Include="EdificioBLL.cs" />
+    <Compile Include="EventosBLL.cs" />
+    <Compile Include="NoticiaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemanasBLL.cs" />
+    <Compile Include="TipoAulaBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
