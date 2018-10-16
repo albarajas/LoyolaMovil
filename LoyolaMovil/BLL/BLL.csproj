@@ -45,6 +45,7 @@
     <Compile Include="AulaBLL.cs" />
     <Compile Include="CitasBLL.cs" />
     <Compile Include="ColaboradorBLL.cs" />
+    <Compile Include="DiaBLL.cs" />
     <Compile Include="EdificioBLL.cs" />
     <Compile Include="EventosBLL.cs" />
     <Compile Include="NoticiaBLL.cs" />
