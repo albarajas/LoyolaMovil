@@ -8,15 +8,16 @@ using Entities;
 
 namespace BLL
 {
-    public class DiaBLL
+    public class HorariosBLL
     {
-        public tblDías Create(tblDías t)
+        public tblHorario Create(tblHorario t)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblHorario Result = null;
+            using (var r = new Repository<tblHorario>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblHorario ba = r.Retrieve(p => p.idHorarios == t.idHorarios
+                && p.horaInicio == t.horaInicio
+                && p.horaFinal == t.horaFinal);
 
                 if (ba == null)
                 {
@@ -24,7 +25,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("El dia ya existe."));
+                    throw (new Exception("El horario ya existe."));
                 }
             }
             return Result;
@@ -42,23 +43,24 @@ namespace BLL
         //}
 
 
-        public tblDías RetrieveDíasByID(int id)
+        public tblHorario RetrieveHorarioByID(int id)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblHorario Result = null;
+            using (var r = new Repository<tblHorario>())
             {
-                Result = r.Retrieve(p => p.idDias == id);
+                Result = r.Retrieve(p => p.idHorarios == id);
             }
             return Result;
         }
 
-        public bool Update(tblDías t)
+        public bool Update(tblHorario t)
         {
             bool Result = false;
-            using (var r = new Repository<tblDías>())
+            using (var r = new Repository<tblHorario>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblHorario ba = r.Retrieve(p => p.idHorarios == t.idHorarios
+                && p.horaInicio == t.horaInicio
+                && p.horaFinal == t.horaFinal);
 
                 if (ba == null)
                 {
@@ -66,7 +68,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("No se pudo actualizar el dia seleccionada."));
+                    throw (new Exception("No se pudo actualizar el horario seleccionad."));
                 }
             }
             return Result;
@@ -75,27 +77,27 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblDías obj = RetrieveDíasByID(id);
+            tblHorario obj = RetrieveHorarioByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblDías>())
+                using (var r = new Repository<tblHorario>())
                 {
                     Result = r.Delete(obj);
                 }
             }
             else
             {
-                throw (new Exception("El dia seleccionada no se pudo eliminar."));
+                throw (new Exception("El horario seleccionado no se pudo eliminar."));
             }
 
             return Result;
         }
 
-        public List<tblDías> RetrieveAll()
+        public List<tblHorario> RetrieveAll()
         {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
+            List<tblHorario> Result = null;
+            using (var r = new Repository<tblHorario>())
             {
                 Result = r.RetrieveAll();
             }
@@ -104,4 +106,3 @@ namespace BLL
         }
     }
 }
-  

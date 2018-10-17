@@ -8,15 +8,15 @@ using Entities;
 
 namespace BLL
 {
-    public class DiaBLL
+    public class NivelBLL
     {
-        public tblDías Create(tblDías t)
+        public tblNivel Create(tblNivel t)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblNivel Result = null;
+            using (var r = new Repository<tblNivel>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblNivel ba = r.Retrieve(p => p.idNivel == t.idNivel
+                && p.nivelNombre == t.nivelNombre);
 
                 if (ba == null)
                 {
@@ -24,7 +24,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("El dia ya existe."));
+                    throw (new Exception("El nivel ya existe."));
                 }
             }
             return Result;
@@ -42,23 +42,23 @@ namespace BLL
         //}
 
 
-        public tblDías RetrieveDíasByID(int id)
+        public tblNivel RetrieveNivelByID(int id)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblNivel Result = null;
+            using (var r = new Repository<tblNivel>())
             {
-                Result = r.Retrieve(p => p.idDias == id);
+                Result = r.Retrieve(p => p.idNivel == id);
             }
             return Result;
         }
 
-        public bool Update(tblDías t)
+        public bool Update(tblNivel t)
         {
             bool Result = false;
-            using (var r = new Repository<tblDías>())
+            using (var r = new Repository<tblNivel>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblNivel ba = r.Retrieve(p => p.idNivel == t.idNivel
+                && p.nivelNombre == t.nivelNombre);
 
                 if (ba == null)
                 {
@@ -66,7 +66,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("No se pudo actualizar el dia seleccionada."));
+                    throw (new Exception("No se pudo actualizar el nivel seleccionado."));
                 }
             }
             return Result;
@@ -75,27 +75,27 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblDías obj = RetrieveDíasByID(id);
+            tblNivel obj = RetrieveNivelByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblDías>())
+                using (var r = new Repository<tblNivel>())
                 {
                     Result = r.Delete(obj);
                 }
             }
             else
             {
-                throw (new Exception("El dia seleccionada no se pudo eliminar."));
+                throw (new Exception("El nivel seleccionado no se pudo eliminar."));
             }
 
             return Result;
         }
 
-        public List<tblDías> RetrieveAll()
+        public List<tblNivel> RetrieveAll()
         {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
+            List<tblNivel> Result = null;
+            using (var r = new Repository<tblNivel>())
             {
                 Result = r.RetrieveAll();
             }
@@ -104,4 +104,3 @@ namespace BLL
         }
     }
 }
-  

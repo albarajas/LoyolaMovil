@@ -8,15 +8,16 @@ using Entities;
 
 namespace BLL
 {
-    public class DiaBLL
+    public class ServiciosBLL
     {
-        public tblDías Create(tblDías t)
+        public tblServicio Create(tblServicio t)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblServicio Result = null;
+            using (var r = new Repository<tblServicio>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblServicio ba = r.Retrieve(p => p.idservicios == t.idservicios
+                && p.serviciosNombre == t.serviciosNombre
+                && p.idArea == t.idArea);
 
                 if (ba == null)
                 {
@@ -24,7 +25,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("El dia ya existe."));
+                    throw (new Exception("El servicio ya existe."));
                 }
             }
             return Result;
@@ -42,23 +43,24 @@ namespace BLL
         //}
 
 
-        public tblDías RetrieveDíasByID(int id)
+        public tblServicio RetrieveServicioByID(int id)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblServicio Result = null;
+            using (var r = new Repository<tblServicio>())
             {
-                Result = r.Retrieve(p => p.idDias == id);
+                Result = r.Retrieve(p => p.idservicios == id);
             }
             return Result;
         }
 
-        public bool Update(tblDías t)
+        public bool Update(tblServicio t)
         {
             bool Result = false;
-            using (var r = new Repository<tblDías>())
+            using (var r = new Repository<tblServicio>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
-                && p.dia == t.dia);
+                tblServicio ba = r.Retrieve(p => p.idservicios == t.idservicios
+                && p.serviciosNombre == t.serviciosNombre
+                && p.idArea == t.idArea);
 
                 if (ba == null)
                 {
@@ -66,7 +68,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("No se pudo actualizar el dia seleccionada."));
+                    throw (new Exception("No se pudo actualizar el servicio seleccionado."));
                 }
             }
             return Result;
@@ -75,27 +77,27 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblDías obj = RetrieveDíasByID(id);
+            tblServicio obj = RetrieveServicioByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblDías>())
+                using (var r = new Repository<tblServicio>())
                 {
                     Result = r.Delete(obj);
                 }
             }
             else
             {
-                throw (new Exception("El dia seleccionada no se pudo eliminar."));
+                throw (new Exception("El servicio seleccionado no se pudo eliminar."));
             }
 
             return Result;
         }
 
-        public List<tblDías> RetrieveAll()
+        public List<tblServicio> RetrieveAll()
         {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
+            List<tblServicio> Result = null;
+            using (var r = new Repository<tblServicio>())
             {
                 Result = r.RetrieveAll();
             }
@@ -104,4 +106,3 @@ namespace BLL
         }
     }
 }
-  
