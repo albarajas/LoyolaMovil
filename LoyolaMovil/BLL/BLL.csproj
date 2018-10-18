@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AnioBLL.cs" />
     <Compile Include="AreasBLL.cs" />
+    <Compile Include="Area_ServiciosBLL.cs" />
     <Compile Include="AulaBLL.cs" />
     <Compile Include="CitasBLL.cs" />
     <Compile Include="ColaboradorBLL.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="EdificioBLL.cs" />
     <Compile Include="EventosBLL.cs" />
     <Compile Include="HorariosBLL.cs" />
+    <Compile Include="NivelBLL.cs" />
     <Compile Include="NoticiaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanasBLL.cs" />

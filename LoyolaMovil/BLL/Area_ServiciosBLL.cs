@@ -8,16 +8,17 @@ using Entities;
 
 namespace BLL
 {
-    public class ServiciosBLL
+  public class Area_ServiciosBLL
     {
-        public tblServicio Create(tblServicio t)
+        public tblAreas_Servicios Create(tblAreas_Servicios t)
         {
-            tblServicio Result = null;
-            using (var r = new Repository<tblServicio>())
+            tblAreas_Servicios Result = null;
+            using (var r = new Repository<tblAreas_Servicios>())
             {
-                tblServicio ba = r.Retrieve(p => p.idservicios == t.idservicios
+                tblAreas_Servicios ba = r.Retrieve(p => p.idServicios == t.idServicios
                 && p.serviciosNombre == t.serviciosNombre
-                && p.idArea == t.idArea);
+                && p.idArea == t.idArea
+                && p.nombreArea == t.nombreArea);
 
                 if (ba == null)
                 {
@@ -43,24 +44,25 @@ namespace BLL
         //}
 
 
-        public tblServicio RetrieveServicioByID(int id)
+        public tblAreas_Servicios RetrieveArea_ServicioByID(int id)
         {
-            tblServicio Result = null;
-            using (var r = new Repository<tblServicio>())
+            tblAreas_Servicios Result = null;
+            using (var r = new Repository<tblAreas_Servicios>())
             {
-                Result = r.Retrieve(p => p.idservicios == id);
+                Result = r.Retrieve(p => p.idServicios == id);
             }
             return Result;
         }
 
-        public bool Update(tblServicio t)
+        public bool Update(tblAreas_Servicios t)
         {
             bool Result = false;
-            using (var r = new Repository<tblServicio>())
+            using (var r = new Repository<tblAreas_Servicios>())
             {
-                tblServicio ba = r.Retrieve(p => p.idservicios == t.idservicios
+                tblAreas_Servicios ba = r.Retrieve(p => p.idServicios == t.idServicios
                 && p.serviciosNombre == t.serviciosNombre
-                && p.idArea == t.idArea);
+                && p.idArea == t.idArea
+                && p.nombreArea == t.nombreArea);
 
                 if (ba == null)
                 {
@@ -77,11 +79,11 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblServicio obj = RetrieveServicioByID(id);
+            tblAreas_Servicios obj = RetrieveArea_ServicioByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblServicio>())
+                using (var r = new Repository<tblAreas_Servicios>())
                 {
                     Result = r.Delete(obj);
                 }
@@ -94,10 +96,10 @@ namespace BLL
             return Result;
         }
 
-        public List<tblServicio> RetrieveAll()
+        public List<tblAreas_Servicios> RetrieveAll()
         {
-            List<tblServicio> Result = null;
-            using (var r = new Repository<tblServicio>())
+            List<tblAreas_Servicios> Result = null;
+            using (var r = new Repository<tblAreas_Servicios>())
             {
                 Result = r.RetrieveAll();
             }
