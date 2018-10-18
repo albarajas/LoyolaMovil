@@ -1,19 +1,24 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
 }
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <link href="~/Content/Login.css" rel="stylesheet" />
+
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <div class="fadeIn first">
             <img src="~/img/loyola.jpg.png" id="icon" alt="User Icon" />
         </div>
 
-        <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-            <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
-        </form>
+        @*<form>*@
+        <div>
+            <input type="text" id="txtUsuario" class="fadeIn second" name="login" placeholder="Email">
+            <input type="password" id="txtPassword" class="fadeIn third" name="login" placeholder="Contraseña">
+            <br />
+            <button id="btnIniciar" class="btn btn-info">Iniciar Sesion</button>
+            </div>
+        @*</form>*@
 
         <div id="formFooter">
             <a class="underlineHover" href="#"> ¿Olvidó su contraseña? </a>
@@ -22,3 +27,36 @@
     </div>
 </div>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('#btnIniciar').click(function () {
+            var email = $('#txtUsuario').val();
+            var password = $('#txtPassword').val();
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ValidarUsuario", "Login")",
+                traditional: true,
+                data: {
+                    correo_p: email,
+                    password_p : password
+                },
+                success: function (data) {
+                    if (data.bandera == true) {
+                        alert('Bienvenido ' + data.mensaje);
+                        window.location.href = '@Url.Action("Index","Principal")'
+                    } else {
+                        alert(data.mensaje);
+                    }
+            },
+            error: function () {
+                alert('Ocurrió un error al enviar los datos al controlador!');
+            }
+        });
+        });
+
+    });
+</script>

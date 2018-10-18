@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Entities;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -19,17 +20,24 @@ namespace MVC.Controllers
             return View();
         }
 
-        public ActionResult ValidarUsuario(string usuario, string contrasenia)
+        public JsonResult ValidarUsuario(string correo_p, string password_p)
         {
             var ocBLL = new ColaboradorBLL();
-            tblColaboradore objColaborador = ocBLL.ValidarUsuarioContrasenia(usuario, contrasenia);
-
+            tblColaboradore objColaborador = ocBLL.ValidarUsuarioContrasenia(correo_p, password_p);
+            wmJsonResult objJson = new wmJsonResult();
+                  
             if (objColaborador != null)
             {
-                //si lo encontro.....
+                objJson.bandera = true;
+                objJson.mensaje = objColaborador.nombreColaborador;
+            }
+            else
+            {
+                objJson.bandera = false;
+                objJson.mensaje = "No se encontró usuario";
             }
 
-            return View("LoginCompleto", objColaborador);
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
         
     }

@@ -8,6 +8,9 @@ namespace MVC.Controllers
 {
     public class PrincipalController : Controller
     {
-        
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }
