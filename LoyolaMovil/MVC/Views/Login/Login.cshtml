@@ -2,9 +2,23 @@
 @{
     ViewBag.Title = "Login";
 }
+<link href="~/Content/Login.css" rel="stylesheet" />
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="fadeIn first">
+            <img src="~/img/loyola.jpg.png" id="icon" alt="User Icon" />
+        </div>
 
-<center>
-    
-</center>
+        <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
+        </form>
 
+        <div id="formFooter">
+            <a class="underlineHover" href="#"> ¿Olvidó su contraseña? </a>
+        </div>
+
+    </div>
+</div>
 
