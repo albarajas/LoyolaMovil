@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Entities.tblColaboradore>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Colaboradores</h2>
+<h3>@ViewBag.Nombre</h3>
+
+<p>
+    @Html.ActionLink("Nuevo Colaborador", "Create")
+</p>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreColaborador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonoColaborador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoColaborador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horarioInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contraseniaColaborador)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horarioInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contraseniaColaborador)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idColaborador }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

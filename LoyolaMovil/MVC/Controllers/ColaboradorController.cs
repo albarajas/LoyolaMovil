@@ -3,60 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
+using Entities;
 
 namespace MVC.Controllers
 {
     public class ColaboradorController : Controller
     {
-        // GET: Colaborador
         public ActionResult Index()
         {
-            return View();
+            var colBLL = new ColaboradorBLL();
+            List<tblColaboradore> listaColaboradores = colBLL.RetrieveAll();
+
+            return View(listaColaboradores);
         }
 
 
         // GET: Colaborador/Create
         public ActionResult Create()
         {
+            ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
         // POST: Colaborador/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(tblColaboradore colaborador)
         {
+            var colBLL = new ColaboradorBLL();
+            ActionResult Result = null;
+
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    colBLL.Create(colaborador);
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
                 return View();
             }
+
+            return Result;
         }
 
-        // GET: Colaborador/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var colBLL = new ColaboradorBLL();
+            tblColaboradore objCol = colBLL.RetrieveColaboradorByID(id);
+
+            return View(objCol);
         }
 
-        // POST: Colaborador/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(tblColaboradore colaborador)
         {
+            var colBLL = new ColaboradorBLL();
+            ActionResult Result = null;
+
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    colBLL.Update(colaborador);
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
                 return View();
             }
+
+            return Result;
         }
 
         // GET: Colaborador/Delete/5

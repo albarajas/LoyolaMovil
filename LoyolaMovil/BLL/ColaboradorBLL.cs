@@ -99,6 +99,7 @@ namespace BLL
             using (var r = new Repository<tblColaboradore>())
             {
                 Result = r.RetrieveAll();
+                //SELECT * FROM tblColaboradores....
             }
 
             return Result;

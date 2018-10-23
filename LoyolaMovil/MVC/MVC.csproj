@@ -190,6 +190,9 @@
     <Content Include="Views\Home\Bienvenida.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\Colaborador\Index.cshtml" />
+    <Content Include="Views\Colaborador\Create.cshtml" />
+    <Content Include="Views\Colaborador\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Colaborador\" />
     <Folder Include="Views\Eventos\" />
     <Folder Include="Views\Noticias\" />
     <Folder Include="Views\Servicios\" />
