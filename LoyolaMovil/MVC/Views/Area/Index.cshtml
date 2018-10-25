@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Entities.tblArea>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horaFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idColaborador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idAula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horaFinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idColaborador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idAula)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

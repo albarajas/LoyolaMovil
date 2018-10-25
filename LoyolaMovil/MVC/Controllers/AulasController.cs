@@ -8,37 +8,36 @@ using Entities;
 
 namespace MVC.Controllers
 {
-    public class NoticiasController : Controller
+    public class AulasController : Controller
     {
-        // GET: Noticias
-        public ActionResult Noticias()
+        // GET: Aulas
+        public ActionResult Index()
         {
-            var NotBLL= new NoticiaBLL();
-            List<tblNoticia> listaNoticias = NotBLL.RetrieveAll();
+            var AuBLL = new AulaBLL();
+            List<tblAula> listaAulas = AuBLL.RetrieveAll();
 
-            return View(listaNoticias);
+            return View(listaAulas);
         }
 
-        
-        // GET: Noticias/Create
+        // GET: Aulas/Create
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
-        // POST: Noticias/Create
+        // POST: Aulas/Create
         [HttpPost]
-        public ActionResult Create(tblNoticia Noticias)
+        public ActionResult Create(tblAula Aulas)
         {
-            var NotBLL = new NoticiaBLL();
+            var AuBLL = new AulaBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    NotBLL.Create(Noticias);
+                    AuBLL.Create(Aulas);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -50,27 +49,27 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Noticias/Edit/5
+        // GET: Aulas/Edit/5
         public ActionResult Edit(int id)
         {
-            var NotBLL = new NoticiaBLL();
-            tblNoticia objNot = NotBLL.RetrieveNoticiaByID(id);
+            var AuBLL = new AulaBLL();
+            tblAula objCol = AuBLL.RetrieveAulaByID(id);
 
-            return View(objNot);
+            return View(objCol);
         }
 
-        // POST: Noticias/Edit/5
+        // POST: Aulas/Edit/5
         [HttpPost]
-        public ActionResult Edit(tblNoticia Noticias)
+        public ActionResult Edit(tblAula Aulas)
         {
-            var NotBLL = new NoticiaBLL();
+            var AuBLL = new AulaBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    NotBLL.Update(Noticias);
+                    AuBLL.Update(Aulas);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -82,13 +81,13 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Noticias/Delete/5
+        // GET: Aulas/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Noticias/Delete/5
+        // POST: Aulas/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

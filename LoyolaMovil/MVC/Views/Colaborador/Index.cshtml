@@ -4,56 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Colaborador.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-
-
-
-<div class="jumbotron"></div>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a id="Inicio">@Html.ActionLink("Inicio", "Index", "Principal", new { area = "" }, new { @class = "nav-link active" })</a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="Catalogos" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Catalogos</a>
-                <div class="dropdown-menu">
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Colaboradores">@Html.ActionLink("Colaborador", "Index", "Colaborador", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Aulas"> @Html.ActionLink("Aulas", "Index", "Aulas", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Edificios">@Html.ActionLink("Edificios", "Index", "Edificios", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="TipoAula">@Html.ActionLink("Tipo Aula", "Index", "TipoAula", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Área", "Index", "Area", new { area = "" }, new { @class = "dropdown-item" })</a>
-                </div>
-            </li>
-        </ul>
-
-        <ul class="nav justify-content-end">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="Usuario" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Editar Cuenta</a>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item" >@Html.ActionLink("Cerrar Cuenta", "Bienvenida", "Home", new { area = "" }, new { @class = "dropdown-item" }) </a>
-                </div>
-            </li>
-        </ul>
-
-    </div>
-</nav><br>
-<h2>Listado de Colaboradores</h2>
-<h3>@ViewBag.Nombre</h3>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Colaborador", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-striped table-bordered">
+<table class="table">
     <tr>
         <th>
-            @Html.DisplayName("ID")
+            @Html.DisplayNameFor(model => model.idColaborador)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.nombreColaborador)
@@ -100,17 +59,11 @@
             @Html.DisplayFor(modelItem => item.contraseniaColaborador)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.idColaborador }) |
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }
-    
+
 </table>
-<div class="footer " ></div>
-
-
-
-
-

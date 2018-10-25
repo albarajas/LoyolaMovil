@@ -19,15 +19,10 @@ namespace MVC.Controllers
             return View(listaEventos);
         }
 
-        // GET: Eventos/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Eventos/Create
         public ActionResult Create()
         {
+            ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 

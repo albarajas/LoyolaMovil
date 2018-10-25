@@ -8,37 +8,34 @@ using Entities;
 
 namespace MVC.Controllers
 {
-    public class NoticiasController : Controller
+    public class AreaController : Controller
     {
-        // GET: Noticias
-        public ActionResult Noticias()
+        // GET: Area
+        public ActionResult Index()
         {
-            var NotBLL= new NoticiaBLL();
-            List<tblNoticia> listaNoticias = NotBLL.RetrieveAll();
+            var areaBLL = new AreasBLL();
+            List<tblArea> listaAreas = areaBLL.RetrieveAll();
 
-            return View(listaNoticias);
+            return View(listaAreas);
         }
 
-        
-        // GET: Noticias/Create
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
-        // POST: Noticias/Create
+        // POST: Area/Create
         [HttpPost]
-        public ActionResult Create(tblNoticia Noticias)
+        public ActionResult Create(tblArea area)
         {
-            var NotBLL = new NoticiaBLL();
+            var areaBLL = new AreasBLL();
             ActionResult Result = null;
-
             try
             {
                 if (ModelState.IsValid)
                 {
-                    NotBLL.Create(Noticias);
+                    areaBLL.Create(area);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -46,31 +43,29 @@ namespace MVC.Controllers
             {
                 return View();
             }
-
             return Result;
         }
 
-        // GET: Noticias/Edit/5
+        // GET: Area/Edit/5
         public ActionResult Edit(int id)
         {
-            var NotBLL = new NoticiaBLL();
-            tblNoticia objNot = NotBLL.RetrieveNoticiaByID(id);
-
-            return View(objNot);
+            var areaBLL = new AreasBLL();
+            tblArea objArea = areaBLL.RetrieveAreaByID(id);
+            return View(objArea);
         }
 
-        // POST: Noticias/Edit/5
+        // POST: Area/Edit/5
         [HttpPost]
-        public ActionResult Edit(tblNoticia Noticias)
+        public ActionResult Edit(tblArea area)
         {
-            var NotBLL = new NoticiaBLL();
+            var areaBLL = new AreasBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    NotBLL.Update(Noticias);
+                    areaBLL.Update(area);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -82,13 +77,13 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Noticias/Delete/5
+        // GET: Area/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Noticias/Delete/5
+        // POST: Area/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
