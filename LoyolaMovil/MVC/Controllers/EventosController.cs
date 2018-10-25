@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
+using Entities;
 
 namespace MVC.Controllers
 {
     public class EventosController : Controller
     {
         // GET: Eventos
-        public ActionResult Eventos()
+        public ActionResult Index()
         {
-            return View();
+            var eveBLL = new EventoBLL();
+            List<tblEvento> listaEventos = eveBLL.RetrieveAll();
+
+            return View(listaEventos);
         }
 
         // GET: Eventos/Details/5
@@ -28,40 +33,57 @@ namespace MVC.Controllers
 
         // POST: Eventos/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(tblEvento evento)
         {
+            var eveBLL = new EventoBLL();
+            ActionResult Result = null;
+
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    eveBLL.Create(evento);
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
                 return View();
             }
+
+            return Result;
         }
 
         // GET: Eventos/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var eveBLL = new EventoBLL();
+            tblEvento objEve = eveBLL.RetrievEventoByID(id);
+
+            return View(objEve);
         }
 
         // POST: Eventos/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(tblEvento evento)
         {
+            var eveBLL = new EventoBLL();
+            ActionResult Result = null;
+
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if(ModelState.IsValid)
+                {
+                    eveBLL.Update(evento);
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
                 return View();
             }
+
+            return Result;
         }
 
         // GET: Eventos/Delete/5
