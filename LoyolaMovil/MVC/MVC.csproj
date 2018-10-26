@@ -99,12 +99,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\TipodeAula.css" />
+    <Content Include="Content\Servicio.css" />
+    <Content Include="Content\Noticia.css" />
+    <Content Include="Content\Evento.css" />
+    <Content Include="Content\Edificio.css" />
+    <Content Include="Content\Aula.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Area.css" />
     <Content Include="Content\Colaborador.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Principal.css" />

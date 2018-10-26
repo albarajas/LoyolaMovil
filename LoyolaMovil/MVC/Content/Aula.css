@@ -1,0 +1,19 @@
+﻿
+.jumbotron  {
+    
+    background-repeat:no-repeat;
+      padding: 80px;
+      background-attachment:scroll;
+     background-image: url(/img/Encabezado.jpg) ;
+      background-position:center;
+      
+}
+
+.footer  {
+    
+      padding: 70px;
+       background-image: url(/img/Loyolaf.jpg);
+       background-position:center;
+         background-repeat:no-repeat;
+         background-attachment:scroll;
+    }

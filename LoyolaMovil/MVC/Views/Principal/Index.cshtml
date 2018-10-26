@@ -24,7 +24,7 @@
                 <div class="dropdown-menu">
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Colaboradores" >@Html.ActionLink("Colaborador", "Index", "Colaborador", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Aulas" > @Html.ActionLink("Aulas", "Index", "Aulas", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Edificios">@Html.ActionLink("Edificios", "Index", "Edificios", new { area = "" }, new { @class = "dropdown-item" })</a>
+                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Edificios">@Html.ActionLink("Edificios", "Index", "Edificio", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="TipoAula">@Html.ActionLink("Tipo Aula", "Index", "TipoAula", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Área", "Index", "Area", new { area = "" }, new { @class = "dropdown-item" })</a>
                 </div>
@@ -59,7 +59,7 @@
             <div class="card-body">
                 <h5 class="card-title">NOTICIA</h5>
                 <p class="card-text">Universidad Loyola del Pacífico</p>
-                <a  id="Noticia" > @Html.ActionLink("Ir a Noticias", "Index", "Noticias", new { area = "" }, new { @class = "btn btn-primary" }) </a>
+                <a  id="Noticia" > @Html.ActionLink("Ir a Noticias", "Noticias", "Noticias", new { area = "" }, new { @class = "btn btn-primary" }) </a>
             </div>
         </div>
         <div class="col-sm-3">
