@@ -223,6 +223,11 @@
     <Content Include="Views\Area\Index.cshtml" />
     <Content Include="Views\Area\Create.cshtml" />
     <Content Include="Views\Area\Edit.cshtml" />
+    <Content Include="Views\TipoAula\Index.cshtml" />
+    <Content Include="Views\TipoAula\Create.cshtml" />
+    <Content Include="Views\TipoAula\Edit.cshtml" />
+    <Content Include="Views\Eventos\Create.cshtml" />
+    <Content Include="Views\Eventos\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,7 +238,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Servicios\" />
-    <Folder Include="Views\TipoAula\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -18,6 +18,8 @@ namespace MVC.Controllers
 
             return View(listaEdificios);
         }
+
+        // GET: Colaborador/Create
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";

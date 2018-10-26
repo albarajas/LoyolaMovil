@@ -10,6 +10,7 @@ namespace MVC.Controllers
 {
     public class ColaboradorController : Controller
     {
+        // GET: Edificio
         public ActionResult Index()
         {
             var colBLL = new ColaboradorBLL();
@@ -17,7 +18,6 @@ namespace MVC.Controllers
 
             return View(listaColaboradores);
         }
-
 
         // GET: Colaborador/Create
         public ActionResult Create()
