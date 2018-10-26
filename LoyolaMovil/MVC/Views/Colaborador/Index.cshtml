@@ -46,30 +46,30 @@
 <h2>Lista de Colaborador</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Usuario", "Create", null, new { @class = "btn btn-sm btn-info" })
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idColaborador)
+            @Html.DisplayName("ID")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nombreColaborador)
+            @Html.DisplayName("Colaborador")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.telefonoColaborador)
+            @Html.DisplayName("Telefono")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.correoColaborador)
+            @Html.DisplayName("E-mail")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.horarioInicio)
+            @Html.DisplayName("Entrada")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.horaFin)
+            @Html.DisplayName("Salida")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contraseniaColaborador)
+            @Html.DisplayName("Password")
         </th>
         <th></th>
     </tr>
@@ -98,12 +98,46 @@
             @Html.DisplayFor(modelItem => item.contraseniaColaborador)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id =item.idColaborador }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <div class="btn-group">
+                @*<a class="btn btn-info btn-xs" href="menu">Acción</a>
+                <a class="btn btn-info btn-xs dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                <ul class="dropdown-menu">*@
+                <ul>
+                    <li>@Html.ActionLink("Editar", "Edit", new { id = item.idColaborador })</li>
+                    <li><a href="javascript:Eliminar(@item.idColaborador)">Eliminar</a></li>
+                </ul>
+                     @*</ul>*@
+            </div>
         </td>
     </tr>
 }
    
 </table>
 <div class="footer "></div>
+
+<script type="text/javascript">
+    function Eliminar(idColaborador) {
+       
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteColaborador", "Colaborador")",
+            traditional: true,
+        data: {
+            id: idColaborador
+        },
+        success: function (data) {
+            if (data.bandera == true) {
+                alert(data.mensaje);
+                window.location.href = '@Url.Action("Index","Colaborador")'
+            } else {
+                alert(data.mensaje);
+            }
+        },
+        error: function (data) {
+            alert(data.mensaje);
+        }
+    });
+
+
+    }
+</script>

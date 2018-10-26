@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Entities;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -79,26 +80,61 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Colaborador/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: Colaborador/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public JsonResult DeleteColaborador(int id)
         {
+            var colBLL = new ColaboradorBLL();
+            wmJsonResult objJson = new wmJsonResult();
+
             try
             {
-                // TODO: Add delete logic here
+                tblColaboradore colaborador = colBLL.RetrieveColaboradorByID(id);
 
-                return RedirectToAction("Index");
+                if (colaborador != null)
+                {
+                    var eveBLL = new EventoBLL();
+                    List<tblEvento> listaEventos = eveBLL.RetrieveEventosColaboradorByID(id);
+
+                    if (listaEventos.Count() >= 0)
+                    {
+                        //significa que tiene eventos....
+                    }
+
+                    var areaBLL = new AreasBLL();
+                    List<tblArea> listaArea = areaBLL.RetrieveAreasColaboradorByID(id);
+
+                    if (listaArea.Count() >= 0)
+                    {
+                        //significa que tiene areas asignadas....
+                    }
+
+                    bool banderita = colBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "El colaborador se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "El colaborador NO se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "El colaborador no se encontró";
+                }
             }
             catch
             {
-                return View();
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el registro";
             }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
     }
 }
