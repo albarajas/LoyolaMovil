@@ -98,6 +98,17 @@ namespace BLL
             return Result;
         }
 
+        public List<tblCita> RetrieveCitasColaboradorByID(int id)
+        {
+            List<tblCita> Result = null;
+            using (var r = new Repository<tblCita>())
+            {
+                Result = r.Filter(p => p.idColaborador == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
         public List<tblCita> RetrieveAll()
         {
             List<tblCita> Result = null;
