@@ -54,6 +54,17 @@ namespace BLL
             return Result;
         }
 
+        public List<tblAreas_Servicios> RetrieveAreas_ServicioAreaByID(int id)
+        {
+            List<tblAreas_Servicios> Result = null;
+            using (var r = new Repository<tblAreas_Servicios>())
+            {
+                Result = r.Filter(p => p.idArea == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
         public bool Update(tblAreas_Servicios t)
         {
             bool Result = false;

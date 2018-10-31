@@ -70,6 +70,16 @@ namespace BLL
             return Result;
         }
 
+        public List<tblEvento> RetrieveEventosAulaByID(int id)
+        {
+            List<tblEvento> Result = null;
+            using (var r = new Repository<tblEvento>())
+            {
+                Result = r.Filter(p => p.idAula == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
 
 
         public List<tblEvento> RetrieveEventoNivelByID(int id)
