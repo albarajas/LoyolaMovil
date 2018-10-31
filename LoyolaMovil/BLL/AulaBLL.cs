@@ -94,6 +94,28 @@ namespace BLL
             return Result;
         }
 
+        public List<tblAula> RetrieveAulaEdificioByID(int id)
+        {
+            List<tblAula> Result = null;
+            using (var r = new Repository<tblAula>())
+            {
+                Result = r.Filter(p => p.idEdificio == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
+        public List<tblAula> RetrieveAulaTipoAulaByID(int id)
+        {
+            List<tblAula> Result = null;
+            using (var r = new Repository<tblAula>())
+            {
+                Result = r.Filter(p => p.idTipoAula == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
         public List<tblAula> RetrieveAll()
         {
             List<tblAula> Result = null;
