@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Entities;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -81,26 +82,52 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Aulas/Delete/5
-        public ActionResult Delete(int id)
+        public JsonResult DeleteTipoAula(int id)
         {
-            return View();
-        }
+            var taBLL = new TipoAulaBLL();
+            wmJsonResult objJson = new wmJsonResult();
 
-        // POST: Aulas/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add delete logic here
+                tblTipoAula tipoaula = taBLL.RetrieveTipoAulaByID(id);
 
-                return RedirectToAction("Index");
+                if (tipoaula != null)
+                {
+                    var auBLL = new AulaBLL();
+                    List<tblAula> listaAulas = auBLL.RetrieveAulaTipoAulaByID(id);
+
+                    if (listaAulas.Count() >= 0)
+                    {
+                        //significa que tiene Aulas....
+                    }
+
+                    bool banderita = taBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "El Tipo Aula se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "El Tipo Aula NO se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "El Tipo Aula no se encontró";
+                }
             }
             catch
             {
-                return View();
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el Tipo Aula";
             }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
     }
 }

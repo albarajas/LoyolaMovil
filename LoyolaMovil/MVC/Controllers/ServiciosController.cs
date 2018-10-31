@@ -9,36 +9,35 @@ using MVC.Models;
 
 namespace MVC.Controllers
 {
-    public class EdificioController : Controller
+    public class ServiciosController : Controller
     {
-        // GET: Edificio
+        // GET: Servicios
         public ActionResult Index()
         {
-            var ediBLL = new EdificioBLL();
-            List<tblEdificio> listaEdificios = ediBLL.RetrieveAll();
+            var serBLL = new ServiciosBLL();
+            List<tblServicio> listaServicios = serBLL.RetrieveAll();
 
-            return View(listaEdificios);
+            return View(listaServicios);
         }
 
-        // GET: Colaborador/Create
+        // GET: Servicios/Create
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
-        // POST: Edificio/Create
+        // POST: Servicios/Create
         [HttpPost]
-        public ActionResult Create(tblEdificio edificio)
+        public ActionResult Create(tblServicio servicio)
         {
-            var ediBLL = new EdificioBLL();
+            var serBLL = new ServiciosBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    ediBLL.Create(edificio);
+                    serBLL.Create(servicio);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -46,34 +45,33 @@ namespace MVC.Controllers
             {
                 return View();
             }
-
             return Result;
         }
 
-        // GET: Edificio/Edit/5
+        // GET: Servicios/Edit/5
         public ActionResult Edit(int id)
         {
-            var ediBLL = new EdificioBLL();
-            tblEdificio objEdi = ediBLL.RetrieveEdificioByID(id);
+            var serBLL = new ServiciosBLL();
+            tblServicio objSer = serBLL.RetrieveServicioByID(id);
 
-            return View(objEdi);
+            return View(objSer);
         }
 
-        // POST: Edificio/Edit/5
+        // POST: Servicios/Edit/5
         [HttpPost]
-        public ActionResult Edit(tblEdificio edificio)
+        public ActionResult Edit(tblServicio servicio)
         {
-            var ediBLL = new EdificioBLL();
+            var serBLL = new ServiciosBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    ediBLL.Update(edificio);
+                    serBLL.Update(servicio);
                     Result = RedirectToAction("Index");
-                }
 
+                }
             }
             catch
             {
@@ -81,49 +79,45 @@ namespace MVC.Controllers
             }
             return Result;
         }
-
-        // GET: Edificio/Delete/5
-        public JsonResult DeleteNoticias(int id)
+        public JsonResult DeleteServicio(int id)
         {
-            var NotBLL = new NoticiaBLL();
+            var serBLL = new ServiciosBLL();
             wmJsonResult objJson = new wmJsonResult();
 
             try
             {
-                tblNoticia noticia = NotBLL.RetrieveNoticiaByID(id);
+                tblServicio servicio = serBLL.RetrieveServicioByID(id);
 
-                if (noticia != null)
+                if (servicio != null)
                 {
 
-                    bool banderita = NotBLL.Delete(id);
+                    bool banderita = serBLL.Delete(id);
 
                     if (banderita == true)
                     {
                         objJson.bandera = true;
-                        objJson.mensaje = "La noticia se eliminó correctamente";
+                        objJson.mensaje = "El Servicio se eliminó correctamente";
                     }
                     else
                     {
                         objJson.bandera = false;
-                        objJson.mensaje = "La noticia NO se eliminó correctamente";
+                        objJson.mensaje = "El Servicio NO se eliminó correctamente";
                     }
 
                 }
                 else
                 {
                     objJson.bandera = false;
-                    objJson.mensaje = "La noticia no se encontró";
+                    objJson.mensaje = "El Servicio no se encontró";
                 }
             }
             catch
             {
                 objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar la noticia";
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el Servicio";
             }
 
             return Json(objJson, JsonRequestBehavior.AllowGet);
         }
-
     }
-
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Entities;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -82,25 +83,46 @@ namespace MVC.Controllers
         }
 
         // GET: Eventos/Delete/5
-        public ActionResult Delete(int id)
+        public JsonResult DeleteEventos(int id)
         {
-            return View();
-        }
+            var eveBLL = new EventoBLL();
+            wmJsonResult objJson = new wmJsonResult();
 
-        // POST: Eventos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add delete logic here
+                tblEvento evento = eveBLL.RetrievEventoByID(id);
 
-                return RedirectToAction("Index");
+                if (evento != null)
+                {
+
+                    bool banderita = eveBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "El evento se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "El evento NO se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "El evento no se encontró";
+                }
             }
             catch
             {
-                return View();
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el evento";
             }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

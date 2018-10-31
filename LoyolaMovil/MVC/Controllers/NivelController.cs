@@ -9,36 +9,36 @@ using MVC.Models;
 
 namespace MVC.Controllers
 {
-    public class ColaboradorController : Controller
+    public class NivelController : Controller
     {
-        // GET: Edificio
+        // GET: Nivel
         public ActionResult Index()
         {
-            var colBLL = new ColaboradorBLL();
-            List<tblColaboradore> listaColaboradores = colBLL.RetrieveAll();
+            var lvlBLL = new NivelBLL();
+            List < tblNivel> listaNivel = lvlBLL.RetrieveAll();
 
-            return View(listaColaboradores);
+            return View(listaNivel);
         }
 
-        // GET: Colaborador/Create
+        // GET: Nivel/Create
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
-        // POST: Colaborador/Create
+        // POST: Nivel/Create
         [HttpPost]
-        public ActionResult Create(tblColaboradore colaborador)
+        public ActionResult Create(tblNivel nivel)
         {
-            var colBLL = new ColaboradorBLL();
+            var lvlBLL = new NivelBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    colBLL.Create(colaborador);
+                    lvlBLL.Create(nivel);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -50,25 +50,27 @@ namespace MVC.Controllers
             return Result;
         }
 
+        // GET: Nivel/Edit/5
         public ActionResult Edit(int id)
         {
-            var colBLL = new ColaboradorBLL();
-            tblColaboradore objCol = colBLL.RetrieveColaboradorByID(id);
+            var lvlBLL = new NivelBLL();
+            tblNivel objlvl = lvlBLL.RetrieveNivelByID(id);
 
-            return View(objCol);
+            return View(objlvl);
         }
 
+        // POST: Nivel/Edit/5
         [HttpPost]
-        public ActionResult Edit(tblColaboradore colaborador)
+        public ActionResult Edit(tblNivel nivel)
         {
-            var colBLL = new ColaboradorBLL();
+            var lvlBLL = new NivelBLL();
             ActionResult Result = null;
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    colBLL.Update(colaborador);
+                    lvlBLL.Update(nivel);
                     Result = RedirectToAction("Index");
                 }
             }
@@ -80,69 +82,71 @@ namespace MVC.Controllers
             return Result;
         }
 
-
-        public JsonResult DeleteColaborador(int id)
+        // GET: Nivel/Delete/5
+        public JsonResult DeleteNivel(int id)
         {
-            var colBLL = new ColaboradorBLL();
+            var lvlBLL = new NivelBLL();
             wmJsonResult objJson = new wmJsonResult();
 
             try
             {
-                tblColaboradore colaborador = colBLL.RetrieveColaboradorByID(id);
+                tblNivel nivel = lvlBLL.RetrieveNivelByID(id);
 
-                if (colaborador != null)
+                if (nivel != null)
                 {
                     var eveBLL = new EventoBLL();
-                    List<tblEvento> listaEventos = eveBLL.RetrieveEventosColaboradorByID(id);
+                    List<tblEvento> listaEventos = eveBLL.RetrieveEventoNivelByID(id);
 
                     if (listaEventos.Count() >= 0)
                     {
                         //significa que tiene eventos....
                     }
 
-                    var areaBLL = new AreasBLL();
-                    List<tblArea> listaArea = areaBLL.RetrieveAreasColaboradorByID(id);
+                    var NotBLL = new NoticiaBLL();
+                    List<tblNoticia> listaNoticia = NotBLL.RetrieveNoticiasNivelByID(id);
 
-                    if (listaArea.Count() >= 0)
+                    if (listaNoticia.Count() >= 0)
                     {
-                        //significa que tiene areas asignadas....
+                        //significa que tiene noticias asignadas....
                     }
 
-                    var citBLL = new CitaBLL();
-                    List<tblCita> listaCitas = citBLL.RetrieveCitasColaboradorByID(id);
+                    var usuBLL = new UsuarioBLL();
+                    List<tblUsuario> listausuario = usuBLL.RetrieveUsuarioNivelByID(id);
 
-                    if (listaCitas.Count() >= 0)
+                    if (listausuario.Count() >= 0)
                     {
-                        //significa que tiene areas asignadas....
+                        //significa que tiene usuarios asignados....
                     }
 
-                    bool banderita = colBLL.Delete(id);
+                    bool banderita = lvlBLL.Delete(id);
 
                     if (banderita == true)
                     {
                         objJson.bandera = true;
-                        objJson.mensaje = "El colaborador se eliminó correctamente";
+                        objJson.mensaje = "El nivel se eliminó correctamente";
                     }
                     else
                     {
                         objJson.bandera = false;
-                        objJson.mensaje = "El colaborador NO se eliminó correctamente";
+                        objJson.mensaje = "El nivel NO se eliminó correctamente";
                     }
 
                 }
                 else
                 {
                     objJson.bandera = false;
-                    objJson.mensaje = "El colaborador no se encontró";
+                    objJson.mensaje = "El nivel no se encontró";
                 }
             }
             catch
             {
                 objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar el registro";
+                objJson.mensaje = "Ocurrio una excepcion al eliminar elnivel";
             }
 
             return Json(objJson, JsonRequestBehavior.AllowGet);
         }
+
+
     }
 }
