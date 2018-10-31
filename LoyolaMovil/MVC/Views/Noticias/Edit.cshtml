@@ -42,7 +42,7 @@
 
     </div>
 </nav><br>
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -50,11 +50,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>tblNoticia</h4>
+        <h4>Noticia</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.idNoticias, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.idNoticias, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.idNoticias, "", new { @class = "text-danger" })
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.noticiasTitulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Titulo de la Noticia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.noticiasTitulo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.noticiasTitulo, "", new { @class = "text-danger" })
@@ -70,7 +70,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.noticiasTexto, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Contenido de la Noticia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.noticiasTexto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.noticiasTexto, "", new { @class = "text-danger" })
@@ -78,7 +78,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idNivel, htmlAttributes: new { @class = "control-label col-md-2" })
+           @Html.Label("Id Nivel", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.idNivel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.idNivel, "", new { @class = "text-danger" })
@@ -94,7 +94,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la lista", "Index")
 </div>
 <div class="footer "></div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
