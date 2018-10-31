@@ -46,9 +46,9 @@
 <h2> Eventos</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+     @Html.ActionLink("Crear Eventos", "Create", null, new { @class = "btn btn-sm btn-info" })
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayName("Id")
@@ -80,42 +80,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descripcionEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.horaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.horaFinal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idAula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idColaborador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idNivel)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idEvento }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horaFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idColaborador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idNivel)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idEvento }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
 

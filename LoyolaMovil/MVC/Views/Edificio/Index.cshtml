@@ -45,9 +45,9 @@
 <h2>Lista de Edificios</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo Edificio", "Create")
+    @Html.ActionLink("Crear Edificio", "Create", null, new { @class = "btn btn-sm btn-info" })
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayName("id")
@@ -58,20 +58,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idEdificio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreEdificio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idEdificio}) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idEdificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreEdificio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idEdificio }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
 <div class="footer "></div>

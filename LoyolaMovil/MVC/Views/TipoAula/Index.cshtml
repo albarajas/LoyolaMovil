@@ -46,9 +46,9 @@
 <h2>Lista de Tipo de Aula</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Crear Tipo de Aula", "Create", null, new { @class = "btn btn-sm btn-info" })
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayName("Id")
@@ -59,21 +59,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idTipoAula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipoAula)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idTipoAula }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-   
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idTipoAula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoAula)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idTipoAula }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
 </table>
 <div class="footer "></div>
