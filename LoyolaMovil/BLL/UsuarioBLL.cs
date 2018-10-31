@@ -91,6 +91,19 @@ namespace BLL
             return Result;
         }
 
+
+        public List<tblUsuario> RetrieveUsuarioNivelByID(int id)
+        {
+            List<tblUsuario> Result = null;
+            using (var r = new Repository<tblUsuario>())
+            {
+                Result = r.Filter(p => p.idNivel == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
+
         public List<tblUsuario> RetrieveAll()
         {
             List<tblUsuario> Result = null;
