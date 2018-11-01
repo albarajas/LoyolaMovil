@@ -81,12 +81,46 @@
                 @Html.DisplayFor(modelItem => item.idNivel)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idNoticias }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <div class="btn-group">
+                    @*<a class="btn btn-info btn-xs" href="menu">Acción</a>
+                        <a class="btn btn-info btn-xs dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">*@
+                    <ul>
+                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.idNoticias })</li>
+                        <li><a href="javascript:Eliminar(@item.idNoticias)">Eliminar</a></li>
+                    </ul>
+                    @*</ul>*@
+                </div>
             </td>
         </tr>
     }
 
 </table>
 <div class="footer "></div>
+
+<script type="text/javascript">
+    function Eliminar(idNoticias) {
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteNoticias", "Noticias")",
+            traditional: true,
+        data: {
+            id: idNoticias
+        },
+        success: function (data) {
+            if (data.bandera == true) {
+                alert(data.mensaje);
+                window.location.href = '@Url.Action("Noticias", "Noticias")'
+            } else {
+                alert(data.mensaje);
+            }
+        },
+        error: function (data) {
+            alert(data.mensaje);
+        }
+    });
+
+
+    }
+</script>

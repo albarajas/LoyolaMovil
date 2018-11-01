@@ -65,7 +65,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model){
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.idAula)
@@ -80,11 +81,51 @@
                 @Html.DisplayFor(modelItem => item.idEdificio)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idAula }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <div class="btn-group">
+                    @*<a class="btn btn-info btn-xs" href="menu">Acción</a>
+                        <a class="btn btn-info btn-xs dropdown-toggle" aria-expanded="false" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">*@
+                    <ul>
+                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.idAula })</li>
+                        <li><a href="javascript:Eliminar(@item.idAula)">Eliminar</a></li>
+                    </ul>
+                    @*</ul>*@
+                </div>
             </td>
         </tr>
+
     }
 
 </table>
+
 <div class="footer "></div>
+
+
+
+
+<script type="text/javascript">
+    function Eliminar(idAula) {
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteAula", "Aula")",
+            traditional: true,
+        data: {
+            id: idAula
+        },
+        success: function (data) {
+            if (data.bandera == true) {
+                alert(data.mensaje);
+                window.location.href = '@Url.Action("Index","Aula")'
+            } else {
+                alert(data.mensaje);
+            }
+        },
+        error: function (data) {
+            alert(data.mensaje);
+        }
+    });
+
+
+    }
+</script>
