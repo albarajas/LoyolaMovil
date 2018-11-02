@@ -60,13 +60,10 @@
             <div class="row justify-content-md-center">
 
                 <div class="col-6 col-sm-4">
-                    <div class="form-group">
-                        @Html.Label("Id de Noticia", htmlAttributes: new { @class = "control-label " })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.idNoticias, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.idNoticias, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    <form id="idNoticias">
+                        @Html.Hidden("idNoticias")
+
+                    </form>
                 </div>
                 <div class="col-6 col-sm-4">
                     <div class="form-group">
@@ -123,3 +120,7 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script text="text/javascript">
+  //codigo que controla todo......
+    var Noticias = $('#idNoticias').val(0);
+</script>

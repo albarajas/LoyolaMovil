@@ -87,13 +87,11 @@
 
                 <div class="row justify-content-md-center">
                     <div class="col-md-3">
-                        <div class="form-group ">
-                            @Html.Label("Id Area", htmlAttributes: new { @class = "control-label " })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.idArea, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.idArea, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                        <form id="idArea">
+                            @Html.Hidden("idArea")
+
+                        </form>
+
                     </div>
 
                     <div class="col-md-4">
@@ -143,3 +141,7 @@
                 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
                 <script src="~/Scripts/jquery.validate.min.js"></script>
                 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script text="text/javascript">
+  //codigo que controla todo......
+    var Area = $('#idArea').val(0);
+</script>
