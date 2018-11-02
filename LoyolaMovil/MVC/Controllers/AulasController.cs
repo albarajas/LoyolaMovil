@@ -23,7 +23,14 @@ namespace MVC.Controllers
         // GET: Aulas/Create
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
+            var ediBLL = new EdificioBLL();
+            List<tblEdificio> listaEdificios = ediBLL.RetrieveAll();
+            ViewBag.idEdificio = new SelectList(listaEdificios, "idEdificio", "nombreEdificio");
+
+            var ti_auBLL = new TipoAulaBLL();
+            List<tblTipoAula> listaTipoAula = ti_auBLL.RetrieveAll();
+            ViewBag.idTipoAula = new SelectList(listaTipoAula, "idTipoAula", "tipoAula");
+
             return View();
         }
 
@@ -55,6 +62,15 @@ namespace MVC.Controllers
         {
             var AuBLL = new AulaBLL();
             tblAula objCol = AuBLL.RetrieveAulaByID(id);
+            var ediBLL = new EdificioBLL();
+            List<tblEdificio> listaEdificios = ediBLL.RetrieveAll();
+            ViewBag.idEdificio = new SelectList(listaEdificios, "idEdificio", "nombreEdificio", objCol.idEdificio);
+
+
+            var ti_auBLL = new TipoAulaBLL();
+            List<tblTipoAula> listaTipoAula = ti_auBLL.RetrieveAll();
+            ViewBag.idTipoAula = new SelectList(listaTipoAula, "idTipoAula", "tipoAula", objCol.idTipoAula);
+
 
             return View(objCol);
         }

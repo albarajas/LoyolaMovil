@@ -23,6 +23,10 @@ namespace MVC.Controllers
         // GET: Servicios/Create
         public ActionResult Create()
         {
+            var areaBLL = new AreasBLL();
+            List<tblArea> listaAreas = areaBLL.RetrieveAll();
+            ViewBag.idArea = new SelectList(listaAreas, "idArea", "nombreArea");
+
             return View();
         }
 
@@ -53,7 +57,9 @@ namespace MVC.Controllers
         {
             var serBLL = new ServiciosBLL();
             tblServicio objSer = serBLL.RetrieveServicioByID(id);
-
+            var areaBLL = new AreasBLL();
+            List<tblArea> listaAreas = areaBLL.RetrieveAll();
+            ViewBag.idArea = new SelectList(listaAreas, "idArea", "nombreArea", objSer.idservicios);
             return View(objSer);
         }
 

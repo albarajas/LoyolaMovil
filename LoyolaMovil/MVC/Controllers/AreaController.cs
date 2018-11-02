@@ -22,7 +22,13 @@ namespace MVC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
+            var aulaBLL = new AulaBLL();
+            List<tblAula> listaAulas = aulaBLL.RetrieveAll();
+            ViewBag.idAula = new SelectList(listaAulas, "idAula", "nombreAula");
+
+            var colaboradorBLL = new ColaboradorBLL();
+            List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
+            ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador");
             return View();
         }
 
@@ -52,6 +58,16 @@ namespace MVC.Controllers
         {
             var areaBLL = new AreasBLL();
             tblArea objArea = areaBLL.RetrieveAreaByID(id);
+
+            var aulaBLL = new AulaBLL();
+            List<tblAula> listaAulas = aulaBLL.RetrieveAll();
+            ViewBag.idAula = new SelectList(listaAulas, "idAula", "nombreAula", objArea.idAula);
+
+            var colaboradorBLL = new ColaboradorBLL();
+            List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
+            ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador", objArea.idColaborador);
+
+
             return View(objArea);
         }
 

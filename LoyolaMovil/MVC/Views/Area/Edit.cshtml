@@ -99,18 +99,20 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            @Html.Label("Id de Colaborador", htmlAttributes: new { @class = "control-label " })
+                            @Html.Label("Colaborador", htmlAttributes: new { @class = "control-label " })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.idColaborador, new { htmlAttributes = new { @class = "form-control" } })
+                                
+                                @Html.DropDownList("IdColaborador", null, "Seleccione", new { @class = "form-control input-sm" })
                                 @Html.ValidationMessageFor(model => model.idColaborador, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            @Html.Label("Id de Aula", htmlAttributes: new { @class = "control-label " })
+                            @Html.Label("Aula", htmlAttributes: new { @class = "control-label " })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.idAula, new { htmlAttributes = new { @class = "form-control" } })
+                               
+                                @Html.DropDownList("idAula", null, "Seleccione", new { @class = "form-control input-sm" })
                                 @Html.ValidationMessageFor(model => model.idAula, "", new { @class = "text-danger" })
                             </div>
                         </div>

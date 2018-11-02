@@ -74,11 +74,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
-                        @Html.Label("Id Edificio", htmlAttributes: new { @class = "control-label " })
+                        @Html.Label("Edificio", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.idEdificio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownList("idEdificio", null, "Seleccione", new { @class = "form-control input-sm" })
                             @Html.ValidationMessageFor(model => model.idEdificio, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                         <div class="form-group">
                             @Html.Label("Tipo de Aula", htmlAttributes: new { @class = "control-label" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.idTipoAula, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.DropDownList("idTipoAula", null, "Seleccione", new { @class = "form-control input-sm" })
                                 @Html.ValidationMessageFor(model => model.idTipoAula, "", new { @class = "text-danger" })
                             </div>
                         </div>

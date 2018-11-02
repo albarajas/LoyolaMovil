@@ -23,7 +23,13 @@ namespace MVC.Controllers
         // GET: Eventos/Create
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
+            var aulaBLL = new AulaBLL();
+            List<tblAula> listaAulas = aulaBLL.RetrieveAll();
+            ViewBag.idAula = new SelectList(listaAulas, "idAula", "nombreAula");
+
+            var colaboradorBLL = new ColaboradorBLL();
+            List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
+            ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador");
             return View();
         }
 
@@ -55,6 +61,13 @@ namespace MVC.Controllers
         {
             var eveBLL = new EventoBLL();
             tblEvento objEve = eveBLL.RetrievEventoByID(id);
+            var aulaBLL = new AulaBLL();
+            List<tblAula> listaAulas = aulaBLL.RetrieveAll();
+            ViewBag.idAula = new SelectList(listaAulas, "idAula", "nombreAula", objEve.idAula);
+
+            var colaboradorBLL = new ColaboradorBLL();
+            List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
+            ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador", objEve.idColaborador);
 
             return View(objEve);
         }

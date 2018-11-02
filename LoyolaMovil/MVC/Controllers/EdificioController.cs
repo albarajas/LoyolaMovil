@@ -23,7 +23,9 @@ namespace MVC.Controllers
         // GET: Colaborador/Create
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
+            
+
+
             return View();
         }
 
