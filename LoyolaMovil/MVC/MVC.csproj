@@ -204,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\vmListaAreas.cs" />
+    <Compile Include="Models\vmListaAulas.cs" />
     <Compile Include="Models\vmListaNoticias.cs" />
     <Compile Include="Models\vmListaServicios.cs" />
     <Compile Include="Models\wmJsonResult.cs" />

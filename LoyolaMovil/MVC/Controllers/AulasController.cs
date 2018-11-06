@@ -14,8 +14,42 @@ namespace MVC.Controllers
         // GET: Aulas
         public ActionResult Index()
         {
-            var AuBLL = new AulaBLL();
-            List<tblAula> listaAulas = AuBLL.RetrieveAll();
+            var aulasBLL = new AulaBLL();
+            List<tblAula> listaAulas = aulasBLL.RetrieveAll();
+
+            var tipoAulaBLL = new TipoAulaBLL();
+            tblTipoAula objTipoAula;
+
+            var edificioBLL = new EdificioBLL();
+            tblEdificio objEdificio;
+
+            //creo un objeto de la vm para almacenar temporalmente los registros....
+            vmListaAulas objTemp;
+
+            //creo una lista vm para almacenar los objetos....
+            List<vmListaAulas> listaFinal = new List<vmListaAulas>();
+
+            foreach (var i in listaAulas)
+            {
+                objTipoAula = tipoAulaBLL.RetrieveTipoAulaByID(i.idTipoAula);
+                string nombreTipoAula = objTipoAula.tipoAula;
+
+                objEdificio = edificioBLL.RetrieveEdificioByID(i.idEdificio);
+                string nombreEdificio = objEdificio.nombreEdificio;
+
+                objTemp = new vmListaAulas()
+                {
+                    idAula = i.idAula,
+                    nombreAula = i.nombreAula,
+                    idTipoAula = nombreTipoAula,
+                    idEdificio = nombreEdificio,
+                };
+
+                listaFinal.Add(objTemp);
+            }
+
+
+            return View(listaFinal);
 
             return View(listaAulas);
         }
