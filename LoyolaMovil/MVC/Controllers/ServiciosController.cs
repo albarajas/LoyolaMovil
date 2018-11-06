@@ -17,7 +17,27 @@ namespace MVC.Controllers
             var serBLL = new ServiciosBLL();
             List<tblServicio> listaServicios = serBLL.RetrieveAll();
 
-            return View(listaServicios);
+            var aerBLL = new AreasBLL();
+            tblArea objArea;
+
+            vmListaServicios objTemp;
+
+            List<vmListaServicios> listaFinal = new List<vmListaServicios>();
+
+            foreach (var i in listaServicios)
+            {
+                objArea = aerBLL.RetrieveAreaByID(i.idArea);
+                string nombreArea = objArea.nombreArea;
+
+                objTemp = new vmListaServicios()
+                {
+                    idservicios = i.idservicios,
+                    serviciosNombre = i.serviciosNombre,
+                    idArea = nombreArea
+                };
+            }
+
+            return View(listaFinal);
         }
 
         // GET: Servicios/Create

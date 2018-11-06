@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using Entities;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -16,7 +17,28 @@ namespace MVC.Controllers
             var NotBLL= new NoticiaBLL();
             List<tblNoticia> listaNoticias = NotBLL.RetrieveAll();
 
-            return View(listaNoticias);
+            var lvlBLL = new NivelBLL();
+            tblNivel objLvl;
+
+            vmListaNoticias objTemp;
+
+            List<vmListaNoticias> listaFinal = new List<vmListaNoticias>();
+
+            foreach (var i in listaNoticias)
+            {
+                objLvl = lvlBLL.RetrieveNivelByID(i.idNivel);
+                string nivelNombre = objLvl.nivelNombre;
+
+                objTemp = new vmListaNoticias()
+                {
+                    idNoticias = i.idNoticias,
+                    noticiasTitulo = i.noticiasTitulo,
+                    noticiasTexto = i.noticiasTexto,
+                    idNivel = nivelNombre
+                };
+            }
+
+            return View(listaFinal);
         }
 
         
