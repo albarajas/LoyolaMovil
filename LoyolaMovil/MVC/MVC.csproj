@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ColaboradorController.cs" />
     <Compile Include="Controllers\EdificioController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
+    <Compile Include="Controllers\GeneralesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NivelController.cs" />
@@ -247,6 +248,13 @@
     <Content Include="Views\Nivel\Index.cshtml" />
     <Content Include="Views\Nivel\Create.cshtml" />
     <Content Include="Views\Nivel\Edit.cshtml" />
+    <Content Include="Views\Generales\IndexDias.cshtml" />
+    <Content Include="Views\Generales\CreateDias.cshtml" />
+    <Content Include="Views\Generales\EditDias.cshtml" />
+    <Content Include="Views\Generales\IndexSemanas.cshtml" />
+    <Content Include="Views\Generales\CreateSemanas.cshtml" />
+    <Content Include="Views\Generales\EditSemanas.cshtml" />
+    <Content Include="Views\Colaborador\CreateHorarios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

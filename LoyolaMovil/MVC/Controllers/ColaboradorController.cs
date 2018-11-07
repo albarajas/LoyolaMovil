@@ -11,7 +11,7 @@ namespace MVC.Controllers
 {
     public class ColaboradorController : Controller
     {
-        // GET: Edificio
+
         public ActionResult Index()
         {
             var colBLL = new ColaboradorBLL();
@@ -20,14 +20,14 @@ namespace MVC.Controllers
             return View(listaColaboradores);
         }
 
-        // GET: Colaborador/Create
+
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";
             return View();
         }
 
-        // POST: Colaborador/Create
+
         [HttpPost]
         public ActionResult Create(tblColaboradore colaborador)
         {
@@ -143,6 +143,24 @@ namespace MVC.Controllers
             }
 
             return Json(objJson, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult CreateHorarios(int id)
+        {
+            var colBLL = new ColaboradorBLL();
+            tblColaboradore objColaborador = colBLL.RetrieveColaboradorByID(id);
+
+            var diasBLL = new DiaBLL();
+            List<tblDías> listaDias = diasBLL.RetrieveAll();
+
+            ViewBag.idColaborador = objColaborador.idColaborador;
+            ViewBag.NombreColaborador = objColaborador.nombreColaborador;
+            ViewBag.HoraInicial = objColaborador.horarioInicio.ToShortTimeString();
+            ViewBag.HoraFinal = objColaborador.horaFin.ToShortTimeString();
+            ViewBag.idDias = new SelectList(listaDias, "idDias", "dia");
+
+            return View();
         }
     }
 }
