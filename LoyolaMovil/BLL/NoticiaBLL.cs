@@ -89,17 +89,6 @@ namespace BLL
 
 
 
-        public List<tblNoticia> RetrieveNoticiasNivelByID(int id)
-        {
-            List<tblNoticia> Result = null;
-            using (var r = new Repository<tblNoticia>())
-            {
-                Result = r.Filter(p => p.idNivel == id);
-                //select * from tblEventos Where idColaborador == id
-            }
-            return Result;
-        }
-
 
 
         public List<tblNoticia> RetrieveAll()

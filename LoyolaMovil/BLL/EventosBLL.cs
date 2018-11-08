@@ -94,9 +94,6 @@ namespace BLL
         }
 
 
-
-
-
         public bool Update(tblEvento t)
         {
             bool Result = false;
