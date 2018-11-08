@@ -201,6 +201,7 @@
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\TipoAulaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -255,6 +256,9 @@
     <Content Include="Views\Generales\CreateSemanas.cshtml" />
     <Content Include="Views\Generales\EditSemanas.cshtml" />
     <Content Include="Views\Colaborador\CreateHorarios.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

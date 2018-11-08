@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Entities.tblUsuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidosUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoUsuarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contraseniaUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idNivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.permitirCatalogo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidosUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoUsuarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contraseniaUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idNivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.permitirCatalogo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

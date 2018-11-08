@@ -50,8 +50,6 @@ namespace MVC.Controllers
 
 
             return View(listaFinal);
-
-            return View(listaAulas);
         }
 
         // GET: Aulas/Create
