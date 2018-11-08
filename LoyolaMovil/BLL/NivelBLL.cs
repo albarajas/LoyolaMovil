@@ -92,6 +92,20 @@ namespace BLL
             return Result;
         }
 
+
+        public List<tblEdificio> RetrieveNivelEdificioByID(int id)
+        {
+            List<tblEdificio> Result = null;
+            using (var r = new Repository<tblEdificio>())
+            {
+                Result = r.Filter(p => p.idEdificio == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
+
+
+
         public List<tblNivel> RetrieveAll()
         {
             List<tblNivel> Result = null;
