@@ -165,8 +165,8 @@ namespace MVC.Controllers
             ViewBag.HoraInicial = objColaborador.horarioInicio.ToShortTimeString();
             ViewBag.HoraFinal = objColaborador.horaFin.ToShortTimeString();
             ViewBag.idDias = new SelectList(listaDias, "idDias", "dia");
-            ViewBag.idDias = new SelectList(listaSemanas, "idSemana", "semana");
-            ViewBag.idDias = new SelectList(listaDias, "idAnio", "anio");
+            ViewBag.idSemana = new SelectList(listaSemanas, "idSemana", "semana");
+            ViewBag.idAnio = new SelectList(listaAnios, "idAnio", "anio");
 
             return View();
         }
