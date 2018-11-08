@@ -99,19 +99,6 @@ namespace BLL
         }
 
 
-        public List<tblSemana> RetrieveCitasSemanaByID(int id)
-        {
-            List<tblSemana> Result = null;
-            using (var r = new Repository<tblSemana>())
-            {
-                Result = r.Filter(p => p.idSemana == id);
-                //select * from tblEventos Where idColaborador == id
-            }
-            return Result;
-        }
-
-
-
         public List<tblSemana> RetrieveAll()
         {
             List<tblSemana> Result = null;

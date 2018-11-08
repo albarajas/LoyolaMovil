@@ -92,21 +92,6 @@ namespace BLL
             return Result;
         }
 
-
-        public List<tblDías> RetrieveCitasDiaByID(int id)
-        {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
-            {
-                Result = r.Filter(p => p.idDias == id);
-                //select * from tblEventos Where idColaborador == id
-            }
-            return Result;
-        }
-
-
-
-
         public List<tblDías> RetrieveAll()
         {
             List<tblDías> Result = null;
