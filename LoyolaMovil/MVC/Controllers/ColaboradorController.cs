@@ -154,11 +154,19 @@ namespace MVC.Controllers
             var diasBLL = new DiaBLL();
             List<tblDías> listaDias = diasBLL.RetrieveAll();
 
+            var semBLL = new SemanasBLL();
+            List<tblSemana> listaSemanas = semBLL.RetrieveAll();
+
+            var anioBLL = new AnioBLL();
+            List<tblAnio> listaAnios = anioBLL.RetrieveAll();
+
             ViewBag.idColaborador = objColaborador.idColaborador;
             ViewBag.NombreColaborador = objColaborador.nombreColaborador;
             ViewBag.HoraInicial = objColaborador.horarioInicio.ToShortTimeString();
             ViewBag.HoraFinal = objColaborador.horaFin.ToShortTimeString();
             ViewBag.idDias = new SelectList(listaDias, "idDias", "dia");
+            ViewBag.idDias = new SelectList(listaSemanas, "idSemana", "semana");
+            ViewBag.idDias = new SelectList(listaDias, "idAnio", "anio");
 
             return View();
         }

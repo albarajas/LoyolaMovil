@@ -109,23 +109,23 @@ namespace BLL
             return Result;
         }
 
-        public List<tblDías> RetrieveCitaDiaByID(int id)
+        public List<tblCita> RetrieveCitaDiaByID(int id)
         {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
+            List<tblCita> Result = null;
+            using (var r = new Repository<tblCita>())
             {
-                Result = r.Filter(p => p.idDias == id);
+                Result = r.Filter(p => p.idCita == id);
                 //select * from tblEventos Where idColaborador == id
             }
             return Result;
         }
 
-        public List<tblSemana> RetrieveCitasSemanaByID(int id)
+        public List<tblCita> RetrieveCitasSemanaByID(int id)
         {
-            List<tblSemana> Result = null;
-            using (var r = new Repository<tblSemana>())
+            List<tblCita> Result = null;
+            using (var r = new Repository<tblCita>())
             {
-                Result = r.Filter(p => p.idSemana == id);
+                Result = r.Filter(p => p.idCita == id);
                 //select * from tblEventos Where idColaborador == id
             }
             return Result;

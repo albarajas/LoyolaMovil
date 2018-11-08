@@ -102,8 +102,8 @@ namespace MVC.Controllers
                         //significa que tiene eventos....
                     }
 
-                    var NotBLL = new NoticiaBLL();
-                    List<tblNoticia> listaNoticia = NotBLL.RetrieveNoticiasNivelByID(id);
+                    var notBLL = new NoticiaBLL();
+                    List<tblNoticia> listaNoticia = notBLL.RetrieveNoticiasNivelByID(id);
 
                     if (listaNoticia.Count() >= 0)
                     {
