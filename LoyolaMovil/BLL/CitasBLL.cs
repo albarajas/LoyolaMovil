@@ -109,6 +109,14 @@ namespace BLL
             return Result;
         }
 
+
+
+
+
+
+
+
+
         public List<tblCita> RetrieveAll()
         {
             List<tblCita> Result = null;
