@@ -18,14 +18,12 @@
         <div class="card">
             <div class="row justify-content-md-center">
                 <div class="col-md-3">
-                    <div class="form-group">
-                        @Html.Label("Id de Servicios", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.Editor("Id de Servicios", new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.idservicios, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    </div>
+                    <form id="idServicio">
+                        @Html.Hidden("idServicio")
+
+                    </form>
+
+                </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         @Html.Label("id de Area", htmlAttributes: new { @class = "control-label col-md-2" })

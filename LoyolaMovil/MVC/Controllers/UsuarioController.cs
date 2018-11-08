@@ -18,7 +18,7 @@ namespace MVC.Controllers
             List<tblUsuario> listaUsuario = usuBLL.RetrieveAll();
 
             return View(listaUsuario);
-            
+
         }
 
         // GET: Usuario/Create
@@ -29,7 +29,7 @@ namespace MVC.Controllers
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(tblUsuario usuario )
+        public ActionResult Create(tblUsuario usuario)
         {
             var usuBLL = new UsuarioBLL();
             ActionResult Result = null;
@@ -82,26 +82,46 @@ namespace MVC.Controllers
             return Result;
         }
 
-        // GET: Usuario/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
+            var usuBLL = new UsuarioBLL();
+            wmJsonResult objJson = new wmJsonResult();
+
             try
             {
-                // TODO: Add delete logic here
+                tblUsuario Usuario = usuBLL.RetrieveUsuarioByID(id);
 
-                return RedirectToAction("Index");
+                if (Usuario != null)
+                {
+                    bool banderita = usuBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "El usuario se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "El usuario NO se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "El usuario no se encontró";
+                }
             }
             catch
             {
-                return View();
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el usuario";
             }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
     }
 }

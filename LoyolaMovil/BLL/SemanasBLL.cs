@@ -109,5 +109,15 @@ namespace BLL
 
             return Result;
         }
+        public List<tblAnio> RetrieveSemanaAnioByID(int id)
+        {
+            List<tblAnio> Result = null;
+            using (var r = new Repository<tblAnio>())
+            {
+                Result = r.Filter(p => p.idAnio == id);
+                //select * from tblEventos Where idColaborador == id
+            }
+            return Result;
+        }
     }
 }
