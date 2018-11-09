@@ -16,8 +16,35 @@ namespace MVC.Controllers
         {
             var eveBLL = new EventoBLL();
             List<tblEvento> listaEventos = eveBLL.RetrieveAll();
+            var lvlBLL = new NivelBLL();
+            tblNivel objLvl;
+            var ColBLL = new ColaboradorBLL();
+            tblColaboradore objCol;
+            var AulBLL = new AulaBLL();
+            tblAula objAul;
+            vmListaEventos objTemp;
+            List<vmListaEventos> listaFinal = new List<vmListaEventos>();
+            foreach (var i in listaEventos)
+            {
+                objLvl = lvlBLL.RetrieveNivelByID(i.idNivel);
+                string nivelNombre = objLvl.nivelNombre;
+                objCol = ColBLL.RetrieveColaboradorByID(i.idColaborador);
+                string ColaboradorNombre = objCol.nombreColaborador;
+                objAul = AulBLL.RetrieveAulaByID(i.idAula);
+                string AulaNombre = objAul.nombreAula;
+                objTemp = new vmListaEventos()
+                {
+                    idEvento = i.idEvento,
+                    nombreEvento = i.nombreEvento,
+                    descripcionEvento = i.descripcionEvento,
+                    idNivel = nivelNombre,
+                    idAula = AulaNombre,
+                    idColaborador = ColaboradorNombre
+                };
+                listaFinal.Add(objTemp);
+            }
+            return View(listaFinal);
 
-            return View(listaEventos);
         }
 
         // GET: Eventos/Create

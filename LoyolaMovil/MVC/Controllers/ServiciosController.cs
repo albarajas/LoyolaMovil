@@ -35,6 +35,7 @@ namespace MVC.Controllers
                     serviciosNombre = i.serviciosNombre,
                     idArea = nombreArea
                 };
+                listaFinal.Add(objTemp);
             }
 
             return View(listaFinal);

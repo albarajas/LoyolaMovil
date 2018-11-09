@@ -36,6 +36,7 @@ namespace MVC.Controllers
                     noticiasTexto = i.noticiasTexto,
                     idNivel = nivelNombre
                 };
+                listaFinal.Add(objTemp);
             }
 
             return View(listaFinal);
