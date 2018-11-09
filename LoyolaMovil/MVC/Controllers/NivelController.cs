@@ -94,30 +94,6 @@ namespace MVC.Controllers
 
                 if (nivel != null)
                 {
-                    var eveBLL = new EventoBLL();
-                    List<tblEvento> listaEventos = eveBLL.RetrieveEventoNivelByID(id);
-
-                    if (listaEventos.Count() >= 0)
-                    {
-                        //significa que tiene eventos....
-                    }
-
-                    var notBLL = new NoticiaBLL();
-                    List<tblNoticia> listaNoticia = notBLL.RetrieveNoticiasNivelByID(id);
-
-                    if (listaNoticia.Count() >= 0)
-                    {
-                        //significa que tiene noticias asignadas....
-                    }
-
-                    var usuBLL = new UsuarioBLL();
-                    List<tblUsuario> listausuario = usuBLL.RetrieveUsuarioNivelByID(id);
-
-                    if (listausuario.Count() >= 0)
-                    {
-                        //significa que tiene usuarios asignados....
-                    }
-
                     bool banderita = lvlBLL.Delete(id);
 
                     if (banderita == true)

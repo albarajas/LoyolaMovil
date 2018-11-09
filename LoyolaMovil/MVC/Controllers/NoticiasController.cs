@@ -113,25 +113,55 @@ namespace MVC.Controllers
         }
 
         // GET: Noticias/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteNoticias(int id)
         {
-            return View();
-        }
+            var notBLL = new NoticiaBLL();
+            wmJsonResult objJson = new wmJsonResult();
 
-        // POST: Noticias/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
-                // TODO: Add delete logic here
+                tblNoticia noticia = notBLL.RetrieveNoticiaByID(id);
 
-                return RedirectToAction("Index");
+                if (noticia != null)
+                {
+                    var lvlBLL = new NivelBLL();
+                    List<tblNivel> listaNivel = lvlBLL.RetrieveNoticiasNivelByID(id);
+
+                    if (listaNivel.Count() >= 0)
+                    {
+                        //significa que tiene eventos....
+                    }
+
+                    bool banderita = notBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "La noticia se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "La noticia NO se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "La noticia  no se encontró";
+                }
             }
             catch
             {
-                return View();
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el registro";
             }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
         }
     }
-}
+
+      
+    }
+
