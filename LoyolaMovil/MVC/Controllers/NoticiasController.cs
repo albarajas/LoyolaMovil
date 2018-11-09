@@ -46,7 +46,10 @@ namespace MVC.Controllers
         // GET: Noticias/Create
         public ActionResult Create()
         {
-            ViewBag.Nombre = "Texto desde el controlador";
+            var nivelBLL = new NivelBLL();
+            List<tblNivel> listaNivel = nivelBLL.RetrieveAll();
+            ViewBag.idNivel = new SelectList(listaNivel, "idNivel", "nivelNombre");
+
             return View();
         }
 
@@ -78,6 +81,10 @@ namespace MVC.Controllers
         {
             var NotBLL = new NoticiaBLL();
             tblNoticia objNot = NotBLL.RetrieveNoticiaByID(id);
+
+            var nivelBLL = new NivelBLL();
+            List<tblNivel> listaNivel = nivelBLL.RetrieveAll();
+            ViewBag.idNivel = new SelectList(listaNivel, "idNivel", "nivelNombre", objNot.idNivel);
 
             return View(objNot);
         }

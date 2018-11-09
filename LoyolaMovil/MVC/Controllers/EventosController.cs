@@ -32,10 +32,13 @@ namespace MVC.Controllers
             {
                 objLvl = lvlBLL.RetrieveNivelByID(i.idNivel);
                 string nivelNombre = objLvl.nivelNombre;
+
                 objCol = ColBLL.RetrieveColaboradorByID(i.idColaborador);
                 string ColaboradorNombre = objCol.nombreColaborador;
+
                 objAul = AulBLL.RetrieveAulaByID(i.idAula);
                 string AulaNombre = objAul.nombreAula;
+
                 objTemp = new vmListaEventos()
                 {
                     idEvento = i.idEvento,
@@ -61,6 +64,11 @@ namespace MVC.Controllers
             var colaboradorBLL = new ColaboradorBLL();
             List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
             ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador");
+
+            var nivelBLL = new NivelBLL();
+            List<tblNivel> listaNivel = nivelBLL.RetrieveAll();
+            ViewBag.idNivel = new SelectList(listaNivel,"idNivel","nivelNombre");
+
             return View();
         }
 
@@ -92,6 +100,7 @@ namespace MVC.Controllers
         {
             var eveBLL = new EventoBLL();
             tblEvento objEve = eveBLL.RetrievEventoByID(id);
+
             var aulaBLL = new AulaBLL();
             List<tblAula> listaAulas = aulaBLL.RetrieveAll();
             ViewBag.idAula = new SelectList(listaAulas, "idAula", "nombreAula", objEve.idAula);
@@ -99,6 +108,10 @@ namespace MVC.Controllers
             var colaboradorBLL = new ColaboradorBLL();
             List<tblColaboradore> listacolaborador = colaboradorBLL.RetrieveAll();
             ViewBag.idColaborador = new SelectList(listacolaborador, "idcolaborador", "nombreColaborador", objEve.idColaborador);
+
+            var nivelBLL = new NivelBLL();
+            List<tblNivel> listaNivel = nivelBLL.RetrieveAll();
+            ViewBag.idNivel = new SelectList(listaNivel, "idNivel", "nivelNombre",objEve.idNivel);
 
             return View(objEve);
         }

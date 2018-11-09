@@ -50,50 +50,50 @@
 <p>
     @Html.ActionLink("Crear Semanas", "CreateSemanas")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idSemana)
+            @Html.DisplayName("idSemana")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.semana)
+            @Html.DisplayName("semana")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fechaInicial)
+            @Html.DisplayName("Fecha Inicial")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fechaFinal)
+            @Html.DisplayName("FechaFinal")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idAnioSemana)
+            @Html.DisplayName("idAnioSemana")
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idSemana)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.semana)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaInicial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaFinal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idAnioSemana)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idSemana}) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+@foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idSemana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.semana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAnioSemana)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idSemana }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
 <p>

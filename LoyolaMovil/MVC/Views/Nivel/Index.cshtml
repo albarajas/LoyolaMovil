@@ -53,35 +53,38 @@
 <p>
     @Html.ActionLink("Crear Nivel", "Create", null, new { @class = "btn btn-sm btn-info" })
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idNivel)
+            @Html.DisplayName("idNivel")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nivelNombre)
+            @Html.DisplayName("nivelNombre")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idNivel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nivelNombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {id=item.idNivel }) 
-            <a href="javascript:Eliminar(@item.idNivel)">Eliminar</a>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idNivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nivelNombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idNivel })
+                <a href="javascript:Eliminar(@item.idNivel)">Eliminar</a>
+            </td>
+        </tr>
+    }
 
 </table>
 <div class="footer "></div>
 <script type="text/javascript">
+
+
     function Eliminar(idNivel) {
 
         $.ajax({
@@ -89,7 +92,7 @@
             url: "@Url.Action("DeleteNivel", "Nivel")",
             traditional: true,
         data: {
-            id: idEdificio
+            id: idNivel
         },
         success: function (data) {
             if (data.bandera == true) {

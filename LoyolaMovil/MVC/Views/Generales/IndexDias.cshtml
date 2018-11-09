@@ -51,7 +51,7 @@
 <p>
     @Html.ActionLink("Crear Dias", "CreateDias")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.idDias)
@@ -62,21 +62,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idDias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dia)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idDias }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idDias }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
 @Html.ActionLink("Regresar a Colaborador ", "Index", "Colaborador", new { area = "" }, new { @class = "btn btn-sm btn-info" })

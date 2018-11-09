@@ -58,10 +58,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-
-                    @Html.Label("Id Nivel", htmlAttributes: new { @class = "control-label" })
-
-                    @Html.EditorFor(model => model.idNivel, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.Label("Nivel", htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownList("idNivel", null, "Seleccione", new { @class = "form-control input-sm" })
                     @Html.ValidationMessageFor(model => model.idNivel, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -69,16 +67,13 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-
                     @Html.Label("Titulo de la Noticia", htmlAttributes: new { @class = "control-label " })
-
                     @Html.EditorFor(model => model.noticiasTitulo, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.noticiasTitulo, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
         <div class="row">
-            
                 <div class="col-md-10">
                     <div class="form-group">
                         @Html.Label("Noticia", htmlAttributes: new { @class = "control-label " })
