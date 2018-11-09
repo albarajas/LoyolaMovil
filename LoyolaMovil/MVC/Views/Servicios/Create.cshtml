@@ -67,7 +67,7 @@
                         @Html.Label(" Área", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
                             @Html.DropDownList("idArea", null, "Seleccione", new { @class = "form-control input-sm" })
-                            @Html.ValidationMessageFor(model => model.idArea, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.idArea, "campo obligatorio", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
