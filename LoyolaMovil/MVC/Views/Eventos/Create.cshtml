@@ -82,9 +82,9 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            @Html.Label("Id Nivel", htmlAttributes: new { @class = "control-label " })
+                            @Html.Label("Nivel", htmlAttributes: new { @class = "control-label " })
 
-                                @Html.EditorFor(model => model.idNivel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.DropDownList("idNivel", null, "Seleccione", new { @class = "form-control input-sm" })
                                 @Html.ValidationMessageFor(model => model.idNivel, "", new { @class = "text-danger" })
 
                         </div>
