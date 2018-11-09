@@ -9,8 +9,6 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Evento.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/scripts/jquery.datetimepicker.full.min.js"></script>
-<link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
 
 <div class="jumbotron"></div>
 <nav class="navbar navbar-inverse">
@@ -28,8 +26,7 @@
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Edificios">@Html.ActionLink("Edificios", "Index", "Edificio", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="TipoAula">@Html.ActionLink("Tipo Aula", "Index", "TipoAula", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Área", "Index", "Area", new { area = "" }, new { @class = "dropdown-item" })</a>
-                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Nivel", "Index", "Nivel", new { area = "" }, new { @class = "dropdown-item" })</a>
-                 </div>
+                </div>
             </li>
         </ul>
 
@@ -58,35 +55,39 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="card">
-            @Html.Hidden("idEvento")
-
             <div class="row justify-content-md-center">
                 <div class="col-md-2">
-                    <div>
-                        <div class="form-group">
-                            @Html.Label("Aula", htmlAttributes: new { @class = "control-label" })
+                    <form id="idEvento">
+                        @Html.Hidden("idEvento")
+
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.Label("Aula", htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
                             @Html.DropDownList("idAula", null, "Seleccione", new { @class = "form-control input-sm" })
                             @Html.ValidationMessageFor(model => model.idAula, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                        </div>
                     </div>
               
                     <div class="col-md-4">
                         <div class="form-group">
                             @Html.Label("Colaborador", htmlAttributes: new { @class = "control-label " })
-
+                            <div class="col-md-10">
                                 @Html.DropDownList("idColaborador", null, "Seleccione", new { @class = "form-control input-sm" })
                                 @Html.ValidationMessageFor(model => model.idColaborador, "", new { @class = "text-danger" })
-
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             @Html.Label("Id Nivel", htmlAttributes: new { @class = "control-label " })
-
+                            <div class="col-md-10">
                                 @Html.EditorFor(model => model.idNivel, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.idNivel, "", new { @class = "text-danger" })
-
+                            </div>
                         </div>
                     </div>
                   
@@ -164,21 +165,12 @@
             </div>
  }
 
-<div class="footer "></div>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+                
+                <div class="footer "></div>
+                <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script src="~/Scripts/jquery.validate.min.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script text="text/javascript">
+  //codigo que controla todo......
     var Evento = $('#id').val(0);
-
-    $.datetimepicker.setLocale('es');
-    $('#horaInicio').datetimepicker({
-        yearOffset: 0,
-        //datepicker: false,
-        timepicker: true,
-        format: 'd/m/Y',
-        formatDate: 'Y/m/d',
-        minDate: '-1990/01/01',
-        maxDate: '+2020/12/31'
-    });
 </script>

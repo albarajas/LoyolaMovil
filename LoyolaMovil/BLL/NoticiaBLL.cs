@@ -87,6 +87,10 @@ namespace BLL
             return Result;
         }
 
+
+
+
+
         public List<tblNoticia> RetrieveAll()
         {
             List<tblNoticia> Result = null;
@@ -95,16 +99,6 @@ namespace BLL
                 Result = r.RetrieveAll();
             }
 
-            return Result;
-        }
-        public List<tblNoticia> RetrieveNoticiasNivelByID(int id)
-        {
-            List<tblNoticia> Result = null;
-            using (var r = new Repository<tblNoticia>())
-            {
-                Result = r.Filter(p => p.idNoticias == id);
-                //select * from tblEventos Where idColaborador == id
-            }
             return Result;
         }
     }

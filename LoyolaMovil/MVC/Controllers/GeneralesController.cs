@@ -77,52 +77,52 @@ namespace MVC.Controllers
             return Result;
         }
 
-        public JsonResult DeleteDias(int id)
-        {
-            var diasBLL = new DiaBLL();
-            wmJsonResult objJson = new wmJsonResult();
+        //public JsonResult DeleteDias(int id)
+        //{
+        //    var diasBLL = new DiaBLL();
+        //    wmJsonResult objJson = new wmJsonResult();
 
-            try
-            {
-                tblDías dia = diasBLL.RetrieveDiaByID(id);
+        //    try
+        //    {
+        //        tblDías dia = diasBLL.RetrieveDiaByID(id);
 
-                if (dia != null)
-                {
-                    var citaBLL = new CitaBLL();
-                    List<tblCita> listaCitas = citaBLL.RetrieveCitaDiaByID(id);
+        //        if (dia != null)
+        //        {
+        //            var citaBLL = new CitaBLL();
+        //            List<tblCita> listaCitas = citaBLL.RetrieveCitaDiaByID(id);
 
-                    if (listaCitas.Count() >= 0)
-                    {
-                        //Tiene Citas
-                    }
+        //            if (listaCitas.Count() >= 0)
+        //            {
+        //                //Tiene Citas
+        //            }
 
-                    bool banderita = diasBLL.Delete(id);
+        //            bool banderita = diasBLL.Delete(id);
 
-                    if (banderita == true)
-                    {
-                        objJson.bandera = true;
-                        objJson.mensaje = "El dia se eliminó correctamente";
-                    }
-                    else
-                    {
-                        objJson.bandera = false;
-                        objJson.mensaje = "El dia NO se eliminó correctamente";
-                    }
-                }
-                else
-                {
-                    objJson.bandera = false;
-                    objJson.mensaje = "El dia no se encontró";
-                }
-            }
-            catch
-            {
-                objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar el dia";
-            }
+        //            if (banderita == true)
+        //            {
+        //                objJson.bandera = true;
+        //                objJson.mensaje = "El dia se eliminó correctamente";
+        //            }
+        //            else
+        //            {
+        //                objJson.bandera = false;
+        //                objJson.mensaje = "El dia NO se eliminó correctamente";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            objJson.bandera = false;
+        //            objJson.mensaje = "El dia no se encontró";
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        objJson.bandera = false;
+        //        objJson.mensaje = "Ocurrio una excepcion al eliminar el dia";
+        //    }
 
-            return Json(objJson, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(objJson, JsonRequestBehavior.AllowGet);
+        //}
 
         //fin de la seccion del manejo de dias......
 
@@ -131,7 +131,7 @@ namespace MVC.Controllers
 
         public ActionResult IndexSemanas()
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             List<tblSemana> listaSemanas = semBLL.RetrieveAll();
 
             return View(listaSemanas);
@@ -145,7 +145,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult CreateSemanas(tblSemana semana)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             ActionResult Result = null;
 
             try
@@ -166,7 +166,7 @@ namespace MVC.Controllers
 
         public ActionResult EditSemanas(int id)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             tblSemana objsem = semBLL.RetrieveSemanaByID(id);
 
             return View(objsem);
@@ -175,7 +175,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult EditSemanas(tblSemana semana)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             ActionResult Result = null;
 
             try
@@ -194,53 +194,53 @@ namespace MVC.Controllers
             return Result;
         }
 
-        public JsonResult DeleteSemanas(int id)
-        {
-            var semBLL = new SemanasBLL();
-            wmJsonResult objJson = new wmJsonResult();
+        //public JsonResult DeleteSemanas(int id)
+        //{
+        //    var semBLL = new SemanasBLL();
+        //    wmJsonResult objJson = new wmJsonResult();
 
-            try
-            {
-                tblSemana semana = semBLL.RetrieveSemanaByID(id);
+        //    try
+        //    {
+        //        tblSemana semana = semBLL.RetrieveSemanaByID(id);
 
-                if (semana != null)
-                {
-                    var citaBLL = new CitaBLL();
-                    List<tblCita> listaCitas = citaBLL.RetrieveCitasSemanaByID(id);
+        //        if (semana != null)
+        //        {
+        //            var citaBLL = new CitaBLL();
+        //            List<tblCita> listaCitas = citaBLL.RetrieveCitasSemanaByID(id);
 
-                    if (listaCitas.Count() >= 0)
-                    {
-                        //Tiene Citas
-                    }
+        //            if (listaCitas.Count() >= 0)
+        //            {
+        //                //Tiene Citas
+        //            }
 
-                    bool banderita = semBLL.Delete(id);
+        //            bool banderita = semBLL.Delete(id);
 
-                    if (banderita == true)
-                    {
-                        objJson.bandera = true;
-                        objJson.mensaje = "La semana se eliminó correctamente";
-                    }
-                    else
-                    {
-                        objJson.bandera = false;
-                        objJson.mensaje = "La semana NO se eliminó correctamente";
-                    }
+        //            if (banderita == true)
+        //            {
+        //                objJson.bandera = true;
+        //                objJson.mensaje = "La semana se eliminó correctamente";
+        //            }
+        //            else
+        //            {
+        //                objJson.bandera = false;
+        //                objJson.mensaje = "La semana NO se eliminó correctamente";
+        //            }
 
-                }
-                else
-                {
-                    objJson.bandera = false;
-                    objJson.mensaje = "La semana no se encontró";
-                }
-            }
-            catch
-            {
-                objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar la semana";
-            }
+        //        }
+        //        else
+        //        {
+        //            objJson.bandera = false;
+        //            objJson.mensaje = "La semana no se encontró";
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        objJson.bandera = false;
+        //        objJson.mensaje = "Ocurrio una excepcion al eliminar la semana";
+        //    }
 
-            return Json(objJson, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(objJson, JsonRequestBehavior.AllowGet);
+        //}
 
         // fin de la seccion del maejo de las semasna....
 
@@ -301,7 +301,7 @@ namespace MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     anioBLL.Update(anio);
-                    Result = RedirectToAction("IndexAnio");
+                    Result = RedirectToAction("Index");
                 }
             }
             catch
@@ -312,52 +312,52 @@ namespace MVC.Controllers
             return Result;
         }
 
-        public JsonResult DeleteAnio(int id)
-        {
-            var anioBLL = new AnioBLL();
-            wmJsonResult objJson = new wmJsonResult();
+        //public JsonResult DeleteAnio(int id)
+        //{
+        //    var anioBLL = new AnioBLL();
+        //    wmJsonResult objJson = new wmJsonResult();
 
-            try
-            {
-                tblAnio anio = anioBLL.RetrieveAnioByID(id);
+        //    try
+        //    {
+        //        tblAnio anio = anioBLL.RetrieveAnioByID(id);
 
-                if (anio != null)
-                {
-                    var semBLL = new SemanasBLL();
-                    List<tblSemana> listaSemana = semBLL.RetrieveSemanaAnioByID(id);
+        //        if (anio != null)
+        //        {
+        //            var semBLL = new SemanasBLL();
+        //            List<tblSemana> listaSemana = semBLL.RetrieveSemanaAnioByID(id);
 
-                    if (listaSemana.Count() >= 0)
-                    {
-                        //Tiene Semanas
-                    }
+        //            if (listaSemana.Count() >= 0)
+        //            {
+        //                //Tiene Semanas
+        //            }
 
-                    bool banderita = anioBLL.Delete(id);
+        //            bool banderita = anioBLL.Delete(id);
 
-                    if (banderita == true)
-                    {
-                        objJson.bandera = true;
-                        objJson.mensaje = "El anio se eliminó correctamente";
-                    }
-                    else
-                    {
-                        objJson.bandera = false;
-                        objJson.mensaje = "El anio NO se eliminó correctamente";
-                    }
+        //            if (banderita == true)
+        //            {
+        //                objJson.bandera = true;
+        //                objJson.mensaje = "El anio se eliminó correctamente";
+        //            }
+        //            else
+        //            {
+        //                objJson.bandera = false;
+        //                objJson.mensaje = "El anio NO se eliminó correctamente";
+        //            }
 
-                }
-                else
-                {
-                    objJson.bandera = false;
-                    objJson.mensaje = "El anio no se encontró";
-                }
-            }
-            catch
-            {
-                objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar el anio";
-            }
+        //        }
+        //        else
+        //        {
+        //            objJson.bandera = false;
+        //            objJson.mensaje = "El anio no se encontró";
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        objJson.bandera = false;
+        //        objJson.mensaje = "Ocurrio una excepcion al eliminar el anio";
+        //    }
 
-            return Json(objJson, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(objJson, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

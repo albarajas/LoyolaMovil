@@ -8,18 +8,18 @@ using Entities;
 
 namespace BLL
 {
-    public class SemanasBLL
+    public class MesBLL
     {
-        public tblSemana Create(tblSemana t)
+        public tblMes Create(tblMes t)
         {
-            tblSemana Result = null;
-            using (var r = new Repository<tblSemana>())
+            tblMes Result = null;
+            using (var r = new Repository<tblMes>())
             {
-                tblSemana ba = r.Retrieve(p => p.semana == t.semana
+                tblMes ba = r.Retrieve(p => p.mes == t.mes
                 && p.fechaInicial == t.fechaInicial
                 && p.fechaFinal == t.fechaFinal
-                && p.idAnioSemana == t.idAnioSemana
-                && p.idSemana == t.idSemana);
+                && p.idAnioMes == t.idAnioMes
+                && p.idMes == t.idMes);
 
                 if (ba == null)
                 {
@@ -27,7 +27,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("La semana ya existe."));
+                    throw (new Exception("El mes ya existe."));
                 }
             }
             return Result;
@@ -45,26 +45,26 @@ namespace BLL
         //}
 
 
-        public tblSemana RetrieveSemanaByID(int id)
+        public tblMes RetrieveMesByID(int id)
         {
-            tblSemana Result = null;
-            using (var r = new Repository<tblSemana>())
+            tblMes Result = null;
+            using (var r = new Repository<tblMes>())
             {
-                Result = r.Retrieve(p => p.idSemana == id);
+                Result = r.Retrieve(p => p.idMes == id);
             }
             return Result;
         }
 
-        public bool Update(tblSemana t)
+        public bool Update(tblMes t)
         {
             bool Result = false;
-            using (var r = new Repository<tblSemana>())
+            using (var r = new Repository<tblMes>())
             {
-                tblSemana ba = r.Retrieve(p => p.semana == t.semana
+                tblMes ba = r.Retrieve(p => p.mes == t.mes
                 && p.fechaInicial == t.fechaInicial
                 && p.fechaFinal == t.fechaFinal
-                && p.idAnioSemana == t.idAnioSemana
-                && p.idSemana != t.idSemana);
+                && p.idAnioMes == t.idAnioMes
+                && p.idMes != t.idMes);
 
                 if (ba == null)
                 {
@@ -72,7 +72,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("No se pudo actualizar la semana seleccionada."));
+                    throw (new Exception("No se pudo actualizar el mes seleccionado."));
                 }
             }
             return Result;
@@ -81,11 +81,11 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblSemana obj = RetrieveSemanaByID(id);
+            tblSemana obj = RetrieveMesByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblSemana>())
+                using (var r = new Repository<tblMes>())
                 {
                     Result = r.Delete(obj);
                 }
@@ -99,22 +99,22 @@ namespace BLL
         }
 
 
-        public List<tblSemana> RetrieveAll()
+        public List<tblMes> RetrieveAll()
         {
-            List<tblSemana> Result = null;
-            using (var r = new Repository<tblSemana>())
+            List<tblMes> Result = null;
+            using (var r = new Repository<tblMes>())
             {
                 Result = r.RetrieveAll();
             }
 
             return Result;
         }
-        public List<tblSemana> RetrieveSemanaAnioByID(int id)
+        public List<tblMes> RetrieveMesAnioByID(int id)
         {
-            List<tblSemana> Result = null;
-            using (var r = new Repository<tblSemana>())
+            List<tblMes> Result = null;
+            using (var r = new Repository<tblMes>())
             {
-                Result = r.Filter(p => p.idSemana == id);
+                Result = r.Filter(p => p.idAnio == id);
                 //select * from tblEventos Where idColaborador == id
             }
             return Result;
