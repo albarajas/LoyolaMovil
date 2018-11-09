@@ -26,6 +26,7 @@
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Edificios">@Html.ActionLink("Edificios", "Index", "Edificio", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="TipoAula">@Html.ActionLink("Tipo Aula", "Index", "TipoAula", new { area = "" }, new { @class = "dropdown-item" })</a>
                     <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Área", "Index", "Area", new { area = "" }, new { @class = "dropdown-item" })</a>
+                    <a role="button" aria-haspopup="true" aria-expanded="false" id="Area">@Html.ActionLink("Nivel", "Index", "Nivel", new { area = "" }, new { @class = "dropdown-item" })</a>
                 </div>
             </li>
         </ul>
@@ -47,6 +48,10 @@
 
 <p>
     @Html.ActionLink("Nuevo Usuario", "Create", null, new { @class = "btn btn-sm btn-info" })
+    @Html.ActionLink("Semanas", "IndexSemanas", "Generales", new { area = "" }, new { @class = "btn btn-sm btn-info" })
+    @Html.ActionLink("Dias", "IndexDias", "Generales", new { area = "" }, new { @class = "btn btn-sm btn-info" })
+
+
 </p>
 <table class="table table-striped table-bordered">
     <tr>
@@ -105,6 +110,7 @@
                 <ul>
                     <li>@Html.ActionLink("Editar", "Edit", new { id = item.idColaborador })</li>
                     <li><a href="javascript:Eliminar(@item.idColaborador)">Eliminar</a></li>
+                    <li>@Html.ActionLink("Horario", "CreateHorarios", new { id = item.idColaborador })</li>
                 </ul>
                      @*</ul>*@
             </div>

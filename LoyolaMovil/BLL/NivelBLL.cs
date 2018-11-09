@@ -104,19 +104,6 @@ namespace BLL
             return Result;
         }
 
-
-        public List<tblNivel> RetrieveNoticiasNivelByID(int id)
-        {
-            List<tblNivel> Result = null;
-            using (var r = new Repository<tblNivel>())
-            {
-                Result = r.Filter(p => p.idNivel == id);
-                //select * from tblEventos Where idColaborador == id
-            }
-            return Result;
-        }
-
-
         public List<tblNivel> RetrieveAll()
         {
             List<tblNivel> Result = null;

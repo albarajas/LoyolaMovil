@@ -46,7 +46,6 @@
                 },
                 success: function (data) {
                     if (data.bandera == true) {
-                        alert('Bienvenido ' + data.mensaje);
                         window.location.href = '@Url.Action("Index","Principal")'
                     } else {
                         alert(data.mensaje);
