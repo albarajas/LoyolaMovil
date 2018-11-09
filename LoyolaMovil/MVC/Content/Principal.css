@@ -1,49 +1,33 @@
-﻿
-
-
-
-.jumbotron  {
-    
-    background-repeat:no-repeat;
-      padding: 80px;
-      background-attachment:scroll;
-     background-image: url(/img/Encabezado.jpg) ;
-      background-position:center;
-      
+﻿.jumbotron {
+    background-repeat: no-repeat;
+    padding: 80px;
+    background-attachment: scroll;
+    background-image: url(/img/Encabezado.jpg);
+    background-position: center;
 }
 
-
-.card{
-     width: 100%;
+.card {
+    width: 100%;
     display: block;
     margin-bottom: 20px;
-
-
-
 }
 
-.nav-item{
-
-   justify-content:center;
-}
-      
-
-.col-sm-3{
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  margin: 0 0 0 23px;
-  text-align: center;
-  background-color: #F2F3F4;
+.nav-item {
+    justify-content: center;
 }
 
+.col-sm-3 {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin: 0 0 0 23px;
+    text-align: center;
+    background-color: #F2F3F4;
+}
 
-.footer  {
-    
-      padding: 70px;
-       background-image: url(/img/Loyolaf.jpg);
-       background-position:center;
-         background-repeat:no-repeat;
-         background-attachment:scroll;
-    }
-
-
+.footer {
+    padding: 70px;
+    background-image: url(/img/Loyolaf.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
