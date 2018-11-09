@@ -16,12 +16,16 @@ namespace MVC.Controllers
         {
             var eveBLL = new EventoBLL();
             List<tblEvento> listaEventos = eveBLL.RetrieveAll();
+
             var lvlBLL = new NivelBLL();
             tblNivel objLvl;
+
             var ColBLL = new ColaboradorBLL();
             tblColaboradore objCol;
+
             var AulBLL = new AulaBLL();
             tblAula objAul;
+
             vmListaEventos objTemp;
             List<vmListaEventos> listaFinal = new List<vmListaEventos>();
             foreach (var i in listaEventos)

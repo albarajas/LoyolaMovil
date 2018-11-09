@@ -62,7 +62,7 @@ namespace MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     NotBLL.Create(Noticias);
-                    Result = RedirectToAction("Index");
+                    Result = RedirectToAction("Noticias");
                 }
             }
             catch
@@ -94,7 +94,7 @@ namespace MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     NotBLL.Update(Noticias);
-                    Result = RedirectToAction("Index");
+                    Result = RedirectToAction("Noticias");
                 }
             }
             catch
