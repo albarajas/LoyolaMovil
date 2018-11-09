@@ -41,5 +41,9 @@ namespace Entities
         public virtual DbSet<tblTipoAula> tblTipoAulas { get; set; }
         public virtual DbSet<tblUsuario> tblUsuarios { get; set; }
         public virtual DbSet<tblAnio> tblAnios { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tblAnioMe> tblAnioMes { get; set; }
+        public virtual DbSet<tblDisponibilidad> tblDisponibilidads { get; set; }
+        public virtual DbSet<tblMe> tblMes { get; set; }
     }
 }

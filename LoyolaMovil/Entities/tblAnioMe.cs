@@ -12,19 +12,13 @@ namespace Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCita
+    public partial class tblAnioMe
     {
-        public int idCita { get; set; }
-        public int idColaborador { get; set; }
-        public int idHorario { get; set; }
-        public int idSemanas { get; set; }
-        public int idDias { get; set; }
+        public int idAnioMes { get; set; }
+        public int idAnio { get; set; }
         public int idMes { get; set; }
     
-        public virtual tblColaboradore tblColaboradore { get; set; }
-        public virtual tblDías tblDías { get; set; }
-        public virtual tblHorario tblHorario { get; set; }
-        public virtual tblSemana tblSemana { get; set; }
+        public virtual tblAnio tblAnio { get; set; }
         public virtual tblMe tblMe { get; set; }
     }
 }

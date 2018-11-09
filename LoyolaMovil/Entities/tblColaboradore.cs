@@ -20,6 +20,7 @@ namespace Entities
             this.tblAreas = new HashSet<tblArea>();
             this.tblCitas = new HashSet<tblCita>();
             this.tblEventos = new HashSet<tblEvento>();
+            this.tblDisponibilidads = new HashSet<tblDisponibilidad>();
         }
     
         public int idColaborador { get; set; }
@@ -36,5 +37,7 @@ namespace Entities
         public virtual ICollection<tblCita> tblCitas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEvento> tblEventos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblDisponibilidad> tblDisponibilidads { get; set; }
     }
 }

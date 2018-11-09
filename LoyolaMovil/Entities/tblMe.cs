@@ -12,21 +12,24 @@ namespace Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class tblAnio
+    public partial class tblMe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblAnio()
+        public tblMe()
         {
-            this.tblSemanas = new HashSet<tblSemana>();
             this.tblAnioMes = new HashSet<tblAnioMe>();
+            this.tblCitas = new HashSet<tblCita>();
         }
     
-        public int idAnio { get; set; }
-        public int anio { get; set; }
+        public int idMes { get; set; }
+        public string Mes { get; set; }
+        public System.DateTime fechaInicial { get; set; }
+        public System.DateTime fechaFinal { get; set; }
+        public int idAnioMes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSemana> tblSemanas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAnioMe> tblAnioMes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCita> tblCitas { get; set; }
     }
 }
