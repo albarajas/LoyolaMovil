@@ -17,14 +17,12 @@ namespace Entities
         public int idCita { get; set; }
         public int idColaborador { get; set; }
         public int idHorario { get; set; }
-        public int idSemanas { get; set; }
-        public int idDias { get; set; }
         public int idMes { get; set; }
+        public int idDias { get; set; }
     
         public virtual tblColaboradore tblColaboradore { get; set; }
         public virtual tblDías tblDías { get; set; }
         public virtual tblHorario tblHorario { get; set; }
-        public virtual tblSemana tblSemana { get; set; }
         public virtual tblMe tblMe { get; set; }
     }
 }

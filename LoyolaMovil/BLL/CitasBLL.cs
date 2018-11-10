@@ -17,7 +17,7 @@ namespace BLL
             {
                 tblCita ba = r.Retrieve(p => p.idColaborador == t.idColaborador
                 && p.idHorario == t.idHorario
-                && p.idSemanas == t.idSemanas
+                && p.idMes == t.idMes
                 && p.idDias == t.idDias
                 && p.idCita == t.idCita);
 
@@ -62,7 +62,7 @@ namespace BLL
             {
                 tblCita ba = r.Retrieve(p => p.idColaborador == t.idColaborador
                 && p.idHorario == t.idHorario
-                && p.idSemanas == t.idSemanas
+                && p.idMes == t.idMes
                 && p.idDias == t.idDias
                 && p.idCita != t.idCita);
 

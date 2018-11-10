@@ -106,5 +106,16 @@ namespace BLL
 
             return Result;
         }
+
+        public List<tblMe> RetrieveAnioMesByID(int id)
+        {
+            List<tblMe> Result = null;
+            using (var r = new Repository<tblMe>())
+            {
+                Result = r.Filter(p=>p.idAnioMes==id);
+            }
+
+            return Result;
+        }
     }
 }

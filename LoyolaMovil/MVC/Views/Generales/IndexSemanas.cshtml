@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Entities.tblSemana>
+﻿@model IEnumerable<Entities.tblMe>
 
 @{
     ViewBag.Title = "IndexSemanas";
@@ -53,7 +53,7 @@
 <table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayName("idSemana")
+            @Html.DisplayName("idMes")
         </th>
         <th>
             @Html.DisplayName("semana")
@@ -73,10 +73,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.idSemana)
+                @Html.DisplayFor(modelItem => item.idMes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.semana)
+                @Html.DisplayFor(modelItem => item.Mes)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fechaInicial)
@@ -85,10 +85,10 @@
                 @Html.DisplayFor(modelItem => item.fechaFinal)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idAnioSemana)
+                @Html.DisplayFor(modelItem => item.idAnioMes)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idSemana }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.idMes }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

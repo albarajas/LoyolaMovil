@@ -103,9 +103,6 @@
     <Compile Include="tblNoticia.cs">
       <DependentUpon>LoyolaDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblSemana.cs">
-      <DependentUpon>LoyolaDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblServicio.cs">
       <DependentUpon>LoyolaDBModel.tt</DependentUpon>
     </Compile>

@@ -28,7 +28,6 @@ namespace Entities
         public virtual DbSet<tblArea> tblAreas { get; set; }
         public virtual DbSet<tblAreas_Servicios> tblAreas_Servicios { get; set; }
         public virtual DbSet<tblAula> tblAulas { get; set; }
-        public virtual DbSet<tblCita> tblCitas { get; set; }
         public virtual DbSet<tblColaboradore> tblColaboradores { get; set; }
         public virtual DbSet<tblDías> tblDías { get; set; }
         public virtual DbSet<tblEdificio> tblEdificios { get; set; }
@@ -36,7 +35,6 @@ namespace Entities
         public virtual DbSet<tblHorario> tblHorarios { get; set; }
         public virtual DbSet<tblNivel> tblNivels { get; set; }
         public virtual DbSet<tblNoticia> tblNoticias { get; set; }
-        public virtual DbSet<tblSemana> tblSemanas { get; set; }
         public virtual DbSet<tblServicio> tblServicios { get; set; }
         public virtual DbSet<tblTipoAula> tblTipoAulas { get; set; }
         public virtual DbSet<tblUsuario> tblUsuarios { get; set; }
@@ -45,5 +43,6 @@ namespace Entities
         public virtual DbSet<tblAnioMe> tblAnioMes { get; set; }
         public virtual DbSet<tblDisponibilidad> tblDisponibilidads { get; set; }
         public virtual DbSet<tblMe> tblMes { get; set; }
+        public virtual DbSet<tblCita> tblCitas { get; set; }
     }
 }

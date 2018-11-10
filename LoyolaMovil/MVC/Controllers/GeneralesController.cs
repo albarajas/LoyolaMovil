@@ -131,8 +131,8 @@ namespace MVC.Controllers
 
         public ActionResult IndexSemanas()
         {
-            var semBLL = new SemanasBLL();
-            List<tblSemana> listaSemanas = semBLL.RetrieveAll();
+            var semBLL = new MesBLL();
+            List<tblMe> listaSemanas = semBLL.RetrieveAll();
 
             return View(listaSemanas);
         }
@@ -143,9 +143,9 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateSemanas(tblSemana semana)
+        public ActionResult CreateSemanas(tblMe semana)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             ActionResult Result = null;
 
             try
@@ -166,16 +166,16 @@ namespace MVC.Controllers
 
         public ActionResult EditSemanas(int id)
         {
-            var semBLL = new SemanasBLL();
-            tblSemana objsem = semBLL.RetrieveSemanaByID(id);
+            var semBLL = new MesBLL();
+            tblMe objsem = semBLL.RetrieveMesByID(id);
 
             return View(objsem);
         }
 
         [HttpPost]
-        public ActionResult EditSemanas(tblSemana semana)
+        public ActionResult EditSemanas(tblMe semana)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             ActionResult Result = null;
 
             try
@@ -196,12 +196,12 @@ namespace MVC.Controllers
 
         public JsonResult DeleteSemanas(int id)
         {
-            var semBLL = new SemanasBLL();
+            var semBLL = new MesBLL();
             wmJsonResult objJson = new wmJsonResult();
 
             try
             {
-                tblSemana semana = semBLL.RetrieveSemanaByID(id);
+                tblMe semana = semBLL.RetrieveMesByID(id);
 
                 if (semana != null)
                 {
@@ -323,8 +323,8 @@ namespace MVC.Controllers
 
                 if (anio != null)
                 {
-                    var semBLL = new SemanasBLL();
-                    List<tblSemana> listaSemana = semBLL.RetrieveSemanaAnioByID(id);
+                    var semBLL = new MesBLL();
+                    List<tblMe> listaSemana = semBLL.RetrieveAnioMesByID(id);
 
                     if (listaSemana.Count() >= 0)
                     {

@@ -154,8 +154,8 @@ namespace MVC.Controllers
             var diasBLL = new DiaBLL();
             List<tblDías> listaDias = diasBLL.RetrieveAll();
 
-            var semBLL = new SemanasBLL();
-            List<tblSemana> listaSemanas = semBLL.RetrieveAll();
+            var mesBLL = new MesBLL();
+            List<tblMe> listaSemanas = mesBLL.RetrieveAll();
 
             var anioBLL = new AnioBLL();
             List<tblAnio> listaAnios = anioBLL.RetrieveAll();
@@ -165,7 +165,7 @@ namespace MVC.Controllers
             ViewBag.HoraInicial = objColaborador.horarioInicio.ToShortTimeString();
             ViewBag.HoraFinal = objColaborador.horaFin.ToShortTimeString();
             ViewBag.idDias = new SelectList(listaDias, "idDias", "dia");
-            ViewBag.idSemana = new SelectList(listaSemanas, "idSemana", "semana");
+            ViewBag.idMes = new SelectList(listaSemanas, "idMes", "Mes");
             ViewBag.idAnio = new SelectList(listaAnios, "idAnio", "anio");
 
             return View();
