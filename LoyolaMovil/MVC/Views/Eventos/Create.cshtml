@@ -166,11 +166,30 @@
     $.datetimepicker.setLocale('es');
     $('#horaInicio').datetimepicker({
         yearOffset: 0,
-        //datepicker: false,
+        datepicker: false,
         timepicker: true,
+        timeFormat: 'h:mm:s p',
+
+
+    });
+
+    $.datetimepicker.setLocale('es');
+    $('#horaFinal').datetimepicker({
+        yearOffset: 0,
+        datepicker: false,
+        timepicker: true,
+        timeFormat: 'h:mm:s p',
+    });
+
+    $.datetimepicker.setLocale('es');
+    $('#fechaEvento').datetimepicker({
+        yearOffset: 0,
+        datepicker: true,
+        timepicker: false,
         format: 'd/m/Y',
         formatDate: 'Y/m/d',
         minDate: '-1990/01/01',
         maxDate: '+2020/12/31'
     });
+
 </script>

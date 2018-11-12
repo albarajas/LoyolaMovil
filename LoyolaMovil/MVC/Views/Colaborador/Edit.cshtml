@@ -9,6 +9,8 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Colaborador.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/scripts/jquery.datetimepicker.full.min.js"></script>
+<link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
 
 
 <div class="jumbotron"></div>
@@ -97,14 +99,14 @@
             <div class="row justify-content-md-center">
                 <div class="col-md-4">
                     <div class="form-group">
-                        @Html.Label("Horario de Inicio", htmlAttributes: new { @class = "control-label" })
+                        @Html.Label("Horario de Entrada", htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.horarioInicio, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.horarioInicio, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        @Html.Label("Horario de Entrada", htmlAttributes: new { @class = "control-label " })
+                        @Html.Label("Horario de Salida", htmlAttributes: new { @class = "control-label " })
                         @Html.EditorFor(model => model.horaFin, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.horaFin, "", new { @class = "text-danger" })
                     </div>
@@ -136,6 +138,25 @@
 
             
             <div class="footer "></div>
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script src="~/Scripts/jquery.validate.min.js"></script>
             <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script text="text/javascript">
+ 
+    $.datetimepicker.setLocale('es');
+    $('#horarioInicio').datetimepicker({
+        yearOffset: 0,
+        datepicker: false,
+        timepicker: true,
+        timeFormat: 'h:mm:s p',
+    });
+
+    $.datetimepicker.setLocale('es');
+    $('#horaFin').datetimepicker({
+        yearOffset: 0,
+        datepicker: false,
+        timepicker: true,
+        timeFormat: 'h:mm:s p',
+    });
+
+</script>

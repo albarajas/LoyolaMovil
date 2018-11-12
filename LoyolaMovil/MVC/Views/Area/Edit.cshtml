@@ -10,6 +10,8 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Area.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/scripts/jquery.datetimepicker.full.min.js"></script>
+<link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
 
 <div class="jumbotron"></div>
 <nav class="navbar navbar-inverse">
@@ -121,6 +123,26 @@
 
 
             <div class="footer "></div>
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
             <script src="~/Scripts/jquery.validate.min.js"></script>
             <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script text="text/javascript">
+  //codigo que controla todo......
+    var Area = $('#idArea').val(0);
+
+    $.datetimepicker.setLocale('es');
+    $('#horaInicio').datetimepicker({
+        yearOffset: 0,
+        datepicker: false,
+        timepicker: true,
+        timeFormat: 'h:mm:s p',
+    });
+
+    $.datetimepicker.setLocale('es');
+    $('#horaFinal').datetimepicker({
+        yearOffset: 0,
+        datepicker: false,
+        timepicker: true,
+        timeFormat: 'h:mm:s p',
+    });
+</script>
