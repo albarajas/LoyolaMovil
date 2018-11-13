@@ -18,15 +18,12 @@
         <div class="card">
             <div class="row justify-content-md-center">
                 <div class="col-md-3">
-                    <form id="idServicio">
-                        @Html.Hidden("idServicio")
-
-                    </form>
+                        @Html.Hidden("idservicios")
 
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        @Html.Label("id de Area", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.Label("Area", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.DropDownList("idArea", null, "Seleccione", new { @class = "form-control input-sm" })
                             @Html.ValidationMessageFor(model => model.idArea, "", new { @class = "text-danger" })

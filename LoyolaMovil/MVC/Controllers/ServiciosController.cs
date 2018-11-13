@@ -80,7 +80,7 @@ namespace MVC.Controllers
             tblServicio objSer = serBLL.RetrieveServicioByID(id);
             var areaBLL = new AreasBLL();
             List<tblArea> listaAreas = areaBLL.RetrieveAll();
-            ViewBag.idArea = new SelectList(listaAreas, "idArea", "nombreArea", objSer.idservicios);
+            ViewBag.idArea = new SelectList(listaAreas, "idArea", "nombreArea", objSer.idArea);
             return View(objSer);
         }
 
@@ -90,9 +90,9 @@ namespace MVC.Controllers
         {
             var serBLL = new ServiciosBLL();
             ActionResult Result = null;
-
             try
             {
+
                 if (ModelState.IsValid)
                 {
                     serBLL.Update(servicio);
