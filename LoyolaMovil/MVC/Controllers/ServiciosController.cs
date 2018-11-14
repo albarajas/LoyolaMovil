@@ -65,10 +65,15 @@ namespace MVC.Controllers
                     serBLL.Create(servicio);
                     Result = RedirectToAction("Index");
                 }
+                else
+                {
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
+                Result = RedirectToAction("Index");
+
             }
             return Result;
         }

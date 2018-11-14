@@ -15,7 +15,7 @@ namespace BLL
             tblServicio Result = null;
             using (var r = new Repository<tblServicio>())
             {
-                tblServicio ba = r.Retrieve(p => p.idservicios == t.idservicios
+                tblServicio ba = r.Retrieve(p => p.idservicios != t.idservicios
                 && p.serviciosNombre == t.serviciosNombre
                 && p.idArea == t.idArea);
 
