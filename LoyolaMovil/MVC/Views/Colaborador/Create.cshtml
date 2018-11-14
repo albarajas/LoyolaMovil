@@ -134,28 +134,13 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 @*hora y fecha*@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Timepicker example</title>
-</head>
-<body>
-    <input id="timepicker" width="276" />
-    <script>
-        $('#horarioInicio').timepicker();
-    </script>
-</body>
-</html>
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Timepicker example</title>
-</head>
-<body>
-    <input id="timepicker" width="276" />
-    <script>
-        $('#horaFin').timepicker();
-    </script>
-</body>
-</html>
+<script text="text/javascript">
+
+    $.datetimepicker.setLocale('es');
+    $('#horarioInicio').timepicker();
+    $('#horaFin').timepicker();
+
+</script>
+
+

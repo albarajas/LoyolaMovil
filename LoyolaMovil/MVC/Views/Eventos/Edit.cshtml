@@ -160,46 +160,14 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-    @*hora y fecha*@
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Timepicker example</title>
-    </head>
-    <body>
-        <input id="timepicker" width="276" />
-        <script>
-            $('#horaInicio').timepicker();
-        </script>
-    </body>
-</html>
+@*hora y fecha*@
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Timepicker example</title>
-</head>
-<body>
-    <input id="timepicker" width="276" />
-    <script>
-        $('#horaFinal').timepicker();
-    </script>
-</body>
-</html>
-
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Datepicker example</title>
-</head>
-<body>
-    <input id="datepicker" width="276" />
-    <script>
-        $('#fechaEvento').datepicker();
-    </script>
-</body>
-</html>
 <script text="text/javascript">
-    //codigo que controla todo......
+  //codigo que controla todo......
     var Evento = $('#idEvento').val(0);
+
+    $('#horaInicio').timepicker();
+    $('#horaFinal').timepicker();
+    $('#fechaEvento').datepicker();
+
 </script>
