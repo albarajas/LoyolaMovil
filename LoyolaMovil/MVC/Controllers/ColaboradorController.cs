@@ -152,7 +152,7 @@ namespace MVC.Controllers
             tblColaboradore objColaborador = colBLL.RetrieveColaboradorByID(id);
 
             var diasBLL = new DiaBLL();
-            List<tblDías> listaDias = diasBLL.RetrieveAll();
+            List<tblDia> listaDias = diasBLL.RetrieveAll();
 
             var mesBLL = new MesBLL();
             List<tblMe> listaSemanas = mesBLL.RetrieveAll();

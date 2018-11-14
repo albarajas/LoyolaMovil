@@ -10,12 +10,12 @@ namespace BLL
 {
     public class DiaBLL
     {
-        public tblDías Create(tblDías t)
+        public tblDia Create(tblDia t)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblDia Result = null;
+            using (var r = new Repository<tblDia>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
+                tblDia ba = r.Retrieve(p => p.idDias == t.idDias
                 && p.dia == t.dia);
 
                 if (ba == null)
@@ -24,7 +24,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("El día ya existe."));
+                    throw (new Exception("El dia ya existe."));
                 }
             }
             return Result;
@@ -42,22 +42,22 @@ namespace BLL
         //}
 
 
-        public tblDías RetrieveDiaByID(int id)
+        public tblDia RetrieveDiaByID(int id)
         {
-            tblDías Result = null;
-            using (var r = new Repository<tblDías>())
+            tblDia Result = null;
+            using (var r = new Repository<tblDia>())
             {
                 Result = r.Retrieve(p => p.idDias == id);
             }
             return Result;
         }
 
-        public bool Update(tblDías t)
+        public bool Update(tblDia t)
         {
             bool Result = false;
-            using (var r = new Repository<tblDías>())
+            using (var r = new Repository<tblDia>())
             {
-                tblDías ba = r.Retrieve(p => p.idDias == t.idDias
+                tblDia ba = r.Retrieve(p => p.idDias == t.idDias
                 && p.dia == t.dia);
 
                 if (ba == null)
@@ -66,7 +66,7 @@ namespace BLL
                 }
                 else
                 {
-                    throw (new Exception("No se pudo actualizar el día seleccionado."));
+                    throw (new Exception("No se pudo actualizar el dia seleccionado."));
                 }
             }
             return Result;
@@ -75,27 +75,27 @@ namespace BLL
         public bool Delete(int id)
         {
             bool Result = false;
-            tblDías obj = RetrieveDiaByID(id);
+            tblDia obj = RetrieveDiaByID(id);
 
             if (obj != null)
             {
-                using (var r = new Repository<tblDías>())
+                using (var r = new Repository<tblDia>())
                 {
                     Result = r.Delete(obj);
                 }
             }
             else
             {
-                throw (new Exception("El día seleccionada no se pudo eliminar."));
+                throw (new Exception("El dia seleccionada no se pudo eliminar."));
             }
 
             return Result;
         }
 
-        public List<tblDías> RetrieveAll()
+        public List<tblDia> RetrieveAll()
         {
-            List<tblDías> Result = null;
-            using (var r = new Repository<tblDías>())
+            List<tblDia> Result = null;
+            using (var r = new Repository<tblDia>())
             {
                 Result = r.RetrieveAll();
             }

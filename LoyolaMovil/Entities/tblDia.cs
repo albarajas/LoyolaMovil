@@ -12,10 +12,10 @@ namespace Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class tblDías
+    public partial class tblDia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblDías()
+        public tblDia()
         {
             this.tblCitas = new HashSet<tblCita>();
         }

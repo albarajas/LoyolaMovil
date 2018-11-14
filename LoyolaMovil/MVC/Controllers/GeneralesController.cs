@@ -16,7 +16,7 @@ namespace MVC.Controllers
         public ActionResult IndexDias()
         {
             var diasBLL = new DiaBLL();
-            List<tblDías> listaDias = diasBLL.RetrieveAll();
+            List<tblDia> listaDias = diasBLL.RetrieveAll();
 
             return View(listaDias);
         }
@@ -27,7 +27,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateDias(tblDías dia)
+        public ActionResult CreateDias(tblDia dia)
         {
             var diasBLL = new DiaBLL();
             ActionResult Result = null;
@@ -51,13 +51,13 @@ namespace MVC.Controllers
         public ActionResult EditDias(int id)
         {
             var diasBLL = new DiaBLL();
-            tblDías objdia = diasBLL.RetrieveDiaByID(id);
+            tblDia objdia = diasBLL.RetrieveDiaByID(id);
 
             return View(objdia);
         }
 
         [HttpPost]
-        public ActionResult EditDias(tblDías dia)
+        public ActionResult EditDias(tblDia dia)
         {
             var diasBLL = new DiaBLL();
             ActionResult Result = null;
@@ -84,7 +84,7 @@ namespace MVC.Controllers
 
             try
             {
-                tblDías dia = diasBLL.RetrieveDiaByID(id);
+                tblDia dia = diasBLL.RetrieveDiaByID(id);
 
                 if (dia != null)
                 {

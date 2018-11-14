@@ -81,7 +81,7 @@
           <Property Name="horaFin" Type="datetime" Nullable="false" />
           <Property Name="contraseniaColaborador" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblDías">
+        <EntityType Name="tblDias">
           <Key>
             <PropertyRef Name="idDias" />
           </Key>
@@ -133,8 +133,8 @@
           </Key>
           <Property Name="idMes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Mes" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fechaInicial" Type="date" Nullable="false" />
-          <Property Name="fechaFinal" Type="date" Nullable="false" />
+          <Property Name="fechaInicial" Type="datetime" Nullable="false" />
+          <Property Name="fechaFinal" Type="datetime" Nullable="false" />
           <Property Name="idAnioMes" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblNivel">
@@ -277,10 +277,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblCitas_tblDías">
-          <End Role="tblDías" Type="Self.tblDías" Multiplicity="1" />
+          <End Role="tblDias" Type="Self.tblDias" Multiplicity="1" />
           <End Role="tblCitas" Type="Self.tblCitas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblDías">
+            <Principal Role="tblDias">
               <PropertyRef Name="idDias" />
             </Principal>
             <Dependent Role="tblCitas">
@@ -405,7 +405,7 @@
           <EntitySet Name="tblAula" EntityType="Self.tblAula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCitas" EntityType="Self.tblCitas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblColaboradores" EntityType="Self.tblColaboradores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblDías" EntityType="Self.tblDías" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDias" EntityType="Self.tblDias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDisponibilidad" EntityType="Self.tblDisponibilidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEdificio" EntityType="Self.tblEdificio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEventos" EntityType="Self.tblEventos" Schema="dbo" store:Type="Tables" />
@@ -449,7 +449,7 @@
             <End Role="tblCitas" EntitySet="tblCitas" />
           </AssociationSet>
           <AssociationSet Name="FK_tblCitas_tblDías" Association="Self.FK_tblCitas_tblDías">
-            <End Role="tblDías" EntitySet="tblDías" />
+            <End Role="tblDias" EntitySet="tblDias" />
             <End Role="tblCitas" EntitySet="tblCitas" />
           </AssociationSet>
           <AssociationSet Name="FK_tblCitas_tblHorarios" Association="Self.FK_tblCitas_tblHorarios">
@@ -546,14 +546,6 @@
           <NavigationProperty Name="tblEventos" Relationship="Self.FK_tblEventos_tblColaboradores" FromRole="tblColaboradores" ToRole="tblEventos" />
           <NavigationProperty Name="tblDisponibilidads" Relationship="LoyolaMovilBDModel.FK_tblGenerales_tblColaboradores" FromRole="tblColaboradore" ToRole="tblDisponibilidad" />
           <NavigationProperty Name="tblCitas" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblColaboradores" FromRole="tblColaboradore" ToRole="tblCita" />
-        </EntityType>
-        <EntityType Name="tblDías">
-          <Key>
-            <PropertyRef Name="idDias" />
-          </Key>
-          <Property Name="idDias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblCitas" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblDías" FromRole="tblDías" ToRole="tblCita" />
         </EntityType>
         <EntityType Name="tblEdificio">
           <Key>
@@ -776,7 +768,6 @@
           <EntitySet Name="tblAreas_Servicios" EntityType="Self.tblAreas_Servicios" />
           <EntitySet Name="tblAulas" EntityType="Self.tblAula" />
           <EntitySet Name="tblColaboradores" EntityType="Self.tblColaboradore" />
-          <EntitySet Name="tblDías" EntityType="Self.tblDías" />
           <EntitySet Name="tblEdificios" EntityType="Self.tblEdificio" />
           <EntitySet Name="tblEventos" EntityType="Self.tblEvento" />
           <EntitySet Name="tblHorarios" EntityType="Self.tblHorario" />
@@ -851,16 +842,17 @@
             <End Role="tblColaboradore" EntitySet="tblColaboradores" />
             <End Role="tblCita" EntitySet="tblCitas" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblCitas_tblDías" Association="LoyolaMovilBDModel.FK_tblCitas_tblDías">
-            <End Role="tblDías" EntitySet="tblDías" />
-            <End Role="tblCita" EntitySet="tblCitas" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblCitas_tblHorarios" Association="LoyolaMovilBDModel.FK_tblCitas_tblHorarios">
             <End Role="tblHorario" EntitySet="tblHorarios" />
             <End Role="tblCita" EntitySet="tblCitas" />
           </AssociationSet>
           <AssociationSet Name="FK_tblCitas_tblMes" Association="LoyolaMovilBDModel.FK_tblCitas_tblMes">
             <End Role="tblMe" EntitySet="tblMes" />
+            <End Role="tblCita" EntitySet="tblCitas" />
+          </AssociationSet>
+          <EntitySet Name="tblDias" EntityType="LoyolaMovilBDModel.tblDia" />
+          <AssociationSet Name="FK_tblCitas_tblDías1" Association="LoyolaMovilBDModel.FK_tblCitas_tblDías1">
+            <End Role="tblDia" EntitySet="tblDias" />
             <End Role="tblCita" EntitySet="tblCitas" />
           </AssociationSet>
         </EntityContainer>
@@ -909,8 +901,8 @@
           </Key>
           <Property Name="idMes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Mes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fechaInicial" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="fechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaInicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaFinal" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idAnioMes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblAnioMes" Relationship="LoyolaMovilBDModel.FK_tblAnioMes_tblMes1" FromRole="tblMe" ToRole="tblAnioMe" />
           <NavigationProperty Name="tblCitas" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblMes" FromRole="tblMe" ToRole="tblCita" />
@@ -961,9 +953,9 @@
           <Property Name="idMes" Type="Int32" Nullable="false" />
           <Property Name="idDias" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblColaboradore" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblColaboradores" FromRole="tblCita" ToRole="tblColaboradore" />
-          <NavigationProperty Name="tblDías" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblDías" FromRole="tblCita" ToRole="tblDías" />
           <NavigationProperty Name="tblHorario" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblHorarios" FromRole="tblCita" ToRole="tblHorario" />
           <NavigationProperty Name="tblMe" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblMes" FromRole="tblCita" ToRole="tblMe" />
+          <NavigationProperty Name="tblDia" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblDías1" FromRole="tblCita" ToRole="tblDia" />
         </EntityType>
         <Association Name="FK_tblCitas_tblColaboradores">
           <End Type="LoyolaMovilBDModel.tblColaboradore" Role="tblColaboradore" Multiplicity="1" />
@@ -974,18 +966,6 @@
             </Principal>
             <Dependent Role="tblCita">
               <PropertyRef Name="idColaborador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblCitas_tblDías">
-          <End Type="LoyolaMovilBDModel.tblDías" Role="tblDías" Multiplicity="1" />
-          <End Type="LoyolaMovilBDModel.tblCita" Role="tblCita" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblDías">
-              <PropertyRef Name="idDias" />
-            </Principal>
-            <Dependent Role="tblCita">
-              <PropertyRef Name="idDias" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1010,6 +990,26 @@
             </Principal>
             <Dependent Role="tblCita">
               <PropertyRef Name="idMes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblDia">
+          <Key>
+            <PropertyRef Name="idDias" />
+          </Key>
+          <Property Name="idDias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCitas" Relationship="LoyolaMovilBDModel.FK_tblCitas_tblDías1" FromRole="tblDia" ToRole="tblCita" />
+        </EntityType>
+        <Association Name="FK_tblCitas_tblDías1">
+          <End Type="LoyolaMovilBDModel.tblDia" Role="tblDia" Multiplicity="1" />
+          <End Type="LoyolaMovilBDModel.tblCita" Role="tblCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDia">
+              <PropertyRef Name="idDias" />
+            </Principal>
+            <Dependent Role="tblCita">
+              <PropertyRef Name="idDias" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1061,14 +1061,6 @@
                 <ScalarProperty Name="horarioInicio" ColumnName="horarioInicio" />
                 <ScalarProperty Name="horaFin" ColumnName="horaFin" />
                 <ScalarProperty Name="contraseniaColaborador" ColumnName="contraseniaColaborador" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblDías">
-            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblDías">
-              <MappingFragment StoreEntitySet="tblDías">
-                <ScalarProperty Name="idDias" ColumnName="idDias" />
-                <ScalarProperty Name="dia" ColumnName="dia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1210,6 +1202,14 @@
                 <ScalarProperty Name="idHorario" ColumnName="idHorario" />
                 <ScalarProperty Name="idColaborador" ColumnName="idColaborador" />
                 <ScalarProperty Name="idCita" ColumnName="idCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDias">
+            <EntityTypeMapping TypeName="LoyolaMovilBDModel.tblDia">
+              <MappingFragment StoreEntitySet="tblDias">
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="idDias" ColumnName="idDias" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

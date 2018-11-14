@@ -21,8 +21,8 @@ namespace Entities
         public int idDias { get; set; }
     
         public virtual tblColaboradore tblColaboradore { get; set; }
-        public virtual tblDías tblDías { get; set; }
         public virtual tblHorario tblHorario { get; set; }
         public virtual tblMe tblMe { get; set; }
+        public virtual tblDia tblDia { get; set; }
     }
 }

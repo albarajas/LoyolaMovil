@@ -79,10 +79,10 @@
     <Compile Include="tblColaboradore.cs">
       <DependentUpon>LoyolaDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblDisponibilidad.cs">
+    <Compile Include="tblDia.cs">
       <DependentUpon>LoyolaDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblDías.cs">
+    <Compile Include="tblDisponibilidad.cs">
       <DependentUpon>LoyolaDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEdificio.cs">

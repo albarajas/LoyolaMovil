@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblAreas_Servicios" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblAula" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblColaboradore" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LoyolaMovilBDModel.tblDías" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblEdificio" Width="1.5" PointX="1.5" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblEvento" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblHorario" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
@@ -30,7 +29,7 @@
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblNoticias_tblNivel" ManuallyRouted="false" />
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblUsuario_tblNivel" ManuallyRouted="false" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblAnio" Width="1.5" PointX="1.5" PointY="23.625" />
-        <EntityTypeShape EntityType="LoyolaMovilBDModel.sysdiagram" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="LoyolaMovilBDModel.sysdiagram" Width="1.5" PointX="8.5" PointY="3.75" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblAnioMe" Width="1.5" PointX="8.625" PointY="12.25" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblDisponibilidad" Width="1.5" PointX="3" PointY="31" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblMe" Width="1.5" PointX="6.375" PointY="1" />
@@ -39,9 +38,10 @@
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblGenerales_tblColaboradores" />
         <EntityTypeShape EntityType="LoyolaMovilBDModel.tblCita" Width="1.5" PointX="8.625" PointY="8" />
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblCitas_tblColaboradores" />
-        <AssociationConnector Association="LoyolaMovilBDModel.FK_tblCitas_tblDías" />
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblCitas_tblHorarios" />
         <AssociationConnector Association="LoyolaMovilBDModel.FK_tblCitas_tblMes" />
+        <EntityTypeShape EntityType="LoyolaMovilBDModel.tblDia" Width="1.5" PointX="8.5" PointY="6" />
+        <AssociationConnector Association="LoyolaMovilBDModel.FK_tblCitas_tblDías1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
