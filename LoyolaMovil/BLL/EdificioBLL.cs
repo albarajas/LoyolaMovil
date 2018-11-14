@@ -15,7 +15,8 @@ namespace BLL
             tblEdificio Result = null;
             using (var r = new Repository<tblEdificio>())
             {
-                tblEdificio ba = r.Retrieve(p => p.nombreEdificio == t.nombreEdificio);
+                tblEdificio ba = r.Retrieve(p => p.nombreEdificio == t.nombreEdificio
+                && p.idEdificio == t.idEdificio);
 
                 if (ba == null)
                 {

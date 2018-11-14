@@ -19,7 +19,8 @@ namespace BLL
                 && p.horaInicio == t.horaInicio 
                 && p.horaFinal == t.horaFinal 
                 && p.idColaborador == t.idColaborador 
-                && p.idAula == t.idAula);
+                && p.idAula == t.idAula
+                && p.idArea != t.idArea);
 
                 if (ba == null)
                 {

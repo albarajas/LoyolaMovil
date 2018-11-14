@@ -15,7 +15,8 @@ namespace BLL
             tblTipoAula Result = null;
             using (var r = new Repository<tblTipoAula>())
             {
-                tblTipoAula ba = r.Retrieve(p => p.tipoAula == t.tipoAula);
+                tblTipoAula ba = r.Retrieve(p => p.tipoAula == t.tipoAula
+                && p.idTipoAula == t.idTipoAula);
 
                 if (ba == null)
                 {

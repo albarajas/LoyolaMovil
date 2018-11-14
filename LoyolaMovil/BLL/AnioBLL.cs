@@ -15,7 +15,8 @@ namespace BLL
             tblAnio Result = null;
             using (var r = new Repository<tblAnio>())
             {
-                tblAnio ba = r.Retrieve(p => p.anio == t.anio);
+                tblAnio ba = r.Retrieve(p => p.anio == t.anio
+                && p.idAnio == t.idAnio);
 
                 if (ba == null)
                 {
