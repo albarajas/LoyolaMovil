@@ -23,7 +23,7 @@ namespace BLL
                 && p.idAula == t.idAula
                 && p.idColaborador ==  t.idColaborador
                 && p.idNivel == t.idNivel
-                && p.idEvento == t.idEvento);
+                && p.idEvento != t.idEvento);
 
                 if (ba == null)
                 {

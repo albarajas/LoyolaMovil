@@ -67,12 +67,16 @@ namespace MVC.Controllers
                     NotBLL.Create(Noticias);
                     Result = RedirectToAction("Noticias");
                 }
+                else
+                {
+                    Result = RedirectToAction("Noticias");
+                }
             }
             catch
             {
-                return View();
-            }
+                Result = RedirectToAction("Noticias");
 
+            }
             return Result;
         }
 

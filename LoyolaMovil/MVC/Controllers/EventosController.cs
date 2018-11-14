@@ -86,12 +86,16 @@ namespace MVC.Controllers
                     eveBLL.Create(evento);
                     Result = RedirectToAction("Index");
                 }
+                else
+                {
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
-            }
+                Result = RedirectToAction("Index");
 
+            }
             return Result;
         }
 

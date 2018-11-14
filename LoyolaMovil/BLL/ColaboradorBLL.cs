@@ -21,7 +21,7 @@ namespace BLL
                 && p.horarioInicio == t.horarioInicio
                 && p.horaFin == t.horaFin
                 && p.contraseniaColaborador == t.contraseniaColaborador
-                && p.idColaborador == t.idColaborador);
+                && p.idColaborador != t.idColaborador);
 
 
                 if (ba == null)

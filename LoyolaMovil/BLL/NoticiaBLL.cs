@@ -18,7 +18,7 @@ namespace BLL
                 tblNoticia ba = r.Retrieve(p => p.noticiasTitulo == t.noticiasTitulo
                 && p.noticiasTexto == t.noticiasTexto
                 && p.idNivel == t.idNivel
-                && p.idNoticias == t.idNoticias);
+                && p.idNoticias != t.idNoticias);
 
 
                 if (ba == null)

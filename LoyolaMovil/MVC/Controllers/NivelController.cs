@@ -41,15 +41,18 @@ namespace MVC.Controllers
                     lvlBLL.Create(nivel);
                     Result = RedirectToAction("Index");
                 }
+                else
+                {
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
-            }
+                Result = RedirectToAction("Index");
 
+            }
             return Result;
         }
-
         // GET: Nivel/Edit/5
         public ActionResult Edit(int id)
         {
@@ -78,7 +81,6 @@ namespace MVC.Controllers
             {
                 return View();
             }
-
             return Result;
         }
 

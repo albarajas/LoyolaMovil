@@ -41,14 +41,19 @@ namespace MVC.Controllers
                     colBLL.Create(colaborador);
                     Result = RedirectToAction("Index");
                 }
+                else
+                {
+                    Result = RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
-            }
+                Result = RedirectToAction("Index");
 
+            }
             return Result;
         }
+
 
         public ActionResult Edit(int id)
         {

@@ -15,7 +15,7 @@ namespace BLL
             tblNivel Result = null;
             using (var r = new Repository<tblNivel>())
             {
-                tblNivel ba = r.Retrieve(p => p.idNivel == t.idNivel
+                tblNivel ba = r.Retrieve(p => p.idNivel != t.idNivel
                 && p.nivelNombre == t.nivelNombre);
 
                 if (ba == null)
