@@ -262,6 +262,9 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Generales\IndexAnio.cshtml" />
+    <Content Include="Views\Generales\CreateAnio.cshtml" />
+    <Content Include="Views\Generales\EditAnio.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
