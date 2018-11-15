@@ -130,16 +130,16 @@ namespace MVC.Controllers
             return Result;
         }
 
-        public JsonResult DeleteTipoAula(int id)
+        public JsonResult DeleteAula(int id)
         {
-            var taBLL = new TipoAulaBLL();
+            var aulBLL = new AulaBLL();
             wmJsonResult objJson = new wmJsonResult();
 
             try
             {
-                tblTipoAula tipoaula = taBLL.RetrieveTipoAulaByID(id);
+                tblAula aula = aulBLL.RetrieveAulaByID(id);
 
-                if (tipoaula != null)
+                if (aula != null)
                 {
                     var auBLL = new AulaBLL();
                     List<tblAula> listaAulas = auBLL.RetrieveAulaTipoAulaByID(id);
@@ -149,30 +149,30 @@ namespace MVC.Controllers
                         //significa que tiene Aulas....
                     }
 
-                    bool banderita = taBLL.Delete(id);
+                    bool banderita = aulBLL.Delete(id);
 
                     if (banderita == true)
                     {
                         objJson.bandera = true;
-                        objJson.mensaje = "El Tipo Aula se eliminó correctamente";
+                        objJson.mensaje = "El Aula se eliminó correctamente";
                     }
                     else
                     {
                         objJson.bandera = false;
-                        objJson.mensaje = "El Tipo Aula NO se eliminó correctamente";
+                        objJson.mensaje = "El Aula NO se eliminó correctamente";
                     }
 
                 }
                 else
                 {
                     objJson.bandera = false;
-                    objJson.mensaje = "El Tipo Aula no se encontró";
+                    objJson.mensaje = "El Aula no se encontró";
                 }
             }
             catch
             {
                 objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar el Tipo Aula";
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el Registro";
             }
 
             return Json(objJson, JsonRequestBehavior.AllowGet);

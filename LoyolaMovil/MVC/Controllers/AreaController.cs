@@ -144,39 +144,25 @@ namespace MVC.Controllers
 
                 if (area != null)
                 {
-                    var servBLL = new ServiciosBLL();
-                    List<tblServicio> listaServicio = servBLL.RetrieveServicioAreaByID(id);
-
-                    if (listaServicio.Count() >= 0)
-                    {
-                        //significa que tiene eventos....
-                    }
-                    var aer_servBLL = new Area_ServiciosBLL();
-                    List<tblAreas_Servicios> listaAServicios = aer_servBLL.RetrieveAreas_ServicioAreaByID(id);
-
-                    if (listaAServicios.Count() >= 0)
-                    {
-                        //significa que tiene areas asignadas....
-                    }
-
+                    
                     bool banderita = aerBLL.Delete(id);
 
                     if (banderita == true)
                     {
                         objJson.bandera = true;
-                        objJson.mensaje = "El colaborador se eliminó correctamente";
+                        objJson.mensaje = "El Area se eliminó correctamente";
                     }
                     else
                     {
                         objJson.bandera = false;
-                        objJson.mensaje = "El colaborador NO se eliminó correctamente";
+                        objJson.mensaje = "El Area NO se eliminó correctamente";
                     }
 
                 }
                 else
                 {
                     objJson.bandera = false;
-                    objJson.mensaje = "El colaborador no se encontró";
+                    objJson.mensaje = "El Area no se encontró";
                 }
             }
             catch
