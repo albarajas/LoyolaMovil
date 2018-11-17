@@ -158,7 +158,6 @@ namespace MVC.Controllers
 
                 if (evento != null)
                 {
-
                     bool banderita = eveBLL.Delete(id);
 
                     if (banderita == true)

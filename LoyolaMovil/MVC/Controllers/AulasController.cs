@@ -141,12 +141,20 @@ namespace MVC.Controllers
 
                 if (aula != null)
                 {
-                    var auBLL = new AulaBLL();
-                    List<tblAula> listaAulas = auBLL.RetrieveAulaTipoAulaByID(id);
+                    var eveBLL = new EventoBLL();
+                    List<tblEvento> listaEventos = eveBLL.RetrieveEventosAulaByID(id);
 
-                    if (listaAulas.Count() >= 0)
+                    if (listaEventos.Count() >= 0)
                     {
-                        //significa que tiene Aulas....
+                        //significa que tiene Eventos....
+                    }
+
+                    var areaBLL = new AreasBLL();
+                    List<tblArea> listaAreas = areaBLL.RetrieveAreasAulaByID(id);
+
+                    if (listaAreas.Count() >= 0)
+                    {
+                        //significa que tiene Areas....
                     }
 
                     bool banderita = aulBLL.Delete(id);

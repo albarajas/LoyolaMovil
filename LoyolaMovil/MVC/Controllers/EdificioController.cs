@@ -85,42 +85,49 @@ namespace MVC.Controllers
         }
 
         // GET: Edificio/Delete/5
-        public JsonResult DeleteNoticias(int id)
+        public JsonResult DeleteEdificio(int id)
         {
-            var NotBLL = new NoticiaBLL();
+            var ediBLL = new EdificioBLL();
             wmJsonResult objJson = new wmJsonResult();
 
             try
             {
-                tblNoticia noticia = NotBLL.RetrieveNoticiaByID(id);
+                tblEdificio edificio = ediBLL.RetrieveEdificioByID(id);
 
-                if (noticia != null)
+                if (edificio != null)
                 {
+                    var aulaBLL = new AulaBLL();
+                    List<tblAula> listaAula = aulaBLL.RetrieveAulaEdificioByID(id);
 
-                    bool banderita = NotBLL.Delete(id);
+                    if (listaAula.Count() >= 0)
+                    {
+                        //significa que tiene Aulas....
+                    }
+
+                    bool banderita = ediBLL.Delete(id);
 
                     if (banderita == true)
                     {
                         objJson.bandera = true;
-                        objJson.mensaje = "La noticia se eliminó correctamente";
+                        objJson.mensaje = "El edificio se eliminó correctamente";
                     }
                     else
                     {
                         objJson.bandera = false;
-                        objJson.mensaje = "La noticia NO se eliminó correctamente";
+                        objJson.mensaje = "El edificio NO se eliminó correctamente";
                     }
 
                 }
                 else
                 {
                     objJson.bandera = false;
-                    objJson.mensaje = "La noticia no se encontró";
+                    objJson.mensaje = "El edificio no se encontró";
                 }
             }
             catch
             {
                 objJson.bandera = false;
-                objJson.mensaje = "Ocurrio una excepcion al eliminar la noticia";
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el edificio";
             }
 
             return Json(objJson, JsonRequestBehavior.AllowGet);
