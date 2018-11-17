@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Entities.tblDías>
+﻿@model IEnumerable<Entities.tblDia>
 
 @{
     ViewBag.Title = "IndexDias";
@@ -49,15 +49,15 @@
 <h2>Lista de Dias</h2>
 
 <p>
-    @Html.ActionLink("Crear Dias", "CreateDias")
+    @Html.ActionLink("Crear Dias", "CreateDias", null, new { @class = "btn btn-sm btn-info" })
 </p>
 <table class="table table-striped table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idDias)
+            @Html.DisplayName("idDias")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia)
+            @Html.DisplayName("Dia")
         </th>
         <th></th>
     </tr>
@@ -72,13 +72,40 @@
                 @Html.DisplayFor(modelItem => item.dia)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idDias }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "EditDias", new { id = item.idDias }) 
+                <a href="javascript:Eliminar(@item.idDias)">Eliminar</a>
             </td>
         </tr>
     }
 
 </table>
 @Html.ActionLink("Regresar a Colaborador ", "Index", "Colaborador", new { area = "" }, new { @class = "btn btn-sm btn-info" })
+
 <div class="footer "></div>
+
+<script type="text/javascript">
+    function Eliminar(idDias) {
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteColaborador", "Dias")",
+            traditional: true,
+        data: {
+            id: idDias
+        },
+        success: function (data) {
+            if (data.bandera == true) {
+                alert(data.mensaje);
+                window.location.href = '@Url.Action("IndexDias", "Dias")'
+            } else {
+                alert(data.mensaje);
+            }
+        },
+        error: function (data) {
+            alert(data.mensaje);
+        }
+    });
+
+
+    }
+</script>

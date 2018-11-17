@@ -11,7 +11,7 @@ namespace MVC.Models
 
         public string nombreEvento { get; set; }
         public string descripcionEvento { get; set; }
-        public System.DateTime fechaEvento { get; set; }
+        public string fechaEvento { get; set; }
         public string horaInicio { get; set; }
         public string horaFinal { get; set; }
         public string idAula { get; set; }

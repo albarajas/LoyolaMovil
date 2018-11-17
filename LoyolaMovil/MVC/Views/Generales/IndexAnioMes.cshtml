@@ -7,18 +7,18 @@
 <h2>IndexAnioMes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateAnioMes", null, new { @class = "btn btn-sm btn-info" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idAnioMes)
+            @Html.DisplayName("idAnioMes")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idAnio)
+            @Html.DisplayName("idAnio")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idMes)
+            @Html.DisplayName("idMes")
         </th>
         <th></th>
     </tr>
@@ -35,11 +35,36 @@
             @Html.DisplayFor(modelItem => item.idMes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "EditAnioMes", new { id = item.idAnioMes }) 
+            <a href="javascript:Eliminar(@item.idAnioMes)">Eliminar</a>
         </td>
     </tr>
 }
 
 </table>
+<script type="text/javascript">
+    function Eliminar(idAnioMes) {
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeleteColaborador", "AnioMes")",
+            traditional: true,
+        data: {
+            id: idAnioMes
+        },
+        success: function (data) {
+            if (data.bandera == true) {
+                alert(data.mensaje);
+                window.location.href = '@Url.Action("IndexAnioMes", "AnioMes")'
+            } else {
+                alert(data.mensaje);
+            }
+        },
+        error: function (data) {
+            alert(data.mensaje);
+        }
+    });
+
+
+    }
+</script>

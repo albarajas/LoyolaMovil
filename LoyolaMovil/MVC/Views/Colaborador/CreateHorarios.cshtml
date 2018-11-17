@@ -1,7 +1,4 @@
 ﻿
-
-
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -47,8 +44,8 @@
 
     @Html.AntiForgeryToken()
      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-     @Html.Hidden("idColaborador")
-
+     @Html.Hidden("idColaborador") 
+     @Html.Hidden("idAnio")
     <div class="card">
         <div class="row">
             <div class="col-md-6">
@@ -132,8 +129,8 @@
      <div class="footer "></div>
 
                 <script type="text/javascript">
-                    $(document).ready(function () {
-
+                    //$(document).ready(function () {
+                        var id = $('#idAnio').val(0);
                         var id = $('#idColaborador').val();
 
                         @*$('#btnPulsar').click(function () {
@@ -142,6 +139,6 @@
 
                         //metodo ajax para mandar al controlador...
                         //
-                    });
+                    //});
                 </script>
 

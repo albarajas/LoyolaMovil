@@ -51,7 +51,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.Hidden("IdSemanas")
+    @Html.Hidden("IdMes")
 
 
     <div class="card">
@@ -59,7 +59,7 @@
 
             <div class="col-md-10">
                 <div class="form-group">
-                    @Html.Label("Semana", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("Mes", htmlAttributes: new { @class = "control-label " })<
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Mes, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Mes, "", new { @class = "text-danger" })
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="form-group">
-                        @Html.Label("Fecha Inicial", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.Label("Fecha Inicial", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.fechaInicial, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.fechaInicial, "", new { @class = "text-danger" })
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="form-group">
-                        @Html.Label("Fecha Final", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.Label("Fecha Final", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.fechaFinal, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.fechaFinal, "", new { @class = "text-danger" })
@@ -85,10 +85,9 @@
                 </div>
                 <div class="col-md-11">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.idAnioMes, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.idAnioMes, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.idAnioMes, "", new { @class = "text-danger" })
+                        @Html.Label("AnioMes", htmlAttributes: new { @class = "control-label " })
+                        @Html.DropDownList("idAnioMes", null, "Seleccione", new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model.idAnioMes, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -108,15 +107,13 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                         </div>
-                        <div> @Html.ActionLink("Regresar a la lista", "IndexSemanas", null, new { @class = "btn btn-sm btn-info" }) </div>
+                        <div> @Html.ActionLink("Regresar a la Lista", "IndexSemanas", null, new { @class = "btn btn-sm btn-info" }) </div>
                     </div>
                 </div>
             </div>
 
-     
-
+    
        
-        </div>
       }
 
 

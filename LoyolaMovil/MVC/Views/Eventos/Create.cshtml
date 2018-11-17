@@ -110,7 +110,8 @@
                     <div class="form-group">
                         @Html.Label("Hora de Entrada", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-12">
-                            @Html.EditorFor(model => model.horaInicio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.Hidden("horaInicio")
+                            @Html.Editor("horaInicioTemp", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.horaInicio, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -118,7 +119,8 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         @Html.Label("Hora de Salida", htmlAttributes: new { @class = "control-label " })
-                        @Html.EditorFor(model => model.horaFinal, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Hidden("horaFinal")
+                        @Html.Editor("horaFinalTemp", new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.horaFinal, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -163,8 +165,27 @@
   //codigo que controla todo......
     var Evento = $('#idEvento').val(0);
 
-    $('#horaInicio').timepicker();
-    $('#horaFinal').timepicker();
-    $('#fechaEvento').datepicker();
-    
+        $('#horaInicioTemp').timepicker();
+        $('#horaFinalTemp').timepicker();
+
+        $('#horaInicioTemp').change(function () {
+            var x = $('#horaInicioTemp').val();
+            var zito = '01/01/1900 ' + x;
+
+
+            $('#horaInicio').val(zito);
+            var Fecha= $('#horaInicio').val();
+
+        });
+
+        $('#horaFinalTemp').change(function () {
+            var x = $('#horaFinalTemp').val();
+            var zito = '01/01/1900 ' + x;
+
+            $('#horaFinal').val(zito);
+            var Fecha = $('#horaFinal').val();
+
+        });
+
+
 </script>

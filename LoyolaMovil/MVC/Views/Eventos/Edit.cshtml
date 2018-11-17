@@ -77,11 +77,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                         @Html.Label("Nivel", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.idNivel, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownList("idNivel", null, "Seleccione", new { @class = "form-control input-sm" })
                             @Html.ValidationMessageFor(model => model.idNivel, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -103,7 +103,8 @@
                     <div class="form-group">
                         @Html.Label("Fecha del Evento", htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-12">
-                            @Html.EditorFor(model => model.fechaEvento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.Hidden("fechaEvento")
+                            @Html.Editor("fechaEventoTemp", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.fechaEvento, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -112,7 +113,8 @@
                     <div class="form-group">
                         @Html.Label("Hora de Inicio", htmlAttributes: new { @class = "control-label" })
                         <div class="col-md-12">
-                            @Html.EditorFor(model => model.horaInicio, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.Hidden("horaInicio")
+                            @Html.Editor("horaInicioTemp", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.horaInicio, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -121,7 +123,8 @@
                     <div class="form-group">
                         @Html.Label("hora de Fin", htmlAttributes: new { @class = "control-label" })
                         <div class="col-md-12">
-                            @Html.EditorFor(model => model.horaFinal, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.Hidden("horaFinal")
+                            @Html.Editor("horaFinalTemp", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.horaFinal, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -157,17 +160,41 @@
 
 
     <div class="footer "></div>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-@*hora y fecha*@
+   
 
 <script text="text/javascript">
   //codigo que controla todo......
-    var Evento = $('#idEvento').val(0);
+    //var Evento = $('#idEvento').val(0);
 
-    $('#horaInicio').timepicker();
-    $('#horaFinal').timepicker();
-    $('#fechaEvento').datepicker();
+        $('#horaInicioTemp').timepicker();
+        $('#horaFinalTemp').timepicker();
+        $('#fechaEventoTemp').datepicker();
+
+        $('#horaInicioTemp').change(function () {
+            var x = $('#horaInicioTemp').val();
+            var zito = '01/01/1900 ' + x;
+
+
+            $('#horaInicio').val(zito);
+            var Fecha= $('#horaInicio').val();
+
+        });
+
+        $('#horaFinalTemp').change(function () {
+            var x = $('#horaFinalTemp').val();
+            var zito = '01/01/1900 ' + x;
+
+            $('#horaFinal').val(zito);
+            var Fecha = $('#horaFinal').val();
+
+        });
+        //$('#fechaEventoTemp').change(function () {
+        //    var x = $('#fechaEventoTemp').val();
+        //    var zito = '    0:00:00' + x;
+
+        //    $('#fechaEvento').val(zito);
+        //    var Fecha = $('#fechaEvento').val();
+
+        //});
 
 </script>
