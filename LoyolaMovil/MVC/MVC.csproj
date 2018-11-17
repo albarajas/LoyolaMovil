@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Models\vmListaAreas.cs" />
     <Compile Include="Models\vmListaAulas.cs" />
+    <Compile Include="Models\vmListaColaborador.cs" />
     <Compile Include="Models\vmListaEventos.cs" />
     <Compile Include="Models\vmListaNoticias.cs" />
     <Compile Include="Models\vmListaServicios.cs" />
@@ -265,6 +266,9 @@
     <Content Include="Views\Generales\IndexAnio.cshtml" />
     <Content Include="Views\Generales\CreateAnio.cshtml" />
     <Content Include="Views\Generales\EditAnio.cshtml" />
+    <Content Include="Views\Generales\IndexAnioMes.cshtml" />
+    <Content Include="Views\Generales\CreateAnioMes.cshtml" />
+    <Content Include="Views\Generales\EditAnioMes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

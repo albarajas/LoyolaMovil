@@ -17,7 +17,30 @@ namespace MVC.Controllers
             var colBLL = new ColaboradorBLL();
             List<tblColaboradore> listaColaboradores = colBLL.RetrieveAll();
 
-            return View(listaColaboradores);
+            vmListaColaborador objTemp;
+
+            //creo una lista vm para almacenar los objetos....
+            List<vmListaColaborador> listaFinal = new List<vmListaColaborador>();
+
+            foreach (var i in listaColaboradores)
+            {
+
+                objTemp = new vmListaColaborador()
+                {
+                    idColaborador = i.idColaborador,
+                    nombreColaborador = i.nombreColaborador,
+                    horarioInicio = i.horarioInicio.ToShortTimeString(),
+                    horaFin = i.horaFin.ToShortTimeString(),
+                    telefonoColaborador = i.telefonoColaborador,
+                    correoColaborador = i.correoColaborador,
+                    contraseniaColaborador = i.contraseniaColaborador
+                };
+
+                listaFinal.Add(objTemp);
+            }
+
+
+            return View(listaFinal);
         }
 
 

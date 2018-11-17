@@ -44,6 +44,9 @@ namespace MVC.Controllers
                     idEvento = i.idEvento,
                     nombreEvento = i.nombreEvento,
                     descripcionEvento = i.descripcionEvento,
+                    fechaEvento = i.fechaEvento,
+                    horaInicio = i.horaInicio.ToShortTimeString(),
+                    horaFinal = i.horaFinal.ToShortTimeString(),
                     idNivel = nivelNombre,
                     idAula = AulaNombre,
                     idColaborador = ColaboradorNombre

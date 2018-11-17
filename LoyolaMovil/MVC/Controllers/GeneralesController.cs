@@ -359,5 +359,116 @@ namespace MVC.Controllers
 
             return Json(objJson, JsonRequestBehavior.AllowGet);
         }
+
+        //Aqui termina Anio
+
+
+        //Aqui inicia AnioMes
+        public ActionResult IndexAnioMes()
+        {
+            var AmBLL = new AnioMesBLL();
+            List<tblAnioMe> listaAnioMes = AmBLL.RetrieveAll();
+
+            return View(listaAnioMes);
+        }
+
+        public ActionResult CreateAnioMes()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAnioMes(tblAnioMe AnioMes)
+        {
+            var AmBLL = new AnioMesBLL();
+            ActionResult Result = null;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    AmBLL.Create(AnioMes);
+                    Result = RedirectToAction("IndexAnioMes");
+                }
+            }
+            catch
+            {
+                return View();
+            }
+
+            return Result;
+        }
+
+        public ActionResult EditAnioMes(int id)
+        {
+            var AmBLL = new AnioMesBLL();
+            tblAnioMe objam = AmBLL.RetrieveAnioMesByID(id);
+
+            return View(objam);
+        }
+
+        [HttpPost]
+        public ActionResult EditAnioMes(tblAnioMe AnioMes)
+        {
+            var AmBLL = new AnioMesBLL();
+            ActionResult Result = null;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    AmBLL.Update(AnioMes);
+                    Result = RedirectToAction("IndexAnioMes");
+                }
+            }
+            catch
+            {
+                return View();
+            }
+
+            return Result;
+        }
+
+        public JsonResult DeleteAnioMes(int id)
+        {
+            var AmBLL = new AnioMesBLL();
+            wmJsonResult objJson = new wmJsonResult();
+
+            try
+            {
+                tblAnioMe AnioMes = AmBLL.RetrieveAnioMesByID(id);
+
+                if (AnioMes != null)
+                {
+                    
+
+                    bool banderita = AmBLL.Delete(id);
+
+                    if (banderita == true)
+                    {
+                        objJson.bandera = true;
+                        objJson.mensaje = "El Año Mes se eliminó correctamente";
+                    }
+                    else
+                    {
+                        objJson.bandera = false;
+                        objJson.mensaje = "El Año Mes se eliminó correctamente";
+                    }
+
+                }
+                else
+                {
+                    objJson.bandera = false;
+                    objJson.mensaje = "El Año Mes no se encontró";
+                }
+            }
+            catch
+            {
+                objJson.bandera = false;
+                objJson.mensaje = "Ocurrio una excepcion al eliminar el resgistro";
+            }
+
+            return Json(objJson, JsonRequestBehavior.AllowGet);
+        }
     }
 }
