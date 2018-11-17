@@ -61,7 +61,7 @@
 
             <div class="col-md-10">
                 <div class="form-group">
-                    @Html.Label("Dia", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("Dia", htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(model => model.dia, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.dia, "", new { @class = "text-danger" })
                 </div>
@@ -96,6 +96,6 @@
 
 <script type="text/javascript">
 
-    //var Dias = $('#idDias').val(0);
+    var Dias = $('#idDias').val(0);
 
 </script>

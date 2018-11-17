@@ -88,7 +88,7 @@
 
         $.ajax({
             type: "POST",
-            url: "@Url.Action("DeleteColaborador", "Dias")",
+            url: "@Url.Action("DeleteDias", "Generales")",
             traditional: true,
         data: {
             id: idDias
@@ -96,7 +96,7 @@
         success: function (data) {
             if (data.bandera == true) {
                 alert(data.mensaje);
-                window.location.href = '@Url.Action("IndexDias", "Dias")'
+                window.location.href = '@Url.Action("IndexDias", "Generales")'
             } else {
                 alert(data.mensaje);
             }

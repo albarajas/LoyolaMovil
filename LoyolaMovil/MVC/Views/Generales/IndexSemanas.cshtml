@@ -104,7 +104,7 @@
 
         $.ajax({
             type: "POST",
-            url: "@Url.Action("DeleteColaborador", "Mes")",
+            url: "@Url.Action("DeleteSemanas", "Generales")",
             traditional: true,
         data: {
             id: idMes
@@ -112,7 +112,7 @@
         success: function (data) {
             if (data.bandera == true) {
                 alert(data.mensaje);
-                window.location.href = '@Url.Action("IndexSemanas", "Mes")'
+                window.location.href = '@Url.Action("IndexSemanas", "Generales")'
             } else {
                 alert(data.mensaje);
             }
