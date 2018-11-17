@@ -273,10 +273,14 @@ namespace MVC.Controllers
                     anioBLL.Create(anio);
                     Result = RedirectToAction("IndexAnio");
                 }
+                else
+                {
+                    Result = RedirectToAction("IndexAnio");
+                }
             }
             catch
             {
-                return View();
+                Result = RedirectToAction("IndexAnio");
             }
 
             return Result;
@@ -380,7 +384,7 @@ namespace MVC.Controllers
 
             var MesBLL = new MesBLL();
             List<tblMe> listaMes = MesBLL.RetrieveAll();
-            ViewBag.idMes = new SelectList(listaMes, "idAnio", "Mes");
+            ViewBag.idMes = new SelectList(listaMes, "idMes", "Mes");
 
             return View();
         }
