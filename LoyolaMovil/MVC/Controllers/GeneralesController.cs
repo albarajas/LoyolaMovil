@@ -374,6 +374,14 @@ namespace MVC.Controllers
 
         public ActionResult CreateAnioMes()
         {
+            var amBLL = new AnioBLL();
+            List<tblAnio> listaAnio = amBLL.RetrieveAll();
+            ViewBag.idAnio = new SelectList(listaAnio, "idAnio", "Anio");
+
+            var MesBLL = new MesBLL();
+            List<tblMe> listaMes = MesBLL.RetrieveAll();
+            ViewBag.idMes = new SelectList(listaMes, "idAnio", "Mes");
+
             return View();
         }
 
