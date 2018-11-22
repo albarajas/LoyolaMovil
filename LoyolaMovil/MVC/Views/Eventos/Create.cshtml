@@ -70,7 +70,6 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         @Html.Label("Colaborador", htmlAttributes: new { @class = "control-label " })
-
                         @Html.DropDownList("idColaborador", null, "Seleccione", new { @class = "form-control input-sm" })
                         @Html.ValidationMessageFor(model => model.idColaborador, "", new { @class = "text-danger" })
 
@@ -156,17 +155,14 @@
  }
 
 <div class="footer "></div>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-  @*hora y fecha*@
 
 <script text="text/javascript">
-  //codigo que controla todo......
-    var Evento = $('#idEvento').val(0);
+  
+    $('#idEvento').val(0);
 
         $('#horaInicioTemp').timepicker();
         $('#horaFinalTemp').timepicker();
+        $('#fechaEvento').datepicker();
 
         $('#horaInicioTemp').change(function () {
             var x = $('#horaInicioTemp').val();
@@ -179,11 +175,11 @@
         });
 
         $('#horaFinalTemp').change(function () {
-            var x = $('#horaFinalTemp').val();
-            var zito = '01/01/1900 ' + x;
+            var x1 = $('#horaFinalTemp').val();
+            var zito1 = '01/01/1900 ' + x1;
 
-            $('#horaFinal').val(zito);
-            var Fecha = $('#horaFinal').val();
+            $('#horaFinal').val(zito1);
+            var Fecha1 = $('#horaFinal').val();
 
         });
 
