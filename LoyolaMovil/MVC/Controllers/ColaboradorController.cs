@@ -47,6 +47,7 @@ namespace MVC.Controllers
         public ActionResult Create()
         {
             ViewBag.Nombre = "Texto desde el controlador";
+
             return View();
         }
 
